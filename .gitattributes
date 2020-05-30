@@ -1,0 +1,2 @@
+# stop git normalising or converting EOL for any files
+* -text

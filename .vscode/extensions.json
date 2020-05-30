@@ -1,0 +1,10 @@
+{
+	"recommendations": [
+		"donjayamanne.git-extension-pack",
+		"editorconfig.editorconfig",
+		"esbenp.prettier-vscode",
+		"dbaeumer.vscode-eslint",
+		"jamesbirtles.svelte-vscode",
+		"pflannery.vscode-versionlens"
+	]
+}

@@ -1,7 +1,7 @@
 {
   "name": "music-practice-tools",
   "version": "0.1.0",
-  "description": "Tools to help with practicing and improving musicallity.",
+  "description": "Tools to help with practicing and improving musicality.",
   "private": true,
   "scripts": {
     "build": "eleventy",

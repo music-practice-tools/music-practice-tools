@@ -7,4 +7,4 @@ eleventyNavigation:
   order: 2
 ---
 
-I am a person that writes stuff.
+Musical practice tools and stuff.

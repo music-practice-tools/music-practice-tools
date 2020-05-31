@@ -4,8 +4,8 @@ const fs = require('fs')
 const markdownIt = require('markdown-it')
 const markdownItAnchor = require('markdown-it-anchor')
 const pluginNavigation = require('@11ty/eleventy-navigation')
+const markdownItTaskLists = require('markdown-it-task-lists')
 // markdown-it-music
-// markdown-it-task-lists
 // markdown-it-collapsible
 // markdown-it-video
 //markdown-it-block-embed
@@ -46,12 +46,14 @@ module.exports = function (eleventyConfig) {
     html: true,
     breaks: true,
     linkify: true,
-  }).use(markdownItAnchor, {
-    permalink: true,
-    permalinkClass: 'direct-link',
-    permalinkSymbol: '#', //&#128279;
-    permalinkBefore: false,
   })
+    .use(markdownItAnchor, {
+      permalink: true,
+      permalinkClass: 'direct-link',
+      permalinkSymbol: '#', //&#128279;
+      permalinkBefore: false,
+    })
+    .use(markdownItTaskLists, { enabled: true })
   eleventyConfig.setLibrary('md', markdownLibrary)
 
   // Browsersync Overrides

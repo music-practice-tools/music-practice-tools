@@ -16,6 +16,7 @@ body {
   padding: 0;
   margin: 0;
   font-family: system-ui, sans-serif;
+  font-size: 25px;
   color: var(--darkgray);
   background-color: var(--white);
 }
@@ -228,4 +229,8 @@ a[href].direct-link:focus:visited,
 :hover > a[href].direct-link,
 :hover > a[href].direct-link:visited {
   color: #aaa;
+}
+
+li.task-list-item {
+  list-style: none;
 }

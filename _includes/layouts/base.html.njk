@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ renderData.title or title or metadata.title }}</title>
@@ -13,6 +14,14 @@
   <body>
     <header>
       <h1 class="home"><a href="{{ '/' | url }}">{{ metadata.title }}</a></h1>
+
+      {#- Read more about `eleventy-navigation` at https://www.11ty.dev/docs/plugins/navigation/ #}
+      <ul class="nav">
+      {%- for entry in collections.all | eleventyNavigation %}
+        <li class="nav-item{% if entry.url == page.url %} nav-item-active{% endif %}"><a href="{{ entry.url | url }}">{{ entry.title }}</a></li>
+      {%- endfor %}
+      </ul>
+
     </header>
 
     <main{% if templateClass %} class="{{ templateClass }}"{% endif %}>
@@ -21,6 +30,6 @@
 
     <footer></footer>
 
-    Current page: {{ page.url | url }}
+    <!-- Current page: {{ page.url | url }} -->
   </body>
 </html>

@@ -3,11 +3,19 @@ const { DateTime } = require('luxon')
 const fs = require('fs')
 const markdownIt = require('markdown-it')
 const markdownItAnchor = require('markdown-it-anchor')
+const pluginNavigation = require('@11ty/eleventy-navigation')
+// markdown-it-music
+// markdown-it-task-lists
+// markdown-it-collapsible
+// markdown-it-video
+//markdown-it-block-embed
 
 module.exports = function (eleventyConfig) {
+  eleventyConfig.addPlugin(pluginNavigation)
+
   eleventyConfig.setDataDeepMerge(true)
 
-  eleventyConfig.addLayoutAlias('post', 'layouts/post.njk')
+  eleventyConfig.addLayoutAlias('post', 'layouts/post.html.njk')
 
   eleventyConfig.addFilter('readableDate', (dateObj) => {
     return DateTime.fromJSDate(dateObj, { zone: 'utc' }).toFormat('dd LLL yyyy')
@@ -41,7 +49,8 @@ module.exports = function (eleventyConfig) {
   }).use(markdownItAnchor, {
     permalink: true,
     permalinkClass: 'direct-link',
-    permalinkSymbol: '#',
+    permalinkSymbol: '#', //&#128279;
+    permalinkBefore: false,
   })
   eleventyConfig.setLibrary('md', markdownLibrary)
 

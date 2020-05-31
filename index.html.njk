@@ -8,3 +8,8 @@ permalink: index.html
 
 <h1>Welcome</h1>
 
+<h1>Latest 3 Posts</h1>
+
+{% set postslist = collections.posts | head(-3) %}
+{% set postslistCounter = collections.posts | length %}
+{% include "postslist.html.njk" %}

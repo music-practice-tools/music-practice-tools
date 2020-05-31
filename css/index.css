@@ -27,6 +27,9 @@ p,
 img {
   max-width: 37.5em; /* 600px /16 */
 }
+.tmpl-post {
+  background-color: var(--lightgray);
+}
 p,
 .tmpl-post li {
   line-height: 1.45;

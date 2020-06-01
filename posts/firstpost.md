@@ -24,7 +24,7 @@ Q:1/4=80
 C:BB King
 R:Slow Blues
 K: Bm bass
-|:^A,,|B,,B,,z=F,,^F,,F,,z^A,,:|
+|:^A,,|B,,B,, z=F,,^F,,F,, z^A,,:|
 ```
 
 ```abc
@@ -35,6 +35,6 @@ L: 1/8
 Q:1/4=80
 C:BB King
 R:Slow Blues
-K: Bm bass octave=-2
+K: Bm bass t=-5
 |:^A|BBz=F^FFz^A:|
 ```

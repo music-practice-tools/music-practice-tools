@@ -20,21 +20,11 @@ X: 1
 T:The Thrill is Gone
 M: 4/4
 L: 1/8
-Q:1/4=80
+Q:1/4=90
 C:BB King
-R:Slow Blues
+R:Moderate Blues
 K: Bm bass
-|:^A,,|B,,B,, z=F,,^F,,F,, z^A,,:|
-```
-
-```abc
-X: 1
-T:The Thrill is Gone
-M: 4/4
-L: 1/8
-Q:1/4=80
-C:BB King
-R:Slow Blues
-K: Bm bass t=-5
-|:^A|BBz=F^FFz^A:|
+|:^A|"Bm"BB z=F ^FF z^A|"Bm"BB z=F ^FF z^A|"Bm"BB z=F ^FF z^A|"Bm"BB z=F ^FFB^d|
+|"Em"ee z^A BB z^d|"Em"ee z^A ^BBdc|"Bm"BB z=F ^FF z^A|"Bm"BB z=F ^FF^A=A|
+|"G7"GG zd gg zd|"F#7"^ff z=c ^FFA^A|"Bm"BB z=F ^FF AA|"Bm"BB^FF AA^AA:|
 ```

@@ -3,12 +3,11 @@ const { DateTime } = require('luxon')
 const fs = require('fs')
 const markdownIt = require('markdown-it')
 const markdownItAnchor = require('markdown-it-anchor')
-const pluginNavigation = require('@11ty/eleventy-navigation')
 const markdownItTaskLists = require('markdown-it-task-lists')
-// markdown-it-music
+const pluginNavigation = require('@11ty/eleventy-navigation')
 // markdown-it-collapsible
 // markdown-it-video
-//markdown-it-block-embed
+// markdown-it-block-embed
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(pluginNavigation)
@@ -40,6 +39,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy('img')
   eleventyConfig.addPassthroughCopy('css')
   eleventyConfig.addPassthroughCopy({ 'favicons/': '/' })
+  eleventyConfig.addPassthroughCopy({ 'client-js': 'js' })
 
   /* Markdown Overrides */
   let markdownLibrary = markdownIt({

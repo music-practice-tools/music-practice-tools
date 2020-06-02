@@ -25,14 +25,17 @@ p:last-child {
 }
 p,
 .tmpl-post li,
+.tmpl-tune li,
 img {
   max-width: 37.5em; /* 600px /16 */
 }
-.tmpl-post {
+.tmpl-post,
+.tmpl-tune {
   background-color: var(--lightgray);
 }
 p,
-.tmpl-post li {
+.tmpl-post li,
+.tmpl-tune li {
   line-height: 1.45;
 }
 a[href] {
@@ -240,7 +243,7 @@ li.task-list-item {
 :root {
   --video-aspect: calc(56%);
 }
-.video-embed-wrapper {
+.tmpl-tune .video-embed-wrapper {
   width: 50%;
 }
 .video-embed {

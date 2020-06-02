@@ -54,7 +54,10 @@ module.exports = function (eleventyConfig) {
       permalinkBefore: false,
     })
     .use(markdownItTaskLists, { enabled: true })
-    .use(markdownItBlockEmbedd, {})
+    .use(markdownItBlockEmbedd, {
+      outputPlayerSize: false,
+      containerClassName: 'video-embed',
+    })
   eleventyConfig.setLibrary('md', markdownLibrary)
 
   // Browsersync Overrides

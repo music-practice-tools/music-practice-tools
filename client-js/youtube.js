@@ -25,14 +25,14 @@ function mpt_inject({ showOnPlay = false } = {}) {
         position: fixed;
         right: 0.5em;
         top: 0.5em;
-        font-size: 3.5em;
+        font-size: 5vw;
         color: black;
-        width:3.2em;
+        width:15%;
         text-align:center;
         background-color: yellow;
         padding: 0.2em;
-        padding-bottom: 0.1em;
-        border: solid thick black;
+        padding-bottom: 0.1rem;
+        border: solid 0.05em  black;
         border-radius: 0.25em;
         font-family: Arial,helvetica,sans-serif;
         z-index: 9999;
@@ -40,7 +40,7 @@ function mpt_inject({ showOnPlay = false } = {}) {
     }
     div#mpt-videotime button {
         font-size: 0.4em;
-        border: solid thick black;
+        border: solid 0.1em black;
         border-radius: 0.25em;
         background-color: gold;
         width: 4.5em;
@@ -182,6 +182,18 @@ function onYouTubeIframeAPIReady() {
   enhanceYTFrames(getYTFrames())
 }
 
+function wrapVideo() {
+  const elements = document.querySelectorAll('.video-embed')
+  for (const element of elements) {
+    var parent = element.parentNode
+    var wrapper = document.createElement('div')
+    wrapper.className = 'video-embed-wrapper'
+    parent.replaceChild(wrapper, element)
+    wrapper.appendChild(element)
+  }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
+  wrapVideo()
   mpt_inject({ showOnPlay: false })
 })

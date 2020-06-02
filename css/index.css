@@ -234,3 +234,27 @@ a[href].direct-link:focus:visited,
 li.task-list-item {
   list-style: none;
 }
+
+/* responsive videos */
+
+:root {
+  --video-aspect: calc(56%);
+}
+.video-embed-wrapper {
+  width: 50%;
+}
+.video-embed {
+  width: 100%;
+  position: relative;
+  height: 0;
+  padding-top: var(--video-aspect);
+}
+.video-embed iframe,
+.video-embed object,
+.video-embed embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}

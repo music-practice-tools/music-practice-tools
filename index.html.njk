@@ -16,17 +16,4 @@ permalink: index.html
 
 {% set tuneslist = collections.tunes | head(-3) %}
 {% set tuneslistCounter = collections.tunes | length %}
-<ol>
-{% for tune in tuneslist %}
-  <li>
-    <a href="{{ tune.url | url }}" class="tunelist-link">{% if tune.data.title %}{{ tune.data.title }}{% else %}<code>{{ tune.url }}</code>{% endif %}</a>
-    <time class="tunelist-date" datetime="{{ tune.date | htmlDateString }}">{{ tune.date | readableDate }}</time>
-    {% for tag in tune.data.tags %}
-      {%- if collections.tagList.indexOf(tag) != -1 -%}
-      {% set tagUrl %}/tags/{{ tag }}/{% endset %}
-      <a href="{{ tagUrl | url }}" class="tag">{{ tag }}</a>
-      {%- endif -%}
-    {% endfor %}
-  </li>
-{% endfor %}
-</ol>
+{% include "tuneslist.html.njk" %}

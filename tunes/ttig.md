@@ -1,16 +1,17 @@
 ---
-title: The Thrill Is Gone
-description:
-date: 2020-05-31
+title: The Thrill Is Gone.
+artiset: BB King.
+description: xx
+date: 2020-05-17
 ---
 
 ```abc
 X: 1
-T:The Thrill is Gone
+T:{{ title }}
 M: 4/4
 L: 1/8
 Q:1/4=90
-C:BB King
+C:{{ artist }}
 R:Moderate Blues
 K: Bm bass
 |:^A|"Bm"BB z=F ^FF z^A|"Bm"BB z=F ^FF z^A|"Bm"BB z=F ^FF z^A|"Bm"BB z=F ^FFB^d|

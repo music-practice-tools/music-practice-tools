@@ -7,4 +7,4 @@ eleventyNavigation:
   order: 2
 ---
 
-Musical practice tools and stuff.
+Steve Lee's music practice stuff.

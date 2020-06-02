@@ -8,3 +8,5 @@ eleventyNavigation:
 ---
 
 Steve Lee's music practice stuff.
+
+Also see my [blog](http://blog.fullmeasure.uk/)

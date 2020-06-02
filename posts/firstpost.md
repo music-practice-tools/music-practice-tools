@@ -6,8 +6,9 @@ tags:
   - project
 ---
 
-- [ ] **Fretboard** - all notes @ 60bpm, all strings, bottom octave
+- [ ] **Finger warm up**
 - [ ] **Timing** - subdivide beat - 60bpm
+- [ ] **Fretboard** - all notes @ 60bpm, all strings, bottom octave
 - [ ] **Chord tones** - play and name, major and relative minor - few random keys.
 - [ ] **Ear training** - C, F, G Do Me Mi So Do
 - [ ] **Improvisation** - play 3 patterns

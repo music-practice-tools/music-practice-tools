@@ -1,0 +1,11 @@
+---
+layout: base.html.njk
+templateClass: tmpl-tune
+---
+<h1>{{ title }}</h1>
+
+<time class="activitylist-date" datetime="{{ date | htmlDateString }}">{{ date | readableDate }}</time>
+
+{{ content | safe }}
+
+<p><a href="{{ '/' | url }}">← Home</a></p>

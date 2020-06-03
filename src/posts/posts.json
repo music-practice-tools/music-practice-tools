@@ -1,4 +1,0 @@
-{
-  "tags": ["posts"],
-  "layout": "layouts/post.html.njk"
-}

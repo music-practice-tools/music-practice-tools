@@ -1,16 +1,16 @@
 ---
-layout: layouts/home.html.njk
+layout: home.html.njk
 eleventyNavigation:
   key: Home
   order: 1
 permalink: index.html
 ---
 
-<h1>Projects</h1>
+<h1>Activities</h1>
 
-{% set postslist = collections.posts | head(-3) %}
-{% set postslistCounter = collections.posts | length %}
-{% include "postslist.html.njk" %}
+{% set activityslist = collections.activitys | head(-3) %}
+{% set activityslistCounter = collections.activitys | length %}
+{% include "activityslist.html.njk" %}
 
 <h1>Tunes</h1>
 

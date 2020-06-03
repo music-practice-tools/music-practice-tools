@@ -6,20 +6,20 @@ pagination:
   filter:
     - all
     - nav
-    - post
-    - posts
+    - activity
+    - activitys
     - tune
     - tunes
     - tagList
   addAllPagesToCollections: true
-layout: layouts/home.html.njk
+layout: home.html.njk
 renderData:
   title: Tagged “{{ tag }}”
 permalink: /tags/{{ tag }}/
 ---
 <h1>Tagged “{{ tag }}”</h1>
 
-{% set postslist = collections[ tag ] %}
-{% include "postslist.html.njk" %}
+{% set activityslist = collections[ tag ] %}
+{% include "activityslist.html.njk" %}
 
 <p>See <a href="{{ '/tags/' | url }}">all tags</a>.</p>

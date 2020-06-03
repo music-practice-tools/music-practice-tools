@@ -1,4 +1,4 @@
 {
   "tags": ["tunes"],
-  "layout": "layouts/tune.html.njk"
+  "layout": "tune.html.njk"
 }

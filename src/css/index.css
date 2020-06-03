@@ -24,17 +24,17 @@ p:last-child {
   margin-bottom: 0;
 }
 p,
-.tmpl-post li,
+.tmpl-activity li,
 .tmpl-tune li,
 img {
   max-width: 37.5em; /* 600px /16 */
 }
-.tmpl-post,
+.tmpl-activity,
 .tmpl-tune {
   background-color: var(--lightgray);
 }
 p,
-.tmpl-post li,
+.tmpl-activity li,
 .tmpl-tune li {
   line-height: 1.45;
 }
@@ -154,37 +154,37 @@ pre {
   text-decoration: underline;
 }
 
-/* Posts list */
-.postlist {
+/* activitys list */
+.activitylist {
   list-style: none;
   padding: 0;
 }
-.postlist-item {
+.activitylist-item {
   counter-increment: start-from -1;
 }
-.postlist-item:before {
+.activitylist-item:before {
   display: inline-block;
   pointer-events: none;
   content: '' counter(start-from, decimal-leading-zero) '. ';
   line-height: 100%;
   text-align: right;
 }
-.postlist-date,
-.postlist-item:before {
+.activitylist-date,
+.activitylist-item:before {
   font-size: 0.8125em; /* 13px /16 */
   color: var(--darkgray);
 }
-.postlist-date {
+.activitylist-date {
   word-spacing: -0.5px;
 }
-.postlist-link {
+.activitylist-link {
   display: inline-block;
   padding: 0.25em 0.1875em; /* 4px 3px /16 */
 }
-.postlist-item-active .postlist-link {
+.activitylist-item-active .activitylist-link {
   font-weight: bold;
 }
-.tmpl-home .postlist-link {
+.tmpl-home .activitylist-link {
   font-size: 1.1875em; /* 19px /16 */
   font-weight: 700;
 }

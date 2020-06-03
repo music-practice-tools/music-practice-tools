@@ -1,3 +1,3 @@
 public/bundle.*
 _site/
-client-js/3rdparty
+src/client-js/3rdparty

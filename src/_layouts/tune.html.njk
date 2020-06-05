@@ -4,7 +4,7 @@ templateClass: tmpl-tune
 ---
 <h1>{{ title }}</h1>
 
-<time class="activitylist-date" datetime="{{ date | htmlDateString }}">{{ date | readableDate }}</time>
+<time class="activitylist-date" datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate }}</time>
 
 {{ content | safe }}
 

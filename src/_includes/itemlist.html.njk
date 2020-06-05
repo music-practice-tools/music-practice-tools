@@ -1,5 +1,6 @@
 <ul reversed class="itemlist" >
-{% for item in itemlist | reverse %}
+{% if itemlistReversed %} {% set itemlist = itemlist | reverse %} {% endif %}
+{% for item in itemlist %}
   <li class="itemlist-item{% if item.url == url %} itemlist-item-active{% endif %}">
     <a href="{{ item.url | url }}" class="itemlist-link">{% if item.data.title %}{{ item.data.title }}{% else %}<code>{{ item.url }}</code>{% endif %}</a>
     {% for tag in item.data.tags %}

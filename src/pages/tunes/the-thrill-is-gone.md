@@ -1,7 +1,7 @@
 ---
-title: The Thrill Is Gone.
-artiset: BB King.
-description: xx
+title: The Thrill Is Gone
+artiset: BB King
+description: x
 date: 2020-05-17
 ---
 

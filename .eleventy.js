@@ -33,6 +33,11 @@ module.exports = function (eleventyConfig) {
   })
 
   eleventyConfig.addCollection('tagList', require('./src/_11ty/getTagList'))
+  eleventyConfig.addCollection('orderdActivities', function (collectionApi) {
+    return collectionApi.getFilteredByTag('activities').sort(function (a, b) {
+      return a.data.order - b.data.order
+    })
+  })
 
   eleventyConfig.addPassthroughCopy({ 'src/img': 'img' })
   eleventyConfig.addPassthroughCopy({ 'src/css': 'css' })

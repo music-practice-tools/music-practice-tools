@@ -1,4 +1,5 @@
 {
   "tags": ["tunes"],
-  "layout": "tune.html.njk"
+  "layout": "tune.html.njk",
+  "permalink": "/tunes/{{ page.fileSlug }}/"
 }

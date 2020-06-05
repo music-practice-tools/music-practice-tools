@@ -17,8 +17,11 @@
 
   <body>
     <header>
-      <h1 class="home"><a href="{{ '/' | url }}">{{ metadata.title }}</a></h1>
-
+    <div class="logo">
+    	<a href="{{ '/' | url }}" title="{{ metadata.title }}">
+        <img src="{{metadata.logo}}">
+      </a>
+   </div>
       {#- Read more about `eleventy-navigation` at https://www.11ty.dev/docs/plugins/navigation/ #}
       <ul class="nav">
       {%- for entry in collections.all | eleventyNavigation %}

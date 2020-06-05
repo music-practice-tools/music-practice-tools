@@ -124,15 +124,21 @@ pre {
   background-color: #902f2f;
 }
 
+/* Logo */
+.logo {
+  padding: 0.5rem 0.5rem;
+  float: left;
+}
+.logo img {
+  width: 3rem;
+  height: 3rem;
+}
+
 /* Header */
 .home {
   padding: 0 1rem;
-  float: left;
-  margin: 1rem 0; /* 16px /16 */
+
   font-size: 1em; /* 16px /16 */
-}
-.home :link:not(:hover) {
-  text-decoration: none;
 }
 
 /* Nav */

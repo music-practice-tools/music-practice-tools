@@ -6,8 +6,6 @@ const markdownItAnchor = require('markdown-it-anchor')
 const markdownItTaskLists = require('markdown-it-task-lists')
 const markdownItBlockEmbedd = require('markdown-it-block-embed')
 const pluginNavigation = require('@11ty/eleventy-navigation')
-// markdown-it-collapsible
-// markdown-it-video
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(pluginNavigation)
@@ -78,9 +76,9 @@ module.exports = function (eleventyConfig) {
   })
 
   return {
-    templateFormats: ['md', 'njk', 'html', 'liquid'],
+    templateFormats: ['md', 'njk', 'html'],
 
-    markdownTemplateEngine: 'liquid',
+    markdownTemplateEngine: 'njk',
     htmlTemplateEngine: 'njk',
     dataTemplateEngine: 'njk',
 

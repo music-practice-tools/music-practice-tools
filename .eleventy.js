@@ -38,7 +38,7 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addPassthroughCopy({ 'src/img': 'img' })
   eleventyConfig.addPassthroughCopy({ 'src/css': 'css' })
-  eleventyConfig.addPassthroughCopy({ 'src/favicons/': '' })
+  eleventyConfig.addPassthroughCopy({ 'src/favicons/': '/' })
   eleventyConfig.addPassthroughCopy({ 'src/js': 'js' })
 
   /* Markdown Overrides */

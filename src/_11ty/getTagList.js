@@ -11,7 +11,7 @@ module.exports = function (collection) {
           case 'all':
           case 'nav':
           case 'activity':
-          case 'activitys':
+          case 'activities':
           case 'tune':
           case 'tunes':
             return false

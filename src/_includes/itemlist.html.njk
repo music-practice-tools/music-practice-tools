@@ -1,0 +1,13 @@
+<ul reversed class="itemlist" >
+{% for item in itemlist | reverse %}
+  <li class="itemlist-item{% if item.url == url %} itemlist-item-active{% endif %}">
+    <a href="{{ item.url | url }}" class="itemlist-link">{% if item.data.title %}{{ item.data.title }}{% else %}<code>{{ item.url }}</code>{% endif %}</a>
+    {% for tag in item.data.tags %}
+      {%- if collections.tagList.indexOf(tag) != -1 -%}
+      {% set tagUrl %}/tags/{{ tag }}/{% endset %}
+      <a href="{{ tagUrl | url }}" class="tag">{{ tag }}</a>
+      {%- endif -%}
+    {% endfor %}
+  </li>
+{% endfor %}
+</ul>

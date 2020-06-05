@@ -7,7 +7,7 @@ pagination:
     - all
     - nav
     - activity
-    - activitys
+    - activities
     - tune
     - tunes
     - tagList
@@ -19,7 +19,7 @@ permalink: /tags/{{ tag }}/
 ---
 <h1>Tagged “{{ tag }}”</h1>
 
-{% set activityslist = collections[ tag ] %}
-{% include "activityslist.html.njk" %}
+{% set itemlist = collections[ tag ] %}
+{% include "itemlist.html.njk" %}
 
 <p>See <a href="{{ '/tags/' | url }}">all tags</a>.</p>

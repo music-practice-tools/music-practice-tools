@@ -2,8 +2,7 @@
 title: Daily Practice.
 description: Regular practice stuff.
 date: 2020-05-31
-tags:
-  - project
+tags: wibble
 ---
 
 - [ ] **Finger warm up**

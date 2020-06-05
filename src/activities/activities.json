@@ -1,4 +1,4 @@
 {
-  "tags": ["activitys"],
+  "tags": ["activities"],
   "layout": "activity.html.njk"
 }

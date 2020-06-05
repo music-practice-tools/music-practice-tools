@@ -4,7 +4,7 @@ title: About
 templateClass: tmpl-activity
 eleventyNavigation:
   key: About
-  order: 2
+  order: 10
 ---
 
 Steve Lee's music practice stuff.

@@ -8,12 +8,14 @@ permalink: index.html
 
 <h1>Activities</h1>
 
-{% set activityslist = collections.activitys | head(-3) %}
-{% set activityslistCounter = collections.activitys | length %}
-{% include "activityslist.html.njk" %}
+{% set itemlist = collections.activities | head(-3) %}
+{% set itemlistCounter = collections.activities | length %}
+{% include "itemlist.html.njk" %}
 
-<h1>Tunes</h1>
+<h1>Latest Tunes</h1>
 
-{% set tuneslist = collections.tunes | head(-3) %}
-{% set tuneslistCounter = collections.tunes | length %}
-{% include "tuneslist.html.njk" %}
+{% set itemlist = collections.tunes | head(-3) %}
+{% set itemlistCounter = collections.tunes | length %}
+{% include "itemlist.html.njk" %}
+
+<p>More tunes can be found in <a href="{{ '/tunes/' | url }}">Tunes</a>.</p>

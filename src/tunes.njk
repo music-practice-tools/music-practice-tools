@@ -1,0 +1,12 @@
+---
+layout: home.html.njk
+permalink: /tunes/
+eleventyNavigation:
+  key: Tunes
+  order: 2
+---
+
+<h1>Tunes</h1>
+
+{% set itemlist = collections.tunes %}
+{% include "itemlist.html.njk" %}

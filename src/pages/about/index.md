@@ -1,5 +1,6 @@
 ---
 layout: activity.html.njk
+permalink: about
 title: About
 templateClass: tmpl-activity
 eleventyNavigation:

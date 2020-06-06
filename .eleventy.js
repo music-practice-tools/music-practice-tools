@@ -32,26 +32,22 @@ module.exports = function (eleventyConfig) {
     return array.slice(0, n)
   })
 
-  eleventyConfig.addShortcode('homeLink', function () {
-    return `<div class="user">`
-  })
+  const addShortcodes = require('./src/_11ty/add-shortcodes')
+  addShortcodes(eleventyConfig)
 
-  eleventyConfig.addCollection('tagList', require('./src/_11ty/getTagList'))
-  eleventyConfig.addCollection('orderdActivities', function (collectionApi) {
-    return collectionApi.getFilteredByTag('activities').sort(function (a, b) {
-      return a.data.order - b.data.order
-    })
-  })
+  const addCollections = require('./src/_11ty/add-collections')
+  addCollections(eleventyConfig)
 
   eleventyConfig.addPassthroughCopy({ 'src/img': 'img' })
   eleventyConfig.addPassthroughCopy({ 'src/css': 'css' })
+  eleventyConfig.addPassthroughCopy({ 'src/sounds': 'sounds' })
   eleventyConfig.addPassthroughCopy({ 'src/favicons/': '/' })
   eleventyConfig.addPassthroughCopy({ 'src/js': 'js' })
 
   /* Markdown Overrides */
   let markdownLibrary = markdownIt({
     html: true,
-    breaks: true,
+    breaks: false,
     linkify: true,
   })
     .use(markdownItAnchor, {

@@ -1,5 +1,4 @@
-/* global module */
-module.exports = function (collection) {
+function addTags(collection) {
   let tagSet = new Set()
   collection.getAll().forEach(function (item) {
     if ('tags' in item.data) {
@@ -28,4 +27,15 @@ module.exports = function (collection) {
 
   // returning an array in addCollection works in Eleventy 0.5.3
   return [...tagSet]
+}
+
+/* global module */
+module.exports = function addCollections(eleventyConfig) {
+  eleventyConfig.addCollection('tagList', addTags)
+
+  eleventyConfig.addCollection('orderdActivities', function (collectionApi) {
+    return collectionApi.getFilteredByTag('activities').sort(function (a, b) {
+      return a.data.order - b.data.order
+    })
+  })
 }

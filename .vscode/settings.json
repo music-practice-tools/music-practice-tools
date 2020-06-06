@@ -3,5 +3,6 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "eslint.enable": true,
   "eslint.autoFixOnSave": false,
-  "eslint.alwaysShowStatus": true
+  "eslint.alwaysShowStatus": true,
+  "lit-html.format.enabled": false
 }

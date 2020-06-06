@@ -32,6 +32,10 @@ module.exports = function (eleventyConfig) {
     return array.slice(0, n)
   })
 
+  eleventyConfig.addShortcode('homeLink', function () {
+    return `<div class="user">`
+  })
+
   eleventyConfig.addCollection('tagList', require('./src/_11ty/getTagList'))
   eleventyConfig.addCollection('orderdActivities', function (collectionApi) {
     return collectionApi.getFilteredByTag('activities').sort(function (a, b) {

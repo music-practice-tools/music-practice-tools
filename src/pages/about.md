@@ -1,8 +1,8 @@
 ---
-layout: activity.html.njk
+layout: page.html.njk
 permalink: /about/
 title: About
-templateClass: tmpl-activity
+templateClass: tmpl-about
 eleventyNavigation:
   key: About
   order: 10

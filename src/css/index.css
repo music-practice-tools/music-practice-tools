@@ -16,7 +16,7 @@ body {
   padding: 0;
   margin: 0;
   font-family: system-ui, sans-serif;
-  font-size: 25px;
+  font-size: 23px;
   color: var(--darkgray);
   background-color: var(--white);
 }
@@ -36,7 +36,7 @@ img {
 p,
 .tmpl-activity li,
 .tmpl-tune li {
-  line-height: 1.45;
+  line-height: 1.65;
 }
 a[href] {
   color: var(--blue);
@@ -126,12 +126,12 @@ pre {
 
 /* Logo */
 .logo {
-  padding: 0.5rem 0.5rem;
+  padding: 0.3rem 0.6rem;
   float: left;
 }
 .logo img {
-  width: 3rem;
-  height: 3rem;
+  width: 2.5rem;
+  height: 2.5rem;
 }
 
 /* Header */
@@ -257,6 +257,10 @@ li.task-list-item {
   height: 100%;
 }
 
-input[type='checkbox'] {
-  transform: scale(1.6);
+.tmpl-activity input[type='checkbox'] {
+  transform: scale(1.8);
+  margin-right: 1rem;
+}
+.tmpl-activity ul {
+  padding-inline-start: 0.6rem;
 }

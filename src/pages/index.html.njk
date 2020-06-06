@@ -1,7 +1,9 @@
 ---
 layout: home.html.njk
-
 permalink: index.html
+eleventyNavigation:
+  key: Home
+  order: 1
 ---
 
 <h1>Activities</h1>
@@ -10,11 +12,11 @@ permalink: index.html
 {% set itemlistCounter = collections.orderdActivities | length %}
 {% include "itemlist.html.njk" %}
 
-<h1>Latest Tunes</h1>
+<h1>Tunes</h1>
 
 {% set itemlist = collections.tunes | head(-3) %}
 {% set itemlistCounter = collections.tunes | length %}
 {% set itemlistReversed = true %}
 {% include "itemlist.html.njk" %}
 
-<p>More tunes can be found in <a href="{{ '/tunes/' | url }}">Tunes</a>.</p>
+<p><a href="{{ '/tunes/' | url }}">More tunes ...</a>.</p>

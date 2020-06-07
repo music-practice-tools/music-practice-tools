@@ -1,4 +1,4 @@
-/* uses some ES2015 features so a modern browser is required */
+/* global YT */
 
 function getYTFrames() {
   const frames = [...document.getElementsByTagName('iframe')]
@@ -80,6 +80,7 @@ function mpt_inject({ showOnPlay = false } = {}) {
 }
 
 // Needs to be a function in order for YT iFrame API to call it
+// eslint-disable-next-line no-unused-vars
 function onYouTubeIframeAPIReady() {
   window.onunload = cleanup
 
@@ -95,11 +96,11 @@ function onYouTubeIframeAPIReady() {
   function enhanceYTFrames(ytFrames) {
     let currentPlayer = undefined
 
-    ytFrames.forEach((frame, i, ar) => {
+    ytFrames.forEach((frame) => {
       // Reload with API enabled
       frame.src += frame.src.includes('?') ? '' : '?feature=oembed'
       frame.src += `&enablejsapi=1&domain=${window.location.host}`
-      const player = new YT.Player(frame, {
+      new YT.Player(frame, {
         events: {
           onStateChange: onPlayerStateChange,
           onReady: (e) => {
@@ -121,8 +122,7 @@ function onYouTubeIframeAPIReady() {
     function render(player) {
       const div = document.querySelector('#mpt-videotime')
 
-      if (!player) {
-      } else {
+      if (player) {
         const timeEl = div.querySelector('div')
         timeEl.removeAttribute('disabled')
         timeEl.textContent = formatTime(player.getCurrentTime())
@@ -130,6 +130,8 @@ function onYouTubeIframeAPIReady() {
         const playEl = div.querySelector('button')
         playEl.removeAttribute('disabled')
         playEl.textContent = player.getPlayerState() == 1 ? 'Pause' : 'Play'
+
+        // eslint-disable-next-line no-inner-declarations
         function onClick() {
           if (player.getPlayerState() == YT.PlayerState.PLAYING) {
             player.pauseVideo()

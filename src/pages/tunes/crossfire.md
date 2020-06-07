@@ -29,11 +29,11 @@ P: C
 
 - 00:00 Intro A6
 - 00:26 Verse A6
-- 00:50 Choruse A4
+- 00:50 Chorus A4
 - 01:08 Verse A4
-- 01:24 Choruse A4
+- 01:24 Chorus A4
 - 01:41 Bridge B2 A C
-- 01:58 Solo A8
+- 01:58 Middle 8 / Solo A8
 - 02:30 Bridge 2 B2
 - 02:38 Verse A6
 - 03:03 Chorus A7 C

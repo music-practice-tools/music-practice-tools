@@ -18,15 +18,15 @@ module.exports = function addShortcodes(eleventyConfig) {
   })
 
   /* widgets */
-  eleventyConfig.addShortcode('randomNote', function (text, constraint) {
-    return html`<button type="button" class="random-note" onclick="renderRandomNote(this, '${text}', ${constraint})">
+  eleventyConfig.addShortcode('randomNote', function (text, scale) {
+    return html`<button type="button" class="random-note" onclick="WIDGETS.renderRandomNote(this, ${scale})">
       ${text} <span>?<span>
     </button>`
   })
 
   eleventyConfig.addShortcode('metronome', function (bpm) {
     return html`<span class="metronome">[<label >${bpm} bpm
-      <input type="checkbox" onclick="toggleMetronome(this, ${bpm})">
+      <input type="checkbox" onclick="WIDGETS.toggleMetronome(this, ${bpm})">
     </label>]</span>`
   })
 }

@@ -1,4 +1,8 @@
+// WARNING - changes to this file will require restarting the dev server
+// as it is loaded from elventy.js
+
 // return the string as entered. Only used so VS Code lit-html extension works
+// TODO find better way without runtime impact
 function html(strings, ...expressions) {
   return strings.reduce(
     (result, currentString, i) =>
@@ -13,38 +17,15 @@ module.exports = function addShortcodes(eleventyConfig) {
     return `<a href="/">← Home</a>`
   })
 
-  eleventyConfig.addShortcode('scripts', function () {
-    return html`<script>
-      var player
-      const toggleMetronome = (source, bpm) => {
-        const start = source.checked
-
-        if (!player) {
-         player = new Tone.Player("/sounds/woodblock.wav").toMaster();
-         //player.volume.value = -6;
-
-          Tone.Buffer.on('load', function() {
-            Tone.Transport.scheduleRepeat(function(time){
-              player.start(time)
-            }, "4n")
-          })
-        }
-
-      if (start) {
-          const others = document.querySelectorAll('.metronome input[type="checkbox"]:checked')
-          others.forEach( e => {if (e != source) { e.checked = false}})
-          Tone.Transport.bpm.value = bpm
-          Tone.Transport.start()
-        }
-        else {
-          Tone.Transport.stop()
-        }
-      }
-      </script>`
+  /* widgets */
+  eleventyConfig.addShortcode('randomNote', function (text, constraint) {
+    return html`<button type="button" class="random-note" onclick="renderRandomNote(this, '${text}', ${constraint})">
+      ${text} <span>?<span>
+    </button>`
   })
 
   eleventyConfig.addShortcode('metronome', function (bpm) {
-    return html`<span class='metronome'>[<label >${bpm} bpm
+    return html`<span class="metronome">[<label >${bpm} bpm
       <input type="checkbox" onclick="toggleMetronome(this, ${bpm})">
     </label>]</span>`
   })

@@ -1,3 +1,4 @@
+/* global ABCJS */
 function replaceABCFences() {
   const abcNodes = document.querySelectorAll('code.language-abc')
   for (const node of abcNodes) {

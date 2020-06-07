@@ -7,6 +7,8 @@
   --navy: #17050f;
   --blue: #082840;
   --white: #fff;
+  --widget-bg: lightblue;
+  --font-size: 23px;
 }
 * {
   box-sizing: border-box;
@@ -16,7 +18,7 @@ body {
   padding: 0;
   margin: 0;
   font-family: system-ui, sans-serif;
-  font-size: 23px;
+  font-size: var(--font-size);
   color: var(--darkgray);
   background-color: var(--white);
 }
@@ -41,8 +43,17 @@ img {
   margin-left: 1px;
   margin-right: 1px;
 }
-.metronome {
-  background-color: lightblue;
+.random-note {
+  font-size: calc(var(--font-size) - 2px);
+  border-radius: 0.3rem;
+}
+.random-note span {
+  font-weight: bold;
+  color: var(--darkred);
+}
+.metronome,
+.random-note {
+  background-color: var(--widget-bg);
 }
 .tmpl-activity ul {
   padding-inline-start: 0.6rem;

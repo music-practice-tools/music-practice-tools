@@ -6,12 +6,10 @@ order: 1
 tags: wibble
 ---
 
-{% scripts %}
-
 - [ ] **Finger warm up**
 - [ ] **Timing** - subdivide beat {% metronome 90 %}
 - [ ] **Fretboard** - all notes @ {% metronome 60 %}, all strings, bottom octave
-- [ ] **Chord tones** - play and name, major and relative minor - few random keys.
+- [ ] **Chord tones** - play and name, major and relative minor - {% randomNote "Random Key" %}.
 - [ ] **Ear training** - C, F, G Do Me Mi So Do
 - [ ] **Improvisation** - play 3 patterns
 - [ ] **Reading** - p14, 15

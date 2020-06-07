@@ -46,8 +46,8 @@ var WIDGETS = (function () {
   function allNotes() {
     const notes = Tonal.Range.chromatic(['C2', 'B2']).flatMap((n) => {
       const bare = Tonal.Note.get(n).pc // drop octave
-      const en = Tonal.Note.enharmonic(bare)
-      return en != bare ? [en, bare] : n
+      const enh = Tonal.Note.enharmonic(bare)
+      return enh != bare ? [enh, bare] : bare
     })
     return notes
   }

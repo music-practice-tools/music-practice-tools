@@ -1,20 +1,42 @@
 ---
 title: Crossfire
 artist: Stevie Ray Vaughan
-description: toon
+key: Eb
+meter: 4/4
+tempo: 1/4=115
+rhythm: Rock
 date: 2020-05-20
 ---
 
 ```abc
 X: 1
-T:{{ title }}
-M: 4/4
+M: {{ meter }}
+K: {{ key }} bass
+Q: {{ tempo }}
+T: {{ title }}
+C: {{ artist }}
+R: {{ rhythm }}
 L: 1/8
-Q:1/4=90
-C:{{ artist }}
-R:Rock
-K: Eb bass
-|:^A:|
+P: A
+|:EE_GB_dd zB|_dd zBdBez:|
+P: B
+|:_GGGGGG zG|AAAA z4|_GGGGGG zG|AAAA z3(eB):|
+P: C
+|EE_GB_dd z_g'|=g'e'_d'bd'e'_g'=g'|
 ```
+
+## Structure
+
+- 00:00 Intro A6
+- 00:26 Verse A6
+- 00:50 Choruse A4
+- 01:08 Verse A4
+- 01:24 Choruse A4
+- 01:41 Bridge B2 A C
+- 01:58 Solo A8
+- 02:30 Bridge 2 B2
+- 02:38 Verse A6
+- 03:03 Chorus A7 C
+- 03:34 Solo A8
 
 @[youtube](ZPBRzwIjgv4)

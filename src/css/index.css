@@ -43,6 +43,13 @@ img {
   margin-left: 1px;
   margin-right: 1px;
 }
+
+/* animation just used to hook an 'on display' event on */
+@keyframes widgetEventHook {
+}
+.random-note {
+  animation: widgetEventHook;
+}
 .random-note {
   font-size: calc(var(--font-size) - 2px);
   border-radius: 0.3rem;

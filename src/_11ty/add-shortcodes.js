@@ -18,8 +18,8 @@ module.exports = function addShortcodes(eleventyConfig) {
   })
 
   /* widgets */
-  eleventyConfig.addShortcode('randomNote', function (text, scale) {
-    return html`<button type="button" class="random-note" onclick="WIDGETS.renderRandomNote(this, ${scale})">
+  eleventyConfig.addShortcode('randomNote', function (text="Random Note", scale="chromatic-enharmonic") {
+    return html`<button type="button" class="random-note" onanimationend="WIDGETS.renderRandomNote(this, '${scale}')" onclick="WIDGETS.renderRandomNote(this, '${scale}')">
       ${text} <span>?<span>
     </button>`
   })

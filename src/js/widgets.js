@@ -1,4 +1,6 @@
-/* global Tone Tonal */
+/* global Tone Tonal ABCJS youtubeSeekTo */
+
+// Not an ES6 module as exported symbols need to be in global namespace
 
 // eslint-disable-next-line no-unused-vars
 var WIDGETS = (function () {
@@ -64,7 +66,7 @@ var WIDGETS = (function () {
     }
   }
 
-  function renderRandomNote(source, constraint) {
+  function renderRandomNote(source /*, constraint*/) {
     if (!source.genFunc) {
       source.genFunc = pickRandom(allNotes())
     }
@@ -85,9 +87,27 @@ var WIDGETS = (function () {
     youtubeSeekTo(seconds, videoNum)
   }
 
+  function replaceABCFences() {
+    const abcNodes = document.querySelectorAll('code.language-abc')
+    for (const node of abcNodes) {
+      const abc = node.textContent
+      const div = document.createElement('div')
+      ABCJS.renderAbc(div, abc, { visualTranspose: -24, responsive: 'resize' })
+      node.parentElement.appendChild(div)
+      node.style.display = 'none'
+    }
+  }
+
+  function init() {
+    document.addEventListener('DOMContentLoaded', replaceABCFences)
+  }
+
   return {
     toggleMetronome: toggleMetronome,
     renderRandomNote: renderRandomNote,
     seekVideo: seekVideo,
+    init: init,
   }
 })()
+
+WIDGETS.init()

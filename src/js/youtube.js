@@ -79,7 +79,7 @@ function mpt_inject({ showOnPlay = false } = {}) {
   injectYTAPI(head)
 }
 
-// Needs to be a function in order for YT iFrame API to call it
+// Needs to be a global function in order for YT iFrame API to call it
 // eslint-disable-next-line no-unused-vars
 function onYouTubeIframeAPIReady() {
   window.onunload = cleanup
@@ -100,7 +100,7 @@ function onYouTubeIframeAPIReady() {
       // Reload with API enabled
       frame.src += frame.src.includes('?') ? '' : '?feature=oembed'
       frame.src += `&enablejsapi=1&domain=${window.location.host}`
-      new YT.Player(frame, {
+      frame.ytPlayer = new YT.Player(frame, {
         events: {
           onStateChange: onPlayerStateChange,
           onReady: (e) => {
@@ -193,6 +193,20 @@ function wrapVideo() {
     parent.replaceChild(wrapper, element)
     wrapper.appendChild(element)
   }
+}
+
+function youtubeSeekTo(seconds, playerNum = undefined) {
+  const frames = getYTFrames()
+  if (
+    !frames.length ||
+    (playerNum !== undefined && playerNum >= frames.length)
+  ) {
+    return
+  }
+  playerNum |= 0
+
+  const player = frames[playerNum].ytPlayer
+  player.seekTo(seconds, true)
 }
 
 document.addEventListener('DOMContentLoaded', () => {

@@ -72,8 +72,22 @@ var WIDGETS = (function () {
     span.innerText = source.genFunc()
   }
 
+  function seekVideo(source, minsec = '00:00', videoNum = 0) {
+    var a = minsec.split(':')
+    if (a.length == 1) {
+      a.unshift('0')
+    }
+    if (a.length == 1) {
+      a.unshift('0')
+    }
+    var seconds = +a[0] * 60 + +a[1]
+
+    youtubeSeekTo(seconds, videoNum)
+  }
+
   return {
     toggleMetronome: toggleMetronome,
     renderRandomNote: renderRandomNote,
+    seekVideo: seekVideo,
   }
 })()

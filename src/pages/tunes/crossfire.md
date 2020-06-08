@@ -34,8 +34,8 @@ P: C
 - {% seekVideo "01:24" %} Chorus A4
 - {% seekVideo "01:41" %} Bridge B2AC
 - {% seekVideo "01:58" %} Middle 8 / Solo A8
-- {% seekVideo "02:30" %} Bridge 2 B2
-- {% seekVideo "02:38" %} Verse A6
+- {% seekVideo "02:30" %} Bridge 2 B2A2
+- {% seekVideo "02:46" %} Verse A4
 - {% seekVideo "03:03" %} Chorus A7C
 - {% seekVideo "03:34" %} Solo A8
 

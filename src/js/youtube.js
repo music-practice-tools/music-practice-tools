@@ -207,6 +207,7 @@ function youtubeSeekTo(seconds, playerNum = undefined) {
 
   const player = frames[playerNum].ytPlayer
   player.seekTo(seconds, true)
+  player.playVideo()
 }
 
 document.addEventListener('DOMContentLoaded', () => {

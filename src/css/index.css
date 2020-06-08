@@ -32,7 +32,8 @@ img {
 }
 .tmpl-activity,
 .tmpl-tune,
-.tmpl-about {
+.tmpl-about,
+.tmpl-home {
   background-color: var(--lightgray);
 }
 .tmpl-activity input[type='checkbox'] {
@@ -50,8 +51,9 @@ img {
 .random-note {
   animation: widgetEventHook;
 }
-.random-note {
-  font-size: calc(var(--font-size) - 2px);
+.random-note,
+.seek-video {
+  font-size: calc(var(--font-size) - 3px);
   border-radius: 0.25rem;
 }
 .random-note span {

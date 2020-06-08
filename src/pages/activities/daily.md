@@ -7,12 +7,17 @@ tags: wibble
 ---
 
 - [ ] **Finger warm up**
-- [ ] **Timing** - subdivide beat {% metronome 90 %}
-- [ ] **Fretboard** - all notes @ {% metronome 60 %}, all strings, bottom octave
-- [ ] **Chord tones** - play and name, major and relative minor {% randomNote "Random Triad" %}
-- [ ] **Ear training** - C, F, G Do Me Mi So Do
+- [ ] **Rythmn** - divide beat: clap, 1 finger, 2 {% metronome 70 %}
+- [ ] **Fretboard** - all notes: CoF, all strings {% metronome 60 %}
+- [ ] **Chord tones** - play and name: maj and rel min x 3 {% randomNote "Random Triad" %}
+- [ ] **Ear training** - C, F, G: Do Mi Fa So Do
 - [ ] **Improvisation** - play 3 patterns
-- [ ] **Reading** - p14, 15
-- [ ] **Tune - [The Thrill is Gone](/tunes/the-thrill-is-gone)** - up to speed, on own with {% metronome 90 %}
-- [ ] **Tune - [Crossfire](/tunes/crossfire)** - All, transcribe, roadmap
-- [ ] **Tune - [Brown eyed girl](/tunes/brown-eyed-girl/)** - 1st 4 bars, notes + chords
+- [ ] **Reading** - p14,15 pitch, rythmn, together
+- [ ] **Tune - [The Thrill is Gone](/tunes/the-thrill-is-gone)** - with metronome, {% metronome 80 %}
+- [ ] **Tune - [Crossfire](/tunes/crossfire)** - play along up to speed
+- [ ] **Tune - [Brown eyed girl](/tunes/brown-eyed-girl/)** - learn 1st 4 bars, work out chords
+
+Notes:
+
+- Metronome: choose speed can play at with no mistakes, play x 3 to progress
+- Think about ways to record progress

@@ -5,6 +5,8 @@ description: ss
 date: 2020-06-01
 ---
 
+## Dots
+
 ```abc
 X: 1
 T:{{ title }}
@@ -16,5 +18,7 @@ R:Rock
 K: bass
 |:^A:|
 ```
+
+## Structure
 
 @[youtube](kqXSBe-qMGo)

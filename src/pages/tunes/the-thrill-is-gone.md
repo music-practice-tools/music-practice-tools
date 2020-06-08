@@ -5,6 +5,8 @@ description: x
 date: 2020-05-17
 ---
 
+## Dots
+
 ```abc
 X: 1
 T:{{ title }}
@@ -18,5 +20,7 @@ K: Bm bass
 |"Em"ee z^A BB z^d|"Em"ee z^A ^BBdc|"Bm"BB z=F ^FF z^A|"Bm"BB z=F ^FF^A=A|
 |"G7"GG zd gg zd|"F#7"^ff z=c ^FFA^A|"Bm"BB z=F ^FF AA|"Bm"BB^FF AA^AA:|
 ```
+
+## Structure
 
 @[youtube](oica5jG7FpU)

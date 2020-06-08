@@ -8,6 +8,8 @@ rhythm: Rock
 date: 2020-05-20
 ---
 
+## Dots
+
 ```abc
 X: 1
 M: {{ meter }}

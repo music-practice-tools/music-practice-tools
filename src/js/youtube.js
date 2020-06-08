@@ -1,26 +1,29 @@
 /* global YT */
 
-function getYTFrames() {
-  const frames = [...document.getElementsByTagName('iframe')]
-  const ytFrames = frames.filter(
-    (p) =>
-      p.src.startsWith('https://www.youtube.com') ||
-      p.src.startsWith('http://www.youtube.com'),
-  )
-  return ytFrames
-}
+const YOUTUBE = (function () {
+  'use strict'
 
-function mpt_inject({ showOnPlay = false } = {}) {
-  if (!getYTFrames().length) {
-    return
+  function getYTFrames() {
+    const frames = [...document.getElementsByTagName('iframe')]
+    const ytFrames = frames.filter(
+      (p) =>
+        p.src.startsWith('https://www.youtube.com') ||
+        p.src.startsWith('http://www.youtube.com'),
+    )
+    return ytFrames
   }
 
-  const head = document.querySelector('head')
-  const body = document.querySelector('body')
+  function mpt_inject({ showOnPlay = false } = {}) {
+    if (!getYTFrames().length) {
+      return
+    }
 
-  function injectStyles(where) {
-    const style = document.createElement('style')
-    style.innerHTML = `
+    const head = document.querySelector('head')
+    const body = document.querySelector('body')
+
+    function injectStyles(where) {
+      const style = document.createElement('style')
+      style.innerHTML = `
     div#mpt-videotime {
         position: fixed;
         right: 0.5em;
@@ -45,172 +48,186 @@ function mpt_inject({ showOnPlay = false } = {}) {
         background-color: gold;
         width: 4.5em;
     }`
-    where.insertAdjacentElement('afterbegin', style)
-  }
-
-  function injectDOM(where, showOnPlay = false) {
-    const timeDiv = document.createElement('div')
-    timeDiv.id = 'mpt-videotime'
-    if (showOnPlay) {
-      timeDiv.style.display = 'none'
+      where.insertAdjacentElement('afterbegin', style)
     }
-    const timeEl = document.createElement('div')
-    timeEl.textContent = '00:00'
 
-    const playEl = document.createElement('button')
-    playEl.setAttribute('disabled', '')
-    playEl.textContent = '-'
+    function injectDOM(where, showOnPlay = false) {
+      const timeDiv = document.createElement('div')
+      timeDiv.id = 'mpt-videotime'
+      if (showOnPlay) {
+        timeDiv.style.display = 'none'
+      }
+      const timeEl = document.createElement('div')
+      timeEl.textContent = '00:00'
 
-    timeDiv.append(timeEl, playEl)
-    where.insertAdjacentElement('afterbegin', timeDiv)
-  }
+      const playEl = document.createElement('button')
+      playEl.setAttribute('disabled', '')
+      playEl.textContent = '-'
 
-  function injectYTAPI(where) {
-    // YouTube iFrame API
-    const script = document.createElement('script')
-    script.src = 'https://www.youtube.com/iframe_api'
-    script.type = 'text/javascript'
-    where.insertAdjacentElement('afterbegin', script)
-    // when ready this calls onYouTubeIframeAPIReady
-  }
-
-  injectStyles(head)
-  injectDOM(body, showOnPlay)
-  injectYTAPI(head)
-}
-
-// Needs to be a global function in order for YT iFrame API to call it
-// eslint-disable-next-line no-unused-vars
-function onYouTubeIframeAPIReady() {
-  window.onunload = cleanup
-
-  let interval
-
-  function cleanup() {
-    if (interval) {
-      clearInterval(interval)
-      interval = undefined
+      timeDiv.append(timeEl, playEl)
+      where.insertAdjacentElement('afterbegin', timeDiv)
     }
+
+    function injectYTAPI(where) {
+      // YouTube iFrame API
+      const script = document.createElement('script')
+      script.src = 'https://www.youtube.com/iframe_api'
+      script.type = 'text/javascript'
+      where.insertAdjacentElement('afterbegin', script)
+      // when ready this calls onYouTubeIframeAPIReady
+    }
+
+    injectStyles(head)
+    injectDOM(body, showOnPlay)
+    injectYTAPI(head)
   }
 
-  function enhanceYTFrames(ytFrames) {
-    let currentPlayer = undefined
+  // Needs to be a global function in order for YT iFrame API to call it
+  // eslint-disable-next-line no-unused-vars
+  function onYouTubeIframeAPIReady() {
+    window.onunload = cleanup
 
-    ytFrames.forEach((frame) => {
-      // Reload with API enabled
-      frame.src += frame.src.includes('?') ? '' : '?feature=oembed'
-      frame.src += `&enablejsapi=1&domain=${window.location.host}`
-      frame.ytPlayer = new YT.Player(frame, {
-        events: {
-          onStateChange: onPlayerStateChange,
-          onReady: (e) => {
-            if (!currentPlayer) {
-              currentPlayer = e.target
-              render(e.target)
-            }
+    let interval
+
+    function cleanup() {
+      if (interval) {
+        clearInterval(interval)
+        interval = undefined
+      }
+    }
+
+    function enhanceYTFrames(ytFrames) {
+      let currentPlayer = undefined
+
+      ytFrames.forEach((frame) => {
+        // Reload with API enabled
+        frame.src += frame.src.includes('?') ? '' : '?feature=oembed'
+        frame.src += `&enablejsapi=1&domain=${window.location.host}`
+        frame.ytPlayer = new YT.Player(frame, {
+          events: {
+            onStateChange: onPlayerStateChange,
+            onReady: (e) => {
+              if (!currentPlayer) {
+                currentPlayer = e.target
+                render(e.target)
+              }
+            },
           },
-        },
+        })
       })
-    })
 
-    function formatTime(seconds) {
-      const mins = Math.floor(seconds / 60).toString()
-      const secs = Math.floor(seconds % 60).toString()
-      return `${mins.padStart(2, '0')}:${secs.padStart(2, '0')}`
-    }
+      function formatTime(seconds) {
+        const mins = Math.floor(seconds / 60).toString()
+        const secs = Math.floor(seconds % 60).toString()
+        return `${mins.padStart(2, '0')}:${secs.padStart(2, '0')}`
+      }
 
-    function render(player) {
-      const div = document.querySelector('#mpt-videotime')
+      function render(player) {
+        const div = document.querySelector('#mpt-videotime')
 
-      if (player) {
-        const timeEl = div.querySelector('div')
-        timeEl.removeAttribute('disabled')
-        timeEl.textContent = formatTime(player.getCurrentTime())
+        if (player) {
+          const timeEl = div.querySelector('div')
+          timeEl.removeAttribute('disabled')
+          timeEl.textContent = formatTime(player.getCurrentTime())
 
-        const playEl = div.querySelector('button')
-        playEl.removeAttribute('disabled')
-        playEl.textContent = player.getPlayerState() == 1 ? 'Pause' : 'Play'
+          const playEl = div.querySelector('button')
+          playEl.removeAttribute('disabled')
+          playEl.textContent = player.getPlayerState() == 1 ? 'Pause' : 'Play'
 
-        // eslint-disable-next-line no-inner-declarations
-        function onClick() {
-          if (player.getPlayerState() == YT.PlayerState.PLAYING) {
-            player.pauseVideo()
-          } else {
-            player.playVideo()
+          // eslint-disable-next-line no-inner-declarations
+          function onClick() {
+            if (player.getPlayerState() == YT.PlayerState.PLAYING) {
+              player.pauseVideo()
+            } else {
+              player.playVideo()
+            }
+          }
+          playEl.onclick = onClick
+        }
+      }
+
+      function startPoll(player) {
+        if (!interval) {
+          interval = setInterval(() => render(player), 500)
+        }
+      }
+
+      function stopPoll() {
+        cleanup()
+      }
+
+      function onPlayerStateChange(event) {
+        const { data: playerStatus, target: player } = event
+
+        if (playerStatus == YT.PlayerState.PLAYING) {
+          if (currentPlayer && currentPlayer !== player) {
+            currentPlayer.pauseVideo()
+          }
+          currentPlayer = player
+
+          const divTimer = document.querySelector('#mpt-videotime')
+          divTimer.style.display = 'block'
+
+          stopPoll()
+          startPoll(player)
+          render(player)
+        } else if (
+          [YT.PlayerState.ENDED, YT.PlayerState.PAUSED].includes(playerStatus)
+        ) {
+          if (currentPlayer === player) {
+            stopPoll()
+            render(player)
           }
         }
-        playEl.onclick = onClick
       }
+
+      render()
     }
 
-    function startPoll(player) {
-      if (!interval) {
-        interval = setInterval(() => render(player), 500)
-      }
-    }
-
-    function stopPoll() {
-      cleanup()
-    }
-
-    function onPlayerStateChange(event) {
-      const { data: playerStatus, target: player } = event
-
-      if (playerStatus == YT.PlayerState.PLAYING) {
-        if (currentPlayer && currentPlayer !== player) {
-          currentPlayer.pauseVideo()
-        }
-        currentPlayer = player
-
-        const divTimer = document.querySelector('#mpt-videotime')
-        divTimer.style.display = 'block'
-
-        stopPoll()
-        startPoll(player)
-        render(player)
-      } else if (
-        [YT.PlayerState.ENDED, YT.PlayerState.PAUSED].includes(playerStatus)
-      ) {
-        if (currentPlayer === player) {
-          stopPoll()
-          render(player)
-        }
-      }
-    }
-
-    render()
+    enhanceYTFrames(getYTFrames())
   }
 
-  enhanceYTFrames(getYTFrames())
-}
-
-function wrapVideo() {
-  const elements = document.querySelectorAll('.video-embed')
-  for (const element of elements) {
-    var parent = element.parentNode
-    var wrapper = document.createElement('div')
-    wrapper.className = 'video-embed-wrapper'
-    parent.replaceChild(wrapper, element)
-    wrapper.appendChild(element)
+  function wrapVideo() {
+    const elements = document.querySelectorAll('.video-embed')
+    for (const element of elements) {
+      var parent = element.parentNode
+      var wrapper = document.createElement('div')
+      wrapper.className = 'video-embed-wrapper'
+      parent.replaceChild(wrapper, element)
+      wrapper.appendChild(element)
+    }
   }
-}
 
-function youtubeSeekTo(seconds, playerNum = undefined) {
-  const frames = getYTFrames()
-  if (
-    !frames.length ||
-    (playerNum !== undefined && playerNum >= frames.length)
-  ) {
-    return
+  function seekTo(seconds, playerNum = undefined) {
+    const frames = getYTFrames()
+    if (
+      !frames.length ||
+      (playerNum !== undefined && playerNum >= frames.length)
+    ) {
+      return
+    }
+    playerNum |= 0
+
+    const player = frames[playerNum].ytPlayer
+    player.seekTo(seconds, true)
+    player.playVideo()
   }
-  playerNum |= 0
 
-  const player = frames[playerNum].ytPlayer
-  player.seekTo(seconds, true)
-  player.playVideo()
+  function init() {
+    wrapVideo()
+    mpt_inject({ showOnPlay: false })
+  }
+
+  return {
+    onYouTubeIframeAPIReady: onYouTubeIframeAPIReady,
+    seekTo: seekTo,
+    init: init,
+  }
+})()
+
+document.addEventListener('DOMContentLoaded', YOUTUBE.init)
+
+// eslint-disable-next-line no-unused-vars
+function onYouTubeIframeAPIReady() {
+  YOUTUBE.onYouTubeIframeAPIReady()
 }
-
-document.addEventListener('DOMContentLoaded', () => {
-  wrapVideo()
-  mpt_inject({ showOnPlay: false })
-})

@@ -1,9 +1,8 @@
-/* global Tone Tonal ABCJS youtubeSeekTo */
+/* global Tone Tonal ABCJS YOUTUBE */
 
 // Not an ES6 module as exported symbols need to be in global namespace
 
-// eslint-disable-next-line no-unused-vars
-var WIDGETS = (function () {
+const WIDGETS = (function () {
   'use strict'
 
   function uncheckOtherCheckBoxes(source, selector) {
@@ -82,9 +81,10 @@ var WIDGETS = (function () {
     if (a.length == 1) {
       a.unshift('0')
     }
+    0
     var seconds = +a[0] * 60 + +a[1]
 
-    youtubeSeekTo(seconds, videoNum)
+    YOUTUBE.seekTo(seconds, videoNum)
   }
 
   function replaceABCFences() {

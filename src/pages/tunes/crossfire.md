@@ -22,7 +22,7 @@ P: A
 P: B
 |:_GGGGGG zG|AAAA z4|_GGGGGG zG|AAAA z3(eB):|
 P: C
-|EE_GB_dd z_g'|=g'e'_d'bd'e'_g'=g'|
+|EE_GB_dd z_g'|g'e'_d'bd'e'_g'=g'|
 ```
 
 ## Structure

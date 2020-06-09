@@ -27,9 +27,14 @@ module.exports = function addShortcodes(eleventyConfig) {
 
   eleventyConfig.addShortcode('metronome', function (bpm) {
     return html`
-<span class="metronome widget">[<label >${bpm} bpm
-  <input type="checkbox" onclick="WIDGETS.toggleMetronome(this, ${bpm})">
-</label>]</span>`
+<span x-data="{ bpm: ${bpm}, incr: 5 }"  class="metronome widget">
+<button x-on:click="bpm -= incr"><</button>
+<label>
+<span x-text="\`\$\{bpm\} bpm\`"></span>
+<input type="checkbox" x-on:click="WIDGETS.toggleMetronome($event.target, bpm)">
+</label>
+<button x-on:click="bpm += incr">></button>
+</span>`
   })
 
   eleventyConfig.addShortcode('seekVideo', function (time, videoNum) {

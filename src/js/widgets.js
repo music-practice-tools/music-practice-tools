@@ -17,6 +17,7 @@ const WIDGETS = (function () {
   var player
 
   function toggleMetronome(source, bpm) {
+    console.log(source, bpm)
     const start = source.checked
     uncheckOtherCheckBoxes(source, '.metronome input[type="checkbox"]')
 

@@ -1,23 +1,18 @@
 ---
 title: Brown Eyed Girl
-artiset: Van Morrison
-description: ss
+artist: Van Morrison
+key: Eb
+meter: 4/4
+tempo: 1/4=90
+rhythm: Rock
 date: 2020-06-01
 ---
 
 ## Dots
 
-```abc
-X: 1
-T:{{ title }}
-M: 4/4
-L: 1/8
-Q:1/4=90
-C:{{ artist }}
-R:Rock
-K: bass
+{%- abc title, artist, key, meter, tempo, rhythm -%}
 |:^A:|
-```
+{%- endabc -%}
 
 ## Structure
 

@@ -1,25 +1,20 @@
 ---
 title: The Thrill Is Gone
-artiset: BB King
-description: x
+artist: BB King
+key: Bm
+meter: 4/4
+tempo: 1/4=115
+rhythm: moderate Blues
 date: 2020-05-17
 ---
 
 ## Dots
 
-```abc
-X: 1
-T:{{ title }}
-M: 4/4
-L: 1/8
-Q:1/4=90
-C:{{ artist }}
-R:Moderate Blues
-K: Bm bass
+{%- abc title, artist, key, meter, tempo, rhythm -%}
 |:^A|"Bm"BB z=F ^FF z^A|"Bm"BB z=F ^FF z^A|"Bm"BB z=F ^FF z^A|"Bm"BB z=F ^FFB^d|
 |"Em"ee z^A BB z^d|"Em"ee z^A ^BBdc|"Bm"BB z=F ^FF z^A|"Bm"BB z=F ^FF^A=A|
 |"G7"GG zd gg zd|"F#7"^ff z=c ^FFA^A|"Bm"BB z=F ^FF AA|"Bm"BB^FF AA^AA:|
-```
+{%- endabc -%}
 
 ## Structure
 

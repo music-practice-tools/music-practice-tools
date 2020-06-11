@@ -46,15 +46,25 @@ img {
   margin-left: 0.3rem;
 }
 .metronome {
+  width: 8rem;
+  height: 1.5rem;
   border: solid 1px black;
-}
-.metronome {
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 400;
   padding-top: 0;
-  padding-bottom: 0.2rem;
+  padding-bottom: 0;
   padding-left: 0.2rem;
   padding-right: 0.2rem;
 }
-
+.metronome * {
+  font-weight: 400;
+}
+.metronome button {
+  background-color: var(--widget-bg);
+  border-radius: 0.25rem;
+}
 /* animation just used to hook an 'on display' event on */
 @keyframes widgetEventHook {
 }

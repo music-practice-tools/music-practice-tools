@@ -2,3 +2,4 @@ public/bundle.*
 _site/
 src/client-js/3rdparty
 src/_11ty/add-shortcodes.js
+src/_11ty/ewidgets.js

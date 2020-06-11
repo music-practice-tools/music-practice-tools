@@ -1,10 +1,37 @@
+/* global Tone Tonal ABCJS YOUTUBE */
 
-const WIDGETS = (function () {
-  'use strict'
+function html(strings, ...expressions) {
+  return strings.reduce(
+    (result, currentString, i) =>
+      `${result}${currentString}${expressions[i] ? `${expressions[i]}` : ''}`,
+    '',
+  )
+}
 
-let player
-
-  function metronome_client(bpm = 100) {
+/* global exports */
+exports.Widgets = [
+  {
+    name: 'metronome',
+    shortcode(bpm = 100) {
+      return html`
+<span
+  x-data="WIDGETS.metronome_client(${bpm})"
+  x-init="$watch('checked', () => {renderAudio()}), $watch('bpm', () => {renderAudio()}) "
+  class="metronome widget">
+  <button x-on:click="bpm -= incr"><</button>
+  <label>
+    <span x-text="\`\${bpm} bpm\`"></span>
+    <input
+      type="checkbox"
+      x-model="checked"
+      x-on:click="(uncheckOthers($event.target))"
+    />
+  </label>
+  <button x-on:click="bpm += incr">></button>
+</span>
+      `
+    },
+    client(bpm = 100) {
 
       return {
         bpm: bpm,
@@ -40,9 +67,14 @@ let player
           }
         },
       }
-    }
+    },
+  },
+]
 
-  function seekVideo(source, minsec = '00:00', videoNum = 0) {
+const clientFunctions = [
+  {
+    name: 'seekVideo',
+    client(source, minsec = '00:00', videoNum = 0) {
       var a = minsec.split(':')
       if (a.length == 1) {
         a.unshift('0')
@@ -55,8 +87,12 @@ let player
 
       YOUTUBE.seekTo(seconds, videoNum)
     }
+  },
 
-  function replaceABCFences() {
+  {
+    name: 'replaceABCFences',
+    private: true,
+    client() {
       const abcNodes = document.querySelectorAll('code.language-abc')
       for (const node of abcNodes) {
         const abc = node.textContent
@@ -66,24 +102,35 @@ let player
         node.style.display = 'none'
       }
     }
+  },
 
-  function getRandomInt(min, max) {
+  {
+    name: 'getRandomInt',
+    private: true,
+    client(min, max) {
       min = Math.ceil(min)
       max = Math.floor(max)
       const rnd = Math.floor(Math.random() * (max - min)) + min
       return rnd
     }
+  },
 
-  function allNotes() {
+  {
+    name: 'allNotes',
+    private: true,
+    client() {
       const notes = Tonal.Range.chromatic(['C2', 'B2']).flatMap((n) => {
       const bare = Tonal.Note.get(n).pc // drop octave
       const enh = Tonal.Note.enharmonic(bare)
       return enh != bare ? [enh, bare] : bare
     })
     return notes
-  }
+  }},
 
-  function pickRandom(items) {
+  {
+    name: 'pickRandom',
+    private: true,
+    client(items) {
       let lastIndex
       return function () {
         let index
@@ -93,27 +140,52 @@ let player
         lastIndex = index
         return items[index]
       }
-   }
+   }},
 
-  function renderRandomNote(source /*, constraint*/) {
+  {
+    name: 'renderRandomNote',
+    client(source /*, constraint*/) {
       if (!source.genFunc) {
         source.genFunc = pickRandom(allNotes())
       }
       const span = source.querySelector('span')
       span.innerText = source.genFunc()
-  }
+  }},
 
-  function init() {
+  {
+    name: 'init',
+    client() {
       document.addEventListener('DOMContentLoaded', replaceABCFences)
-  }
+  }}
+]
 
+
+/* global require */
+const fs = require('fs')
+
+exports.createClientJavaScriptFile = function (file) {
+  const globals= ["let player"]
+  const widgetFuncs = exports.Widgets.map((w) => `  function ${w.name}_${w.client.toString()}`)
+  const otherFuncs = clientFunctions.map((f) => `  function ${f.name}${f.client.toString().replace('client','')}`)
+  const allFuncs = [...widgetFuncs, ...otherFuncs]
+  const widgetExports = exports.Widgets.map((w) => `    ${w.name}_client:${w.name}_client`)
+  const otherExports = clientFunctions.filter((f)=>!f.private).map((f) => `    ${f.name}:${f.name}`)
+  const allExports = [...widgetExports, ...otherExports]
+
+  const code = `
+const WIDGETS = (function () {
+  'use strict'\n
+${globals.join('\n\n')}\n
+${allFuncs.join('\n\n')}\n
   return {
-    metronome_client:metronome_client,
-    seekVideo:seekVideo,
-    renderRandomNote:renderRandomNote,
-    init:init
+${allExports.join(',\n')}
   }
 })()
 
 WIDGETS.init()
-  
+  `
+
+  fs.writeFile(file, code, (err) => {
+    if (err) throw err
+  })
+}

@@ -29,8 +29,8 @@ function addTags(collection) {
   return [...tagSet]
 }
 
-/* global module */
-module.exports = function addCollections(eleventyConfig) {
+/* global exports */
+exports.addCollections = function (eleventyConfig) {
   eleventyConfig.addCollection('tagList', addTags)
 
   eleventyConfig.addCollection('orderdActivities', function (collectionApi) {

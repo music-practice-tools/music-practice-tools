@@ -32,11 +32,8 @@ module.exports = function (eleventyConfig) {
     return array.slice(0, n)
   })
 
-  const addShortcodes = require('./src/_11ty/add-shortcodes')
-  addShortcodes(eleventyConfig)
-
-  const addCollections = require('./src/_11ty/add-collections')
-  addCollections(eleventyConfig)
+  require('./src/_11ty/add-shortcodes').addShortcodes(eleventyConfig)
+  require('./src/_11ty/add-collections').addCollections(eleventyConfig)
 
   eleventyConfig.addPassthroughCopy({ 'src/img': 'img' })
   eleventyConfig.addPassthroughCopy({ 'src/css': 'css' })

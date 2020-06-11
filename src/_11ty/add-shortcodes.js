@@ -11,40 +11,53 @@ function html(strings, ...expressions) {
   )
 }
 
-/* global module */
-module.exports = function addShortcodes(eleventyConfig) {
+
+/* global exports */
+exports.addShortcodes = function (eleventyConfig) {
+  /* global require */
+  const widgets = require('./ewidgets.js')
+  widgets.createClientJavaScriptFile('src/js/widgets.js')
+
   eleventyConfig.addShortcode('homeLink', function () {
     return `<a href="/">← Home</a>`
   })
 
   /* widgets */
-  eleventyConfig.addShortcode('randomNote', function (text="Random Note", scale="chromatic-enharmonic") {
+  eleventyConfig.addShortcode('randomNote', function (
+    text = 'Random Note',
+    scale = 'chromatic-enharmonic',
+  ) {
     return html`
 <button type="button" class="random-note widget" onanimationend="WIDGETS.renderRandomNote(this, '${scale}')" onclick="WIDGETS.renderRandomNote(this, '${scale}')">
   ${text} <span>?<span>
 </button>`
   })
 
-  eleventyConfig.addShortcode('metronome', function (bpm) {
-    return html`
-<span x-data="{ bpm: ${bpm}, incr: 5 }"  class="metronome widget">
-<button x-on:click="bpm -= incr"><</button>
-<label>
-<span x-text="\`\$\{bpm\} bpm\`"></span>
-<input type="checkbox" x-on:click="WIDGETS.toggleMetronome($event.target, bpm)">
-</label>
-<button x-on:click="bpm += incr">></button>
-</span>`
+  widgets.Widgets.forEach((w) => {
+    console.log(w)
+    eleventyConfig.addShortcode(w.name, w.shortcode)
   })
 
   eleventyConfig.addShortcode('seekVideo', function (time, videoNum) {
-    return html`
-<button type="button" class="seek-video widget" onclick="WIDGETS.seekVideo(this, '${time}', '${videoNum}')">
-  ${time}
-</button>`
+    return html` <button
+      type="button"
+      class="seek-video widget"
+      onclick="WIDGETS.seekVideo(this, '${time}', '${videoNum}')"
+    >
+      ${time}
+    </button>`
   })
 
-  eleventyConfig.addPairedNunjucksShortcode('abc', function (content="", title="", artist="", key="c", meter="4/4", tempo="4/4=100", rhythm="", unitnotelength="1/8") {
+  eleventyConfig.addPairedNunjucksShortcode('abc', function (
+    content = '',
+    title = '',
+    artist = '',
+    key = 'c',
+    meter = '4/4',
+    tempo = '4/4=100',
+    rhythm = '',
+    unitnotelength = '1/8',
+  ) {
     return `
 \`\`\`abc
 X: 1

@@ -26,8 +26,9 @@ exports.addShortcodes = function (eleventyConfig) {
   ) {
     // prettier-ignore
     return html`
-<button type="button" class="random-note widget" onanimationend="FUNCTIONS.renderRandomNote(this, '${scale}')" onclick="FUNCTIONS.renderRandomNote(this, '${scale}')">
-  ${text} <span>?<span>
+<button type="button" class="random-note widget"
+  x-data="FUNCTIONS.randomNote_data('${scale}')" x-on:click="getNote">
+  ${text} <span x-text="\`\${note}\`"><span>
 </button>`
   })
 

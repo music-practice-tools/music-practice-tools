@@ -45,6 +45,16 @@ const FUNCTIONS = (function () {
     }
   }
 
+  function randomNote_data(scale) {
+    const note = pickRandom(allNotes())
+    return {
+      note: note(),
+      getNote() {
+        this.note = note()
+      },
+    }
+  }
+
   function seekVideo(source, minsec = '00:00', videoNum = 0) {
     var a = minsec.split(':')
     if (a.length == 1) {
@@ -98,22 +108,14 @@ const FUNCTIONS = (function () {
     }
   }
 
-  function renderRandomNote(source /*, constraint*/) {
-    if (!source.genFunc) {
-      source.genFunc = pickRandom(allNotes())
-    }
-    const span = source.querySelector('span')
-    span.innerText = source.genFunc()
-  }
-
   function init() {
     document.addEventListener('DOMContentLoaded', replaceABCFences)
   }
 
   return {
     metronome_data,
+    randomNote_data,
     seekVideo,
-    renderRandomNote,
     init,
   }
 })()

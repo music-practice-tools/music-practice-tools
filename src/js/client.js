@@ -3,7 +3,7 @@
 /* global Tone Tonal YOUTUBE ABCJS */
 
 // eslint-disable-next-line no-unused-vars
-const FUNCTIONS = (function () {
+const CLIENT = (function () {
   'use strict'
 
   let player
@@ -108,16 +108,12 @@ const FUNCTIONS = (function () {
     }
   }
 
-  function init() {
-    document.addEventListener('DOMContentLoaded', replaceABCFences)
-  }
-
   return {
+    replaceABCFences,
     metronome_data,
     randomNote_data,
     seekVideo,
-    init,
   }
 })()
 
-FUNCTIONS.init()
+document.addEventListener('DOMContentLoaded', CLIENT.replaceABCFences)

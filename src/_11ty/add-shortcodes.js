@@ -27,7 +27,7 @@ exports.addShortcodes = function (eleventyConfig) {
     // prettier-ignore
     return html`
 <button type="button" class="random-note widget"
-  x-data="FUNCTIONS.randomNote_data('${scale}')" x-on:click="getNote">
+  x-data="CLIENT.randomNote_data('${scale}')" x-on:click="getNote">
   ${text} <span x-text="\`\${note}\`"><span>
 </button>`
   })
@@ -36,7 +36,7 @@ exports.addShortcodes = function (eleventyConfig) {
     // prettier-ignore
     return html`
 <span
-  x-data="FUNCTIONS.metronome_data(${bpm})"
+  x-data="CLIENT.metronome_data(${bpm})"
   x-init="$watch('checked', () => {renderAudio()}), $watch('bpm', () => {renderAudio()}) "
   class="metronome widget">
   <button x-on:click="bpm -= incr"><</button>
@@ -58,7 +58,7 @@ exports.addShortcodes = function (eleventyConfig) {
 <button
   type="button"
   class="seek-video widget"
-  onclick="FUNCTIONS.seekVideo(this, '${time}', '${videoNum}')">
+  onclick="CLIENT.seekVideo(this, '${time}', '${videoNum}')">
   ${time}
 </button>`
   })

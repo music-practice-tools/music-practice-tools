@@ -55,12 +55,11 @@ exports.addShortcodes = function (eleventyConfig) {
   eleventyConfig.addShortcode('seekVideo', function (time, videoNum) {
     // prettier-ignore
     return html`
-<button
-  type="button"
-  class="seek-video widget"
-  onclick="CLIENT.seekVideo(this, '${time}', '${videoNum}')">
-  ${time}
-</button>`
+  <button type="button" class="seek-video widget"
+          onclick="CLIENT.seekVideo(this, '${time}', '${videoNum}')">
+    ${time}
+  </button>
+   `
   })
 
   eleventyConfig.addPairedNunjucksShortcode('abc', function (

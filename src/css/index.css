@@ -71,6 +71,9 @@ img {
 .random-note {
   animation: widgetEventHook;
 }
+.seek-video {
+  display: inline-block;
+}
 .random-note,
 .seek-video,
 .metronome {

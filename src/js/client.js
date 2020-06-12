@@ -1,4 +1,4 @@
-// Note this cannot be a module as would be defered, breaking refs in the boddy
+// Note this cannot be a module as would be defered, breaking refs in the body
 
 /* global Tone Tonal YOUTUBE ABCJS */
 

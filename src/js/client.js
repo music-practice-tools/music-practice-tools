@@ -12,7 +12,15 @@ const CLIENT = (function () {
     return {
       bpm: bpm,
       checked: false,
-      incr: 5,
+      delta: 5,
+
+      decBpm() {
+        this.bpm = Math.max(20, this.bpm - this.delta)
+      },
+
+      incBpm() {
+        this.bpm = Math.min(200, this.bpm + this.delta)
+      },
 
       uncheckOthers(source) {
         document

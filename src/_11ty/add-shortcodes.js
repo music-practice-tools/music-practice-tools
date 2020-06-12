@@ -39,7 +39,7 @@ exports.addShortcodes = function (eleventyConfig) {
   x-data="CLIENT.metronome_data(${bpm})"
   x-init="$watch('checked', () => {renderAudio()}), $watch('bpm', () => {renderAudio()}) "
   class="metronome widget">
-  <button x-on:click="bpm -= incr"><</button>
+  <button x-on:click="decBpm"><</button>
   <label>
     <span x-text="\`\${bpm} bpm\`"></span>
     <input
@@ -48,7 +48,7 @@ exports.addShortcodes = function (eleventyConfig) {
       x-on:click="(uncheckOthers($event.target))"
     />
   </label>
-  <button x-on:click="bpm += incr">></button>
+  <button x-on:click="incBpm">></button>
 </span>`
   })
 

@@ -2,6 +2,7 @@
 // as it is loaded from elventy.js
 
 // return the string as entered. Only used so VS Code lit-html extension works
+// without associated runtime error
 // TODO find better way without runtime impact
 function html(strings, ...expressions) {
   return strings.reduce(
@@ -11,14 +12,10 @@ function html(strings, ...expressions) {
   )
 }
 
-
 /* global exports */
 exports.addShortcodes = function (eleventyConfig) {
-  /* global require */
-  const widgets = require('./ewidgets.js')
-  widgets.createClientJavaScriptFile('src/js/widgets.js')
-
   eleventyConfig.addShortcode('homeLink', function () {
+    // prettier-ignore
     return `<a href="/">← Home</a>`
   })
 
@@ -27,25 +24,42 @@ exports.addShortcodes = function (eleventyConfig) {
     text = 'Random Note',
     scale = 'chromatic-enharmonic',
   ) {
+    // prettier-ignore
     return html`
-<button type="button" class="random-note widget" onanimationend="WIDGETS.renderRandomNote(this, '${scale}')" onclick="WIDGETS.renderRandomNote(this, '${scale}')">
+<button type="button" class="random-note widget" onanimationend="FUNCTIONS.renderRandomNote(this, '${scale}')" onclick="FUNCTIONS.renderRandomNote(this, '${scale}')">
   ${text} <span>?<span>
 </button>`
   })
 
-  widgets.Widgets.forEach((w) => {
-    console.log(w)
-    eleventyConfig.addShortcode(w.name, w.shortcode)
+  eleventyConfig.addShortcode('metronome', function (bpm = 100) {
+    // prettier-ignore
+    return html`
+<span
+  x-data="FUNCTIONS.metronome_data(${bpm})"
+  x-init="$watch('checked', () => {renderAudio()}), $watch('bpm', () => {renderAudio()}) "
+  class="metronome widget">
+  <button x-on:click="bpm -= incr"><</button>
+  <label>
+    <span x-text="\`\${bpm} bpm\`"></span>
+    <input
+      type="checkbox"
+      x-model="checked"
+      x-on:click="(uncheckOthers($event.target))"
+    />
+  </label>
+  <button x-on:click="bpm += incr">></button>
+</span>`
   })
 
   eleventyConfig.addShortcode('seekVideo', function (time, videoNum) {
-    return html` <button
-      type="button"
-      class="seek-video widget"
-      onclick="WIDGETS.seekVideo(this, '${time}', '${videoNum}')"
-    >
-      ${time}
-    </button>`
+    // prettier-ignore
+    return html`
+<button
+  type="button"
+  class="seek-video widget"
+  onclick="FUNCTIONS.seekVideo(this, '${time}', '${videoNum}')">
+  ${time}
+</button>`
   })
 
   eleventyConfig.addPairedNunjucksShortcode('abc', function (
@@ -58,6 +72,7 @@ exports.addShortcodes = function (eleventyConfig) {
     rhythm = '',
     unitnotelength = '1/8',
   ) {
+    // prettier-ignore
     return `
 \`\`\`abc
 X: 1

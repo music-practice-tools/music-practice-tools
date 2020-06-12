@@ -1,3 +1,5 @@
+'use strict'
+
 /* global YT */
 
 const YOUTUBE = (function () {
@@ -24,30 +26,31 @@ const YOUTUBE = (function () {
     function injectStyles(where) {
       const style = document.createElement('style')
       style.innerHTML = `
-    div#mpt-videotime {
-        position: fixed;
-        right: 0.5em;
-        top: 0.5em;
-        font-size: 5vw;
-        color: black;
-        width:15%;
-        text-align:center;
-        background-color: yellow;
-        padding: 0.2em;
-        padding-bottom: 0.1rem;
-        border: solid 0.05em  black;
-        border-radius: 0.25em;
-        font-family: Arial,helvetica,sans-serif;
-        z-index: 9999;
-        line-height: 0.8
-    }
-    div#mpt-videotime button {
-        font-size: 0.4em;
-        border: solid 0.1em black;
-        border-radius: 0.25em;
-        background-color: gold;
-        width: 4.5em;
-    }`
+  div#mpt-videotime {
+      position: fixed;
+      right: 0.5em;
+      top: 0.5em;
+      font-size: 5vw;
+      color: black;
+      width:15%;
+      text-align:center;
+      background-color: yellow;
+      padding: 0.2em;
+      padding-bottom: 0.1rem;
+      border: solid 0.05em  black;
+      border-radius: 0.25em;
+      font-family: Arial,helvetica,sans-serif;
+      z-index: 9999;
+      line-height: 0.8
+  }
+  div#mpt-videotime button {
+      font-size: 0.4em;
+      border: solid 0.1em black;
+      border-radius: 0.25em;
+      background-color: gold;
+      width: 4.5em;
+  }
+    `
       where.insertAdjacentElement('afterbegin', style)
     }
 
@@ -219,9 +222,9 @@ const YOUTUBE = (function () {
   }
 
   return {
-    onYouTubeIframeAPIReady: onYouTubeIframeAPIReady,
-    seekTo: seekTo,
-    init: init,
+    onYouTubeIframeAPIReady,
+    seekTo,
+    init,
   }
 })()
 

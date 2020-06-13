@@ -8,25 +8,43 @@ const CLIENT = (function () {
 
   let player
 
+  function stepper(min, max, step) {
+    return (delta, bpm) => {
+      const fnComp = delta > 1 ? Math.min : Math.max
+      const limit = delta > 1 ? max : min
+      return fnComp(limit, bpm + delta * step)
+    }
+  }
+
   function metronome_data(bpm = 100) {
     return {
       bpm: bpm,
       checked: false,
-      delta: 5,
+      stepper: stepper(20, 200, 5),
 
-      decBpm() {
-        this.bpm = Math.max(20, this.bpm - this.delta)
-      },
-
-      incBpm() {
-        this.bpm = Math.min(200, this.bpm + this.delta)
+      onClick($el, $event) {
+        if ($event.isTrusted) {
+          // not from unCheckOthers
+          $event.preventDefault() // we control check box state
+          if (this.checked && $event.target.tagName == 'BUTTON') {
+            const delta = $event.target.textContent == '<' ? -1 : 1
+            this.bpm = this.stepper(delta, this.bpm)
+          } else {
+            this.checked = !this.checked
+            this.checked &&
+              this.uncheckOthers($el.querySelector('input[type="checkbox"]'))
+          }
+          this.renderAudio()
+        } else {
+          this.checked = !this.checked
+        }
       },
 
       uncheckOthers(source) {
         document
           .querySelectorAll('.metronome input[type="checkbox"]:checked')
           .forEach((e) => {
-            if (e !== source && source.checked) {
+            if (e !== source) {
               e.click()
             }
           })
@@ -41,7 +59,6 @@ const CLIENT = (function () {
             }, '4n')
           })
         }
-
         Tone.Transport.bpm.value = this.bpm
 
         if (this.checked) {

@@ -61,28 +61,48 @@ img {
 .metronome * {
   font-weight: 400;
 }
-.metronome button {
+.metronome button,
+.timer button {
   background-color: var(--widget-bg);
   border-radius: 0.25rem;
-}
-/* animation just used to hook an 'on display' event on */
-@keyframes widgetEventHook {
-}
-.random-note {
-  animation: widgetEventHook;
 }
 .seek-video {
   display: inline-block;
 }
 .random-note,
 .seek-video,
-.metronome {
+.metronome,
+.timer,
+.timer button {
   border-radius: 0.25rem;
 }
 .random-note,
 .seek-video,
-.metronome label {
+.metronome label,
+.timer button {
   font-size: calc(var(--font-size) - 3px);
+}
+.timer {
+  display: flex;
+  flex-direction: column;
+  width: 10.5rem;
+  padding: 0.25rem;
+  border: solid 0.05em black;
+  position: fixed;
+  right: 0.5em;
+  top: 0.5em;
+  font-size: 5vw;
+}
+.timer div {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+.timer :first-child {
+  margin: 0;
+}
+.timer button {
+  margin: 0;
 }
 .random-note span {
   font-weight: bold;
@@ -90,6 +110,14 @@ img {
 }
 .widget {
   background-color: var(--widget-bg);
+}
+.timer p {
+  font-size: 2.5rem;
+  margin-top: 0;
+  font-weight: 600;
+}
+.timer .expired {
+  color: var(--red);
 }
 .tmpl-activity ul {
   padding-inline-start: 0.6rem;

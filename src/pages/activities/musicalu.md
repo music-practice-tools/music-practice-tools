@@ -6,11 +6,11 @@ order: 2
 tags: wibble
 ---
 
-## Current Course / Module
+## Current
 
 - [Musical Superlearning](https://members.musical-u.com/msl/)
 
-## Queued Courses / Modules
+## Queued
 
 - [Bass Pack](https://members.musical-u.com/groups/bass/)
 - [Improv Immersion](https://members.musical-u.com/imim/)

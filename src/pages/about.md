@@ -8,6 +8,6 @@ eleventyNavigation:
   order: 10
 ---
 
-Steve Lee's music practice stuff.
+Steve Lee's music practice journal.
 
 Also see my [blog](http://blog.fullmeasure.uk/)

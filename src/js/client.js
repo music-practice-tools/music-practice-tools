@@ -94,6 +94,37 @@ const CLIENT = (function () {
     YOUTUBE.seekTo(seconds, videoNum)
   }
 
+  function timer_data(time) {
+    return {
+      time: time * 60 * 1000,
+      elapsedTime: 0,
+      timer: undefined,
+      formattedElapsedTime() {
+        const date = new Date(null)
+        date.setSeconds(this.elapsedTime / 1000)
+        const utc = date.toUTCString()
+        return utc.substr(utc.indexOf(':') - 2, 8)
+      },
+
+      expired() {
+        console.log(this.time, this.elapsedTime, this.elapsedTime >= this.time)
+        return this.elapsedTime >= this.time
+      },
+
+      start() {
+        this.timer = setInterval(() => {
+          this.elapsedTime += 1000
+        }, 1000)
+      },
+      stop() {
+        clearInterval(this.timer)
+      },
+      reset() {
+        this.elapsedTime = 0
+      },
+    }
+  }
+
   function replaceABCFences() {
     const abcNodes = document.querySelectorAll('code.language-abc')
     for (const node of abcNodes) {
@@ -134,10 +165,11 @@ const CLIENT = (function () {
   }
 
   return {
-    replaceABCFences,
     metronome_data,
     randomNote_data,
+    timer_data,
     seekVideo,
+    replaceABCFences,
   }
 })()
 

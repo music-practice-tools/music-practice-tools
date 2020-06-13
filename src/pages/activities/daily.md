@@ -6,6 +6,8 @@ order: 1
 tags: wibble
 ---
 
+{% timer 5 %}
+
 - [ ] **Finger warm up**
 - [ ] **Rythmn** - divide beat: clap, 1 finger, 2 {% metronome 70 %}
 - [ ] **Fretboard** - all notes: CoF, all strings {% metronome 60 %}

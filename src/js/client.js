@@ -6,6 +6,12 @@
 const CLIENT = (function () {
   'use strict'
 
+  function getSearchParam(name) {
+    const Wind = (0, eval)('this') // for some reason Window is not as expected
+    const sp = new URLSearchParams(Wind.location.search)
+    return sp.get(name)
+  }
+
   let player
 
   function stepper(min, max, step) {
@@ -94,7 +100,17 @@ const CLIENT = (function () {
     YOUTUBE.seekTo(seconds, videoNum)
   }
 
-  function timer_data(time) {
+  function timer_data(time, useURLTime) {
+    const timesp = useURLTime ? this.getSearchParam('timer') : null
+    time = timesp !== null ? timesp : time
+    const body = document.querySelector('body')
+    body.classList.add('has-timer')
+
+    if (!this.timer) {
+      this.timer = setInterval(() => {
+        this.elapsedTime += 1000
+      }, 1000)
+    }
     return {
       time: time * 60 * 1000,
       elapsedTime: 0,
@@ -127,9 +143,7 @@ const CLIENT = (function () {
           this.timer = undefined
         }
       },
-      stop() {
-        clearInterval(this.timer)
-      },
+
       reset() {
         this.elapsedTime = 0
       },
@@ -176,6 +190,7 @@ const CLIENT = (function () {
   }
 
   return {
+    getSearchParam,
     metronome_data,
     randomNote_data,
     timer_data,

@@ -65,17 +65,25 @@ exports.addShortcodes = function (eleventyConfig) {
 
   eleventyConfig.addShortcode('timer', function (
     time = 5,
+    useURLTime = false,
     s = true,
     h = false,
   ) {
+    console.log(time)
     // prettier-ignore
     return html`
-<div x-data="CLIENT.timer_data(${time})" class="timer widget">
+<div
+  x-data="CLIENT.timer_data(${time}, ${useURLTime})"
+  x-init="()=>{btnAction()}"
+  class="timer widget">
   <div style="display: flex; justify-content: space-around; width:100%">
     <button x-on:click="btnAction" x-text="\`\${btnText()}\`"></button>
     <button x-on:click="reset">Reset</button>
   </div>
-  <span class="time" x-text="\`\${format(time, ${h.toString()}, true)}\`"></span>
+  <span
+    class="time"
+    x-text="\`\${format(time, ${h.toString()}, true)}\`"
+  ></span>
   <span
     class="elapsed"
     x-bind:class="{ 'expired': isExpired() }"

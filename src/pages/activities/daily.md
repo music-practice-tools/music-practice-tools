@@ -16,7 +16,7 @@ tags: wibble
 - [ ] **Improvisation** - play 3 patterns
 - [ ] **Reading** - p14,15 pitch, rythmn, together
 - [ ] **Tune - [The Thrill is Gone](/tunes/the-thrill-is-gone)** - with metronome, {% metronome 80 %}
-- [ ] **Tune - [Crossfire](/tunes/crossfire)** - play along up to speed
+- [ ] **Tune - [Crossfire](/tunes/crossfire?timer=5)** - play along up to speed
 - [ ] **Tune - [Brown eyed girl](/tunes/brown-eyed-girl/)** - learn 1st 4 bars, work out chords
 
 Notes:

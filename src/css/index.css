@@ -36,6 +36,8 @@ img {
 .tmpl-home {
   background-color: var(--lightgray);
 }
+
+/* metronome */
 .tmpl-activity input[type='checkbox'],
 .metronome input[type='checkbox'] {
   transform: scale(1.8);
@@ -78,20 +80,28 @@ img {
 }
 .random-note,
 .seek-video,
-.metronome label,
-.timer,
-.timer button {
+.metronome label {
   font-size: calc(var(--font-size) - 3px);
 }
+/* timer */
 .timer {
+  font-size: 5vw;
   display: flex;
   flex-direction: column;
-  width: 7rem;
-  padding: 0.25rem;
   border: solid 0.05em black;
   position: fixed;
   right: 0.5em;
   top: 0.5em;
+  padding: 0.13em;
+  padding-bottom: 0.1rem;
+  border: solid 0.05em black;
+  border-radius: 0.25em;
+  font-family: Arial, helvetica, sans-serif;
+  z-index: 9999;
+  line-height: 0.8;
+}
+.has-timer div#mpt-videotime {
+  top: 3em;
 }
 .timer div {
   display: flex;
@@ -102,18 +112,20 @@ img {
   margin: 0;
 }
 .timer button {
-  margin: 0;
+  font-size: 0.4em;
+  margin-left: 0.3em;
+}
+.timer .time {
+  font-size: 0.4em;
+  color: var(--darkgray);
+  margin-top: 0.6em;
 }
 .timer .elapsed {
-  font-size: 2.5rem;
   margin-top: 0;
-  font-weight: 600;
+  margin-top: 0.2em;
 }
 .timer .expired {
   color: var(--red);
-}
-.timer .time {
-  color: var(--darkgray);
 }
 .random-note span {
   font-weight: bold;

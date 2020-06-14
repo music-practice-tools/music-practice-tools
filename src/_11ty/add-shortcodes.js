@@ -32,11 +32,16 @@ exports.addShortcodes = function (eleventyConfig) {
 </button>`
   })
 
-  eleventyConfig.addShortcode('metronome', function (bpm = 100) {
+  eleventyConfig.addShortcode('metronome', function (
+    bpm = 100,
+    min = 30,
+    max = 250,
+    step = 5,
+  ) {
     // prettier-ignore
     return html`
 <span
-  x-data="CLIENT.metronome_data(${bpm})"
+  x-data="CLIENT.metronome_data(${bpm}, ${min}, ${max}, ${step})"
   class="metronome widget"
   x-on:click="onClick($el, $event)">
   <button><</button>
@@ -58,7 +63,11 @@ exports.addShortcodes = function (eleventyConfig) {
    `
   })
 
-  eleventyConfig.addShortcode('timer', function (time) {
+  eleventyConfig.addShortcode('timer', function (
+    time = 5,
+    s = true,
+    h = false,
+  ) {
     // prettier-ignore
     return html`
 <div x-data="CLIENT.timer_data(${time})" class="timer widget">
@@ -66,10 +75,14 @@ exports.addShortcodes = function (eleventyConfig) {
     <button x-on:click="btnAction" x-text="\`\${btnText()}\`"></button>
     <button x-on:click="reset">Reset</button>
   </div>
-  <span class="time" x-text="\`\${format(time, false)}\`"></span>
-  <span class="elapsed" x-bind:class="{ 'expired': isExpired() }" x-text="\`\${format(elapsedTime, false)}\`"></span>
+  <span class="time" x-text="\`\${format(time, ${h.toString()}, true)}\`"></span>
+  <span
+    class="elapsed"
+    x-bind:class="{ 'expired': isExpired() }"
+    x-text="\`\${format(elapsedTime, ${h.toString()}, ${s.toString()})}\`">
+  </span>
 </div>
-`
+    `
   })
 
   eleventyConfig.addPairedNunjucksShortcode('abc', function (

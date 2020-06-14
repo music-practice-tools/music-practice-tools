@@ -16,11 +16,11 @@ const CLIENT = (function () {
     }
   }
 
-  function metronome_data(bpm = 100) {
+  function metronome_data(bpm, min, max, step) {
     return {
       bpm: bpm,
       checked: false,
-      stepper: stepper(20, 200, 5),
+      stepper: stepper(min, max, step),
 
       onClick($el, $event) {
         if ($event.isTrusted) {
@@ -99,6 +99,7 @@ const CLIENT = (function () {
       time: time * 60 * 1000,
       elapsedTime: 0,
       timer: undefined,
+
       format(msTime, h = true, s = true) {
         const date = new Date(null)
         date.setSeconds(msTime / 1000)

@@ -106,15 +106,13 @@ const CLIENT = (function () {
     const body = document.querySelector('body')
     body.classList.add('has-timer')
 
-    if (!this.timer) {
-      this.timer = setInterval(() => {
-        this.elapsedTime += 1000
-      }, 1000)
-    }
+    console.log(time, useURLTime, timesp)
+
     return {
       time: time * 60 * 1000,
       elapsedTime: 0,
       timer: undefined,
+      auto: timesp !== null,
 
       format(msTime, h = true, s = true) {
         const date = new Date(null)

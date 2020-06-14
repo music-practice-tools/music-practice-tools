@@ -99,22 +99,32 @@ const CLIENT = (function () {
       time: time * 60 * 1000,
       elapsedTime: 0,
       timer: undefined,
-      formattedElapsedTime() {
+      format(msTime, h = true, s = true) {
         const date = new Date(null)
-        date.setSeconds(this.elapsedTime / 1000)
+        date.setSeconds(msTime / 1000)
         const utc = date.toUTCString()
-        return utc.substr(utc.indexOf(':') - 2, 8)
+        const len = (h ? 3 : 0) + 2 + (s ? 3 : 0)
+        const offset = h ? -2 : 1
+        return utc.substr(utc.indexOf(':') + offset, len)
       },
 
-      expired() {
-        console.log(this.time, this.elapsedTime, this.elapsedTime >= this.time)
+      isExpired() {
         return this.elapsedTime >= this.time
       },
 
-      start() {
-        this.timer = setInterval(() => {
-          this.elapsedTime += 1000
-        }, 1000)
+      btnText() {
+        return this.timer ? 'Stop' : 'Start'
+      },
+
+      btnAction() {
+        if (!this.timer) {
+          this.timer = setInterval(() => {
+            this.elapsedTime += 1000
+          }, 1000)
+        } else {
+          clearInterval(this.timer)
+          this.timer = undefined
+        }
       },
       stop() {
         clearInterval(this.timer)

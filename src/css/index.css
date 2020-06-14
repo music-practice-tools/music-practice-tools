@@ -79,19 +79,19 @@ img {
 .random-note,
 .seek-video,
 .metronome label,
+.timer,
 .timer button {
   font-size: calc(var(--font-size) - 3px);
 }
 .timer {
   display: flex;
   flex-direction: column;
-  width: 10.5rem;
+  width: 7rem;
   padding: 0.25rem;
   border: solid 0.05em black;
   position: fixed;
   right: 0.5em;
   top: 0.5em;
-  font-size: 5vw;
 }
 .timer div {
   display: flex;
@@ -104,20 +104,23 @@ img {
 .timer button {
   margin: 0;
 }
-.random-note span {
-  font-weight: bold;
-  color: var(--darkred);
-}
-.widget {
-  background-color: var(--widget-bg);
-}
-.timer p {
+.timer .elapsed {
   font-size: 2.5rem;
   margin-top: 0;
   font-weight: 600;
 }
 .timer .expired {
   color: var(--red);
+}
+.timer .time {
+  color: var(--darkgray);
+}
+.random-note span {
+  font-weight: bold;
+  color: var(--darkred);
+}
+.widget {
+  background-color: var(--widget-bg);
 }
 .tmpl-activity ul {
   padding-inline-start: 0.6rem;

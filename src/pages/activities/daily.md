@@ -9,15 +9,15 @@ tags: wibble
 {% timer 5 %}
 
 - [ ] **Finger warm up**
-- [ ] **Rythmn** - divide beat: clap, 1 finger, 2 {% metronome 70 %}
+- [ ] **Rythmn** - 1/8ths 2 bar downbeat, 2 bar upbeat {% metronome 70 %}
 - [ ] **Fretboard** - all notes: CoF, all strings {% metronome 60 %}
-- [ ] **Chord tones** - play and name: maj and rel min x 3 {% randomNote "Random Triad" %}
+- [ ] **Scale** - play and name: maj and rel min x 3 {% randomNote "Scale" %}
 - [ ] **Ear training** - C, F, G: Do Mi Fa So Do
-- [ ] **Improvisation** - play 3 patterns
-- [ ] **Reading** - p14,15 pitch, rythmn, together
+- [ ] **Improvisation** - play 3 patterns, a few lines each
+- [ ] **Reading** - p14-18 pitch, rythmn, together {% randomNumber "Etude", 1, 8 %}
 - [ ] **Tune - [The Thrill is Gone](/tunes/the-thrill-is-gone)** - with metronome, {% metronome 80 %}
 - [ ] **Tune - [Crossfire](/tunes/crossfire?timer=5)** - play along up to speed
-- [ ] **Tune - [Brown eyed girl](/tunes/brown-eyed-girl/)** - learn 1st 4 bars, work out chords
+- [ ] **Tune - [Brown eyed girl](/tunes/brown-eyed-girl/)** - play along up to speed
 
 Notes:
 

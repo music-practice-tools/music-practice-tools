@@ -20,4 +20,47 @@ Built using the following technology 'jamstack':
 - the wonderful web
 - hosting by Netlify
 
+Here's an example tune page source:
+
+{% raw %}
+
+    ---
+    title: Brown Eyed Girl
+    artist: Van Morrison
+    key: G
+    meter: 4/4
+    tempo: 1/4=145
+    rhythm: Pop
+
+    ---
+
+    ## Dots
+
+    {%- abc title, artist, key, meter, tempo, rhythm -%}
+    |:EF|"G"G2z3GB2|"C"c2zde2f2|"G"gz3c^c2|"D"d2zEzFzF:|
+    {%- endabc -%}
+
+    ## Structure
+
+    - {% seekVideo "00:03" %} Intro
+    - {% seekVideo "00:18" %} Verse
+    - {% seekVideo "00:56" %} Verse
+    - {% seekVideo "01:36" %} Chorus
+    - {% seekVideo "01:52" %} Middle 8
+    - {% seekVideo "02:04" %} Verse
+    - {% seekVideo "02:42" %} Chorus
+
+    @[youtube](kqXSBe-qMGo)
+
+{% endraw %}
+
+and an exerpt from the Daily activity page:
+
+{% raw %}
+
+    - [ ] **Fretboard** - all notes: CoF, all strings {% metronome 60 %}
+    - [ ] **Scale** - play and name: maj and rel min x 3 {% randomNote "Scale" %}
+
+{% endraw %}
+
 More music tech stuff on my [blog](http://blog.fullmeasure.uk/).

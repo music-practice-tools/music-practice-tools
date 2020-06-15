@@ -3,7 +3,7 @@ title: Musical U
 description: Extra Musical U Activities
 date: 2020-06-05
 order: 2
-tags: wibble
+tags: course
 ---
 
 ## Current

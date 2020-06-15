@@ -17,4 +17,13 @@ rhythm: moderate Blues
 
 ## Structure
 
+- {% seekVideo "00:01" %} Intro 12 bars
+- {% seekVideo "00:35" %} Verse 12 bars
+- {% seekVideo "01:06" %} Verse 12 bars
+- {% seekVideo "01:38" %} Middle 8 12 bars
+- {% seekVideo "02:10" %} Verse 12 bars
+- {% seekVideo "02:42" %} Verse 12 bars
+- {% seekVideo "03:14" %} Middle 8 12 bars
+- {% seekVideo "03:46" %} Vamp Outro
+
 @[youtube](oica5jG7FpU)

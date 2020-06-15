@@ -8,7 +8,7 @@ eleventyNavigation:
   order: 10
 ---
 
-Steve Lee's interactive music practice journal. An experiment for practice for remote music lessons with [James Rintoul](https://www.facebook.com/james.rintoul) and courses with [Musical U](https://www.musical-u.com/).
+Steve Lee's interactive music practice journal. An experiment to help with practicing and remote music lessons with [James Rintoul](https://www.facebook.com/james.rintoul) and courses with [Musical U](https://www.musical-u.com/).
 
 Built using the following technology 'jamstack':
 

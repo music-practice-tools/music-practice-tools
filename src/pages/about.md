@@ -8,7 +8,7 @@ eleventyNavigation:
   order: 10
 ---
 
-Steve Lee's interactive music practice journal. An experiment to help with practicing and remote music lessons with [James Rintoul](https://www.facebook.com/james.rintoul) and courses with [Musical U](https://www.musical-u.com/).
+Steve's interactive music practice journal. An experiment to help with practicing and remote music lessons with [James Rintoul](https://www.facebook.com/james.rintoul) and courses with [Musical U](https://www.musical-u.com/).
 
 Built using the following technology 'jamstack':
 
@@ -54,7 +54,7 @@ Here's an example tune page source:
 
 {% endraw %}
 
-and an exerpt from the Daily activity page:
+and an excerpt from the Daily activity page:
 
 {% raw %}
 
@@ -64,3 +64,6 @@ and an exerpt from the Daily activity page:
 {% endraw %}
 
 More music tech stuff on my [blog](http://blog.fullmeasure.uk/).
+
+Steve Lee
+[OpenDirective](https://www.opendirective.com/)

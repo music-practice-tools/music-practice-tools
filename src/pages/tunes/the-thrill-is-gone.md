@@ -5,7 +5,6 @@ key: Bm
 meter: 4/4
 tempo: 1/4=115
 rhythm: moderate Blues
-date: 2020-05-17
 ---
 
 ## Dots

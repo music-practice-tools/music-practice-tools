@@ -5,7 +5,6 @@ key: Eb
 meter: 4/4
 tempo: 1/4=115
 rhythm: Rock
-date: 2020-05-20
 ---
 
 ## Dots

@@ -4,8 +4,7 @@ artist: Van Morrison
 key: G
 meter: 4/4
 tempo: 1/4=145
-rhythm: Rock
-date: 2020-06-01
+rhythm: Pop
 ---
 
 ## Dots

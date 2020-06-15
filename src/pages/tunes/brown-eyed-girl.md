@@ -15,4 +15,12 @@ rhythm: Pop
 
 ## Structure
 
+- {% seekVideo "00:03" %} Intro
+- {% seekVideo "00:18" %} Verse
+- {% seekVideo "00:56" %} Verse
+- {% seekVideo "01:36" %} Chorus
+- {% seekVideo "01:52" %} Middle 8
+- {% seekVideo "02:04" %} Verse
+- {% seekVideo "02:42" %} Chorus
+
 @[youtube](kqXSBe-qMGo)

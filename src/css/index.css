@@ -72,6 +72,7 @@ img {
   display: inline-block;
 }
 .random-note,
+.random-number,
 .seek-video,
 .metronome,
 .timer,
@@ -79,6 +80,7 @@ img {
   border-radius: 0.25rem;
 }
 .random-note,
+.random-number,
 .seek-video,
 .metronome label {
   font-size: calc(var(--font-size) - 3px);
@@ -127,7 +129,8 @@ img {
 .timer .expired {
   color: var(--red);
 }
-.random-note span {
+.random-note span,
+.random-number span {
   font-weight: bold;
   color: var(--darkred);
 }

@@ -86,7 +86,19 @@ const CLIENT = (function () {
     }
   }
 
-  function seekVideo(source, minsec = '00:00', videoNum = 0) {
+  function randomNumber_data(min, max) {
+    min = parseInt(min, 10)
+    max = parseInt(max, 10)
+    const number = pickRandom(range(min, max))
+    return {
+      number: number(),
+      getNote() {
+        this.number = number()
+      },
+    }
+  }
+
+  function seekVideo(minsec = '00:00', videoNum = 0) {
     var a = minsec.split(':')
     if (a.length == 1) {
       a.unshift('0')
@@ -105,8 +117,6 @@ const CLIENT = (function () {
     time = timesp !== null ? timesp : time
     const body = document.querySelector('body')
     body.classList.add('has-timer')
-
-    console.log(time, useURLTime, timesp)
 
     return {
       time: time * 60 * 1000,
@@ -159,7 +169,13 @@ const CLIENT = (function () {
     }
   }
 
-  function getRandomInt(min, max) {
+  // Inefficient but OK for small ranges
+  function range(start, end) {
+    if (start === end) return [start]
+    return [start, ...range(start + 1, end)]
+  }
+
+  function randomInt(min, max) {
     min = Math.ceil(min)
     max = Math.floor(max)
     const rnd = Math.floor(Math.random() * (max - min)) + min
@@ -180,7 +196,7 @@ const CLIENT = (function () {
     return function () {
       let index
       do {
-        index = getRandomInt(0, items.length)
+        index = randomInt(0, items.length)
       } while (index === lastIndex)
       lastIndex = index
       return items[index]
@@ -191,6 +207,7 @@ const CLIENT = (function () {
     getSearchParam,
     metronome_data,
     randomNote_data,
+    randomNumber_data,
     timer_data,
     seekVideo,
     replaceABCFences,

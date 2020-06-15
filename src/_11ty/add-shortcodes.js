@@ -32,6 +32,20 @@ exports.addShortcodes = function (eleventyConfig) {
 </button>`
   })
 
+  /* widgets */
+  eleventyConfig.addShortcode('randomNumber', function (
+    text = 'Random Note',
+    min = 1,
+    max = 10,
+  ) {
+    // prettier-ignore
+    return html`
+<button type="button" class="random-number widget"
+  x-data="CLIENT.randomNumber_data(${min}, ${max})" x-on:click="getNote">
+  ${text} <span x-text="\`\${number}\`"><span>
+</button>`
+  })
+
   eleventyConfig.addShortcode('metronome', function (
     bpm = 100,
     min = 30,
@@ -57,7 +71,7 @@ exports.addShortcodes = function (eleventyConfig) {
     // prettier-ignore
     return html`
   <button type="button" class="seek-video widget"
-          onclick="CLIENT.seekVideo(this, '${time}', '${videoNum}')">
+          onclick="CLIENT.seekVideo('${time}', ${videoNum})">
     ${time}
   </button>
    `

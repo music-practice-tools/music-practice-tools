@@ -8,7 +8,7 @@ tags: practice
 
 - [ ] **Finger warm up**
 - [ ] **Rythmn** - 1/8ths 2 bar downbeat, 2 bar upbeat {% metronome 70 %}
-- [ ] **Fretboard** - all notes: CoF, all strings {% metronome 60 %}
+- [ ] **Fretboard** - all notes: CoF, all strings {% metronome 60 %} {% randomNote "Start", "C chromatic" %}
 - [ ] **Scale** - play and name: maj and rel min x 3 {% randomNote "Scale" %}
 - [ ] **Ear training** - C, F, G: Do Mi Fa So Do
 - [ ] **Improvisation** - play 3 patterns, a few lines each

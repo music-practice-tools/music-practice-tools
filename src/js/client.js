@@ -77,7 +77,9 @@ const CLIENT = (function () {
   }
 
   function randomNote_data(scale) {
-    const note = pickRandom(allNotes())
+    const notes =
+      scale == 'all-enharmonic' ? allNotes() : Tonal.Scale.get(scale).notes
+    const note = pickRandom(notes)
     return {
       note: note(),
       getNote() {

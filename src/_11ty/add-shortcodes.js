@@ -22,7 +22,7 @@ exports.addShortcodes = function (eleventyConfig) {
   /* widgets */
   eleventyConfig.addShortcode('randomNote', function (
     text = 'Random Note',
-    scale = 'chromatic-enharmonic',
+    scale = 'all-enharmonic',
   ) {
     // prettier-ignore
     return html`

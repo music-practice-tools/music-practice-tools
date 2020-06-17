@@ -8,7 +8,7 @@ eleventyNavigation:
 
 <h1>Activities</h1>
 
-{% set itemlist = collections.orderdActivities | reverse | head(-3) %}
+{% set itemlist = collections.orderedActivities | reverse | head(-3) %}
 {% set itemlistCounter = collections.orderdActivities | length %}
 {% include "itemlist.html.njk" %}
 
@@ -16,7 +16,7 @@ eleventyNavigation:
 
 <h1>Tunes</h1>
 
-{% set itemlist = collections.tunes | head(-3) %}
+{% set itemlist = collections.tunes | reverse | head(-3) %}
 {% set itemlistCounter = collections.tunes | length %}
 {% set itemlistReversed = true %}
 {% include "itemlist.html.njk" %}

@@ -33,7 +33,7 @@ function addTags(collection) {
 exports.addCollections = function (eleventyConfig) {
   eleventyConfig.addCollection('tagList', addTags)
 
-  eleventyConfig.addCollection('orderdActivities', function (collectionApi) {
+  eleventyConfig.addCollection('orderedActivities', function (collectionApi) {
     return collectionApi.getFilteredByTag('activities').sort(function (a, b) {
       return a.data.order - b.data.order
     })

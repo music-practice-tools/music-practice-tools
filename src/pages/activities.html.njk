@@ -8,6 +8,6 @@ eleventyNavigation:
 
 <h1>Tunes</h1>
 
-{% set itemlist = collections.activities %}
+{% set itemlist = collections.orderedActivities | reverse %}
 {% include "itemlist.html.njk" %}
 

@@ -5,6 +5,7 @@ key: G
 meter: 4/4
 tempo: 1/4=145
 rhythm: Pop
+date: 2020-06-10
 ---
 
 ## Dots

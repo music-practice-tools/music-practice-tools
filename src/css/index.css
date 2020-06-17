@@ -348,6 +348,9 @@ li.task-list-item {
 .tmpl-tune .video-embed-wrapper {
   width: 50%;
 }
+.tmpl-activity .video-embed-wrapper {
+  width: 30%;
+}
 .video-embed {
   width: 100%;
   position: relative;

@@ -12,6 +12,8 @@ eleventyNavigation:
 {% set itemlistCounter = collections.orderdActivities | length %}
 {% include "itemlist.html.njk" %}
 
+<p><a href="{{ '/activities/' | url }}">More activities ...</a>.</p>
+
 <h1>Tunes</h1>
 
 {% set itemlist = collections.tunes | head(-3) %}

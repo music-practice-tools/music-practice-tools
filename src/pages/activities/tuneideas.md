@@ -1,5 +1,7 @@
 ---
 title: Ideas for Tunes
+tags: practice
+order: 10
 ---
 
 - Lady - D'Agelo
@@ -13,3 +15,6 @@ title: Ideas for Tunes
 - Ernest Ranglin - Surfin
 - Eddie Martin - Blue to the bone
 - Van Morrison - madame george
+- James Brown - lickin stick
+
+@[youtube](AWVd-UHov0Q)

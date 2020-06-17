@@ -1,0 +1,13 @@
+---
+layout: activity.html.njk
+permalink: /activities/
+eleventyNavigation:
+  key: Activities
+  order: 2
+---
+
+<h1>Tunes</h1>
+
+{% set itemlist = collections.activities %}
+{% include "itemlist.html.njk" %}
+

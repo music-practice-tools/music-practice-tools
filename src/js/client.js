@@ -250,7 +250,7 @@ const CLIENT = (function () {
       if (ABCJS.synth.supportsAudio()) {
         synthControl = new ABCJS.synth.SynthController()
         synthControl.load('#audioControls', abcCursorControl, {
-          displayLoop: false,
+          displayLoop: true,
           displayRestart: true,
           displayPlay: true,
           displayProgress: false,

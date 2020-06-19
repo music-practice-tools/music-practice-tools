@@ -160,14 +160,129 @@ const CLIENT = (function () {
     }
   }
 
+  // https://github.com/paulrosen/abcjs/blob/master/examples/full-synth.html
+  const abcCursorControl = {
+    onReady() {},
+
+    onStart() {
+      var svg = document.querySelector('.abcjs-container svg')
+      var cursor = document.createElementNS(
+        'http://www.w3.org/2000/svg',
+        'line',
+      )
+      cursor.setAttribute('class', 'abcjs-cursor')
+      cursor.setAttributeNS(null, 'x1', 0)
+      cursor.setAttributeNS(null, 'y1', 0)
+      cursor.setAttributeNS(null, 'x2', 0)
+      cursor.setAttributeNS(null, 'y2', 0)
+      svg.appendChild(cursor)
+    },
+
+    onEvent(ev) {
+      if (ev.measureStart && ev.left === null) return // this was the second part of a tie across a measure line. Just ignore it.
+
+      let lastSelection = document.querySelectorAll(
+        '.abcjs-container svg .highlight',
+      )
+      for (var k = 0; k < lastSelection.length; k++)
+        lastSelection[k].classList.remove('highlight')
+      for (let i = 0; i < ev.elements.length; i++) {
+        var note = ev.elements[i]
+        for (let j = 0; j < note.length; j++) {
+          note[j].classList.add('highlight')
+        }
+      }
+
+      var cursor = document.querySelector('.abcjs-container svg .abcjs-cursor')
+      if (cursor) {
+        cursor.setAttribute('x1', ev.left - 2)
+        cursor.setAttribute('x2', ev.left - 2)
+        cursor.setAttribute('y1', ev.top)
+        cursor.setAttribute('y2', ev.top + ev.height)
+      }
+    },
+
+    onFinished() {
+      var els = document.querySelectorAll('.abcjs-container svg .highlight')
+      for (var i = 0; i < els.length; i++) {
+        els[i].classList.remove('highlight')
+      }
+    },
+  }
+
   function replaceABCFences() {
     const abcNodes = document.querySelectorAll('code.language-abc')
     for (const node of abcNodes) {
+      let visualObj
+      let synthControl
+
+      // eslint-disable-next-line no-inner-declarations
+      function abcClickListener(abcElem) {
+        let lastClicked = abcElem.midiPitches
+        if (!lastClicked) return
+
+        ABCJS.synth
+          .playEvent(
+            lastClicked,
+            abcElem.midiGraceNotePitches,
+            synthControl.visualObj.millisecondsPerMeasure(),
+          )
+          .catch(function (error) {
+            console.log('error playing note', error)
+          })
+      }
+
       const abc = node.textContent
-      const div = document.createElement('div')
-      ABCJS.renderAbc(div, abc, { visualTranspose: -24, responsive: 'resize' })
-      node.parentElement.appendChild(div)
-      node.style.display = 'none'
+
+      const divDisplay = document.createElement('div')
+      visualObj = ABCJS.renderAbc(divDisplay, abc, {
+        visualTranspose: -24, // makes notes easier to write in abc
+        clickListener: abcClickListener,
+        responsive: 'resize',
+      })
+
+      node.style.display = 'none' // hide the abc source
+      const divAudio = document.createElement('div')
+      divAudio.id = 'audioControls'
+      node.parentElement.appendChild(divDisplay)
+      node.parentElement.appendChild(divAudio)
+
+      if (ABCJS.synth.supportsAudio()) {
+        synthControl = new ABCJS.synth.SynthController()
+        synthControl.load('#audioControls', abcCursorControl, {
+          displayLoop: false,
+          displayRestart: true,
+          displayPlay: true,
+          displayProgress: false,
+          displayWarp: false,
+        })
+      }
+
+      var midiBuffer = new ABCJS.synth.CreateSynth()
+      midiBuffer
+        .init({
+          visualObj: visualObj[0],
+          options: {
+            soundFontUrl:
+              'https://paulrosen.github.io/midi-js-soundfonts/MusyngKite/',
+          },
+        })
+        .then(function () {
+          if (synthControl) {
+            synthControl
+              .setTune(visualObj[0], false, {
+                midiTranspose: -8, // bass is 8VA compared to display
+                program: 28, // picked bass as plucked (27) is horrid
+                chordsOff: true,
+              })
+              .catch(function (error) {
+                console.warn('Audio problem:', error)
+              })
+          }
+        })
+        .catch(function (error) {
+          console.warn('Audio problem:', error)
+        })
     }
   }
 

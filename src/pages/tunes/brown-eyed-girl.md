@@ -11,7 +11,7 @@ date: 2020-06-10
 ## Dots
 
 {%- abc title, artist, key, meter, tempo, rhythm -%}
-|:EF|"G"G2z3GB2|"C"c2zde2f2|"G"gz3c^c2|"D"d2zEzFzF:|
+|:EF|"G"G2z3GB2|"C"c2zce2g2|"G"g2z3c^c2|"D"d2zEzFzF:|
 {%- endabc -%}
 
 ## Structure

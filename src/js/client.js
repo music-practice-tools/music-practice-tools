@@ -216,22 +216,44 @@ const CLIENT = (function () {
       // TODO concider optmising so not a synth per ABC section
       let visualObj
       let synthControl
+      let tuneLoaded = false
+
+      // eslint-disable-next-line no-inner-declarations
+      function loadTune(interactive) {
+        if (!tuneLoaded && synthControl) {
+          const p = synthControl
+            .setTune(visualObj[0], interactive, {
+              soundFontUrl:
+                'https://paulrosen.github.io/midi-js-soundfonts/MusyngKite/',
+              chordsOff: true,
+            })
+            .catch(function (error) {
+              console.warn('Audio problem:', error)
+            })
+          tuneLoaded = true
+          return p
+        } else {
+          return Promise.resolve()
+        }
+      }
 
       // eslint-disable-next-line no-inner-declarations
       function abcClickListener(abcElem) {
         // TODO use closure for now as synthControl is not passed
-        let lastClicked = abcElem.midiPitches
+        const lastClicked = abcElem.midiPitches
         if (!lastClicked) return
 
-        ABCJS.synth
-          .playEvent(
-            lastClicked,
-            abcElem.midiGraceNotePitches,
-            synthControl.visualObj.millisecondsPerMeasure(),
-          )
-          .catch(function (error) {
-            console.log('error playing note', error)
-          })
+        loadTune(true).then(() => {
+          ABCJS.synth
+            .playEvent(
+              lastClicked,
+              abcElem.midiGraceNotePitches,
+              synthControl.visualObj.millisecondsPerMeasure(),
+            )
+            .catch(function (error) {
+              console.log('error playing note', error)
+            })
+        })
       }
 
       const abc = node.textContent
@@ -251,7 +273,7 @@ const CLIENT = (function () {
       node.parentElement.appendChild(divDisplay)
       node.parentElement.appendChild(divAudio)
 
-      if (ABCJS.synth.supportsAudio()) {
+      if (supportsAudio) {
         synthControl = new ABCJS.synth.SynthController()
         synthControl.load('#audioControls', abcCursorControl, {
           displayLoop: true,
@@ -262,25 +284,16 @@ const CLIENT = (function () {
         })
       }
 
-      var midiBuffer = new ABCJS.synth.CreateSynth()
+      // TODO this synth may be unnessary - only used by click before playing
+      let midiBuffer = new ABCJS.synth.CreateSynth()
       midiBuffer
         .init({
           visualObj: visualObj[0],
-          soundFontUrl:
-            'https://paulrosen.github.io/midi-js-soundfonts/MusyngKite/',
+          /*soundFontUrl:
+            'https://paulrosen.github.io/midi-js-soundfonts/MusyngKite/',*/
         })
         .then(function () {
-          if (synthControl) {
-            synthControl
-              .setTune(visualObj[0], false, {
-                soundFontUrl:
-                  'https://paulrosen.github.io/midi-js-soundfonts/MusyngKite/',
-                chordsOff: true,
-              })
-              .catch(function (error) {
-                console.warn('Audio problem:', error)
-              })
-          }
+          loadTune(false)
         })
         .catch(function (error) {
           console.warn('Audio problem:', error)

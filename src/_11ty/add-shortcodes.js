@@ -120,14 +120,14 @@ exports.addShortcodes = function (eleventyConfig) {
     return `
 \`\`\`abc
 X: 1
-K: ${key} cleff=bass transpose=-8
+K: ${key} clef=bass transpose=-8
 M: ${meter}
 Q: ${tempo}
 L: ${unitnotelength}
 C: ${artist}
 T: ${title}
 R: ${rhythm}
-[I: MIDI=program 33]
+[I: MIDI=program 32]
 ${content}
 \`\`\`
 `

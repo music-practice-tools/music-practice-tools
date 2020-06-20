@@ -12,11 +12,11 @@ date: 2020-06-03
 
 {%- abc title, artist, key, meter, tempo, rhythm -%}
 P: A
-|:EE_GB_dd zB|\_dd zBdBez:|
+|:EE_GB_dd zB|_dd zBdBez:|
 P: B
-|:\_GGGGGG zG|AAAA z4|\_GGGGGG zG|AAAA z3(eB):|
+|:_GGGGGG zG|AAAA z4|_GGGGGG zG|AAAA z3(eB):|
 P: C
-|EE_GB_dd z_g'|g'e'\_d'bd'e'\_g'=g'|
+|EE_GB_dd z_g'|g'e'_d'bd'e'_g'=g'|
 {%- endabc -%}
 
 ## Structure

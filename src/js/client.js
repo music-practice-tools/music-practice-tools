@@ -213,11 +213,13 @@ const CLIENT = (function () {
   function replaceABCFences() {
     const abcNodes = document.querySelectorAll('code.language-abc')
     for (const node of abcNodes) {
+      // TODO concider optmising so not a synth per ABC section
       let visualObj
       let synthControl
 
       // eslint-disable-next-line no-inner-declarations
       function abcClickListener(abcElem) {
+        // TODO use closure for now as synthControl is not passed
         let lastClicked = abcElem.midiPitches
         if (!lastClicked) return
 
@@ -233,15 +235,17 @@ const CLIENT = (function () {
       }
 
       const abc = node.textContent
+      const supportsAudio = ABCJS.synth.supportsAudio()
 
       const divDisplay = document.createElement('div')
       visualObj = ABCJS.renderAbc(divDisplay, abc, {
-        visualTranspose: -24, // makes notes easier to write in abc
-        clickListener: abcClickListener,
+        visualTranspose: -24, // makes notes easier to write by transposing
         responsive: 'resize',
+        clickListener: supportsAudio ? abcClickListener : undefined,
       })
 
       node.style.display = 'none' // hide the abc source
+
       const divAudio = document.createElement('div')
       divAudio.id = 'audioControls'
       node.parentElement.appendChild(divDisplay)
@@ -262,17 +266,15 @@ const CLIENT = (function () {
       midiBuffer
         .init({
           visualObj: visualObj[0],
-          options: {
-            soundFontUrl:
-              'https://paulrosen.github.io/midi-js-soundfonts/MusyngKite/',
-          },
+          soundFontUrl:
+            'https://paulrosen.github.io/midi-js-soundfonts/MusyngKite/',
         })
         .then(function () {
           if (synthControl) {
             synthControl
               .setTune(visualObj[0], false, {
-                midiTranspose: -8, // bass is 8VA compared to display
-                program: 28, // picked bass as plucked (27) is horrid
+                soundFontUrl:
+                  'https://paulrosen.github.io/midi-js-soundfonts/MusyngKite/',
                 chordsOff: true,
               })
               .catch(function (error) {

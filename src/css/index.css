@@ -119,12 +119,19 @@ img {
 }
 .timer .time {
   font-size: 0.4em;
+  color: var(--navy);
+  margin-top: 0.6em;
+}
+.timer .total {
+  font-size: 0.4em;
   color: var(--darkgray);
   margin-top: 0.6em;
 }
 .timer .elapsed {
   margin-top: 0;
   margin-top: 0.2em;
+  margin-left: auto;
+  margin-right: auto;
 }
 .timer .expired {
   color: var(--red);

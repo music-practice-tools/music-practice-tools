@@ -114,7 +114,26 @@ const CLIENT = (function () {
     YOUTUBE.seekTo(seconds, videoNum)
   }
 
-  function timer_data(time, useURLTime) {
+  function createLastTimeStore(id) {
+    const { subscribe, set /*update*/ } = CLIENT.persistentStore(
+      `${id}_lastTime`,
+      0,
+    )
+
+    return {
+      init(update) {
+        subscribe(update)
+      },
+      save(time) {
+        set(time)
+      },
+      reset() {
+        set(0)
+      },
+    }
+  }
+
+  function timer_data(id, time, useURLTime) {
     const timesp = useURLTime ? this.getSearchParam('timer') : null
     time = timesp !== null ? timesp : time
     const body = document.querySelector('body')
@@ -122,9 +141,11 @@ const CLIENT = (function () {
 
     return {
       time: time * 60 * 1000,
+      startTime: 0,
       elapsedTime: 0,
       timer: undefined,
       auto: timesp !== null,
+      timeStore: createLastTimeStore(id),
 
       format(msTime, h = true, s = true) {
         const date = new Date(null)
@@ -140,7 +161,7 @@ const CLIENT = (function () {
       },
 
       btnText() {
-        return this.timer ? 'Stop' : 'Start'
+        return this.timer ? 'Stp' : 'Sta'
       },
 
       btnAction() {
@@ -154,8 +175,15 @@ const CLIENT = (function () {
         }
       },
 
-      reset() {
+      lap() {
+        this.startTime += this.elapsedTime
         this.elapsedTime = 0
+        this.timeStore.save(this.startTime)
+      },
+
+      reset() {
+        this.elapsedTime = this.startTime = 0
+        this.timeStore.reset()
       },
     }
   }
@@ -335,6 +363,112 @@ const CLIENT = (function () {
     }
   }
 
+  /**
+   * Writable Stores from Svelte
+   */
+
+  function safe_not_equal(a, b) {
+    return a != a
+      ? b == b
+      : a !== b || (a && typeof a === 'object') || typeof a === 'function'
+  }
+
+  function noop() {}
+
+  const subscriber_queue = []
+
+  function writable(value, start = noop) {
+    let stop
+    const subscribers = []
+
+    function set(new_value) {
+      if (safe_not_equal(value, new_value)) {
+        value = new_value
+        if (stop) {
+          // store is ready
+          const run_queue = !subscriber_queue.length
+          for (let i = 0; i < subscribers.length; i += 1) {
+            const s = subscribers[i]
+            s[1]()
+            subscriber_queue.push(s, value)
+          }
+          if (run_queue) {
+            for (let i = 0; i < subscriber_queue.length; i += 2) {
+              subscriber_queue[i][0](subscriber_queue[i + 1])
+            }
+            subscriber_queue.length = 0
+          }
+        }
+      }
+    }
+
+    function update(fn) {
+      set(fn(value))
+    }
+
+    function subscribe(run, invalidate = noop) {
+      const subscriber = [run, invalidate]
+      subscribers.push(subscriber)
+      if (subscribers.length === 1) {
+        stop = start(set) || noop
+      }
+      run(value)
+
+      return () => {
+        const index = subscribers.indexOf(subscriber)
+        if (index !== -1) {
+          subscribers.splice(index, 1)
+        }
+        if (subscribers.length === 0) {
+          stop()
+          stop = null
+        }
+      }
+    }
+
+    return { set, update, subscribe }
+  }
+
+  /* Settings  Store */
+  function read(key) {
+    try {
+      return JSON.parse(localStorage[key])
+    } catch (e) {} // eslint-disable-line no-empty
+  }
+
+  function updateToNewVersion(saved, initial) {
+    if (initial.version && initial.version !== saved.version) {
+      const withNew = Object.entries(initial).filter(
+        ([k]) => k != 'version' && saved[k] === undefined,
+      )
+      const newValue = { ...saved, ...withNew, version: initial.version }
+      return newValue
+    }
+    return saved
+  }
+
+  // if nothing saved return initial
+  // else if initial version is different then update the persisted value
+  function readOrUpdate(key, initial) {
+    const saved = read(key)
+    if (!saved) {
+      return initial
+    }
+    return typeof saved === 'object' // assume array, functions etc not passed
+      ? updateToNewVersion(saved, initial)
+      : saved
+  }
+
+  function persistentStore(key, initial) {
+    const store = writable(readOrUpdate(key, initial), () => {
+      return store.subscribe((value) => {
+        localStorage[key] = JSON.stringify(value)
+      })
+    })
+
+    return store
+  }
+
   return {
     getSearchParam,
     metronome_data,
@@ -343,6 +477,7 @@ const CLIENT = (function () {
     timer_data,
     seekVideo,
     replaceABCFences,
+    persistentStore,
   }
 })()
 

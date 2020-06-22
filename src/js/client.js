@@ -76,28 +76,79 @@ const CLIENT = (function () {
     }
   }
 
-  function randomNote_data(scale) {
-    const notes =
-      scale == 'all-enharmonic' ? allNotes() : Tonal.Scale.get(scale).notes
-    const note = pickRandom(notes)
-    return {
-      note: note(),
-      getNote() {
-        this.note = note()
+  // Inefficient but OK for small ranges
+  function range(start, end) {
+    if (start === end) return [start]
+    return [start, ...range(start + 1, end)]
+  }
+
+  function randomInt(min, max) {
+    min = Math.ceil(min)
+    max = Math.floor(max)
+    const rnd = Math.floor(Math.random() * (max - min)) + min
+    return rnd
+  }
+
+  function allNotes() {
+    const notes = Tonal.Range.chromatic(['C2', 'B2']).flatMap((n) => {
+      const bare = Tonal.Note.get(n).pc // drop octave
+      const enh = Tonal.Note.enharmonic(bare)
+      return enh != bare ? [enh, bare] : bare
+    })
+    return notes
+  }
+
+  function randomPicker(items) {
+    let itemsCopy
+    function copyItems() {
+      itemsCopy = [...items]
+    }
+    const obj = {
+      next() {
+        const index = randomInt(0, itemsCopy.length)
+        const item = itemsCopy[index]
+        itemsCopy = itemsCopy.filter((i) => i != item)
+        if (!itemsCopy.length) {
+          copyItems()
+        }
+        return item
+      },
+      reset() {
+        copyItems()
       },
     }
+
+    obj.reset()
+    return obj
+  }
+
+  function randomItem(items) {
+    const picker = randomPicker(items)
+    return {
+      item: picker.next(),
+      getItem() {
+        this.item = picker.next()
+      },
+      reset() {
+        picker.reset()
+        this.getItem()
+      },
+    }
+  }
+
+  function randomNote_data(scale) {
+    const items =
+      scale == 'all-enharmonic' ? allNotes() : Tonal.Scale.get(scale).notes
+
+    return randomItem(items)
   }
 
   function randomNumber_data(min, max) {
     min = parseInt(min, 10)
     max = parseInt(max, 10)
-    const number = pickRandom(range(min, max))
-    return {
-      number: number(),
-      getNote() {
-        this.number = number()
-      },
-    }
+    const items = range(min, max)
+
+    return randomItem(items)
   }
 
   function seekVideo(minsec = '00:00', videoNum = 0) {
@@ -278,7 +329,7 @@ const CLIENT = (function () {
               synthControl.visualObj.millisecondsPerMeasure(),
             )
             .catch(function (error) {
-              console.log('error playing note', error)
+              console.warn('error playing note', error)
             })
         })
       }
@@ -325,40 +376,6 @@ const CLIENT = (function () {
         .catch(function (error) {
           console.warn('Audio problem:', error)
         })
-    }
-  }
-
-  // Inefficient but OK for small ranges
-  function range(start, end) {
-    if (start === end) return [start]
-    return [start, ...range(start + 1, end)]
-  }
-
-  function randomInt(min, max) {
-    min = Math.ceil(min)
-    max = Math.floor(max)
-    const rnd = Math.floor(Math.random() * (max - min)) + min
-    return rnd
-  }
-
-  function allNotes() {
-    const notes = Tonal.Range.chromatic(['C2', 'B2']).flatMap((n) => {
-      const bare = Tonal.Note.get(n).pc // drop octave
-      const enh = Tonal.Note.enharmonic(bare)
-      return enh != bare ? [enh, bare] : bare
-    })
-    return notes
-  }
-
-  function pickRandom(items) {
-    let lastIndex
-    return function () {
-      let index
-      do {
-        index = randomInt(0, items.length)
-      } while (index === lastIndex)
-      lastIndex = index
-      return items[index]
     }
   }
 

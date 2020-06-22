@@ -27,8 +27,8 @@ exports.addShortcodes = function (eleventyConfig) {
     // prettier-ignore
     return html`
 <button type="button" class="random-note widget"
-  x-data="CLIENT.randomNote_data('${scale}')" x-on:click="getNote">
-  ${text} <span x-text="\`\${note}\`"><span>
+  x-data="CLIENT.randomNote_data('${scale}')" x-on:click="getItem">
+  ${text} <span x-text="\`\${item}\`"><span>
 </button>`
   })
 
@@ -41,8 +41,8 @@ exports.addShortcodes = function (eleventyConfig) {
     // prettier-ignore
     return html`
 <button type="button" class="random-number widget"
-  x-data="CLIENT.randomNumber_data(${min}, ${max})" x-on:click="getNote">
-  ${text} <span x-text="\`\${number}\`"><span>
+  x-data="CLIENT.randomNumber_data(${min}, ${max})" x-on:click="getItem">
+  ${text} <span x-text="\`\${item}\`"><span>
 </button>`
   })
 

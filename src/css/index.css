@@ -119,8 +119,9 @@ img {
 }
 .timer .time {
   font-size: 0.4em;
-  color: var(--navy);
+  color: var(--darkred `);
   margin-top: 0.6em;
+  font-weight: lighter;
 }
 .timer .total {
   font-size: 0.4em;

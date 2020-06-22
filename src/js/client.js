@@ -101,36 +101,13 @@ const CLIENT = (function () {
   }
 
   function seekVideo(minsec = '00:00', videoNum = 0) {
-    var a = minsec.split(':')
+    const a = minsec.split(':')
     if (a.length == 1) {
       a.unshift('0')
     }
-    if (a.length == 1) {
-      a.unshift('0')
-    }
-    0
-    var seconds = +a[0] * 60 + +a[1]
+    const seconds = +a[0] * 60 + +a[1]
 
     YOUTUBE.seekTo(seconds, videoNum)
-  }
-
-  function createLastTimeStore(id) {
-    const { subscribe, set /*update*/ } = CLIENT.persistentStore(
-      `${id}_lastTime`,
-      0,
-    )
-
-    return {
-      init(update) {
-        subscribe(update)
-      },
-      save(time) {
-        set(time)
-      },
-      reset() {
-        set(0)
-      },
-    }
   }
 
   function timer_data(id, time, useURLTime) {
@@ -138,14 +115,28 @@ const CLIENT = (function () {
     time = timesp !== null ? timesp : time
     const body = document.querySelector('body')
     body.classList.add('has-timer')
+    const intialTime = { total: 0, elapsed: 0 }
 
     return {
       time: time * 60 * 1000,
-      startTime: 0,
-      elapsedTime: 0,
+      total: 0,
+      elapsed: 0,
       timer: undefined,
       auto: timesp !== null,
-      timeStore: createLastTimeStore(id),
+      timeStore: CLIENT.persistentStore(`${id}_lastTime`, intialTime),
+
+      init() {
+        this.timeStore.subscribe(({ total, elapsed }) => {
+          this.total = total
+          this.elapsed = elapsed
+        })
+        if (useURLTime) {
+          // Apline runs this function after DOM updates
+          return () => {
+            if (this.auto) this.btnAction()
+          }
+        }
+      },
 
       format(msTime, h = true, s = true) {
         const date = new Date(null)
@@ -157,7 +148,7 @@ const CLIENT = (function () {
       },
 
       isExpired() {
-        return this.elapsedTime >= this.time
+        return this.elapsed >= this.time
       },
 
       btnText() {
@@ -167,7 +158,8 @@ const CLIENT = (function () {
       btnAction() {
         if (!this.timer) {
           this.timer = setInterval(() => {
-            this.elapsedTime += 1000
+            this.total += 1000
+            this.elapsed += 1000
           }, 1000)
         } else {
           clearInterval(this.timer)
@@ -176,14 +168,17 @@ const CLIENT = (function () {
       },
 
       lap() {
-        this.startTime += this.elapsedTime
-        this.elapsedTime = 0
-        this.timeStore.save(this.startTime)
+        this.elapsed = 0
+        this.persist()
       },
 
       reset() {
-        this.elapsedTime = this.startTime = 0
-        this.timeStore.reset()
+        this.elapsed = this.total = 0
+        this.timeStore.set(intialTime)
+      },
+
+      persist() {
+        this.timeStore.set({ total: this.total, elapsed: this.elapsed })
       },
     }
   }
@@ -193,8 +188,8 @@ const CLIENT = (function () {
     onReady() {},
 
     onStart() {
-      var svg = document.querySelector('.abcjs-container svg')
-      var cursor = document.createElementNS(
+      const svg = document.querySelector('.abcjs-container svg')
+      const cursor = document.createElementNS(
         'http://www.w3.org/2000/svg',
         'line',
       )
@@ -207,21 +202,25 @@ const CLIENT = (function () {
     },
 
     onEvent(ev) {
-      if (ev.measureStart && ev.left === null) return // this was the second part of a tie across a measure line. Just ignore it.
+      if (ev.measureStart && ev.left === null) {
+        return
+      } // this was the second part of a tie across a measure line. Just ignore it.
 
-      let lastSelection = document.querySelectorAll(
+      const lastSelection = document.querySelectorAll(
         '.abcjs-container svg .highlight',
       )
-      for (var k = 0; k < lastSelection.length; k++)
+      for (let k = 0; k < lastSelection.length; k++)
         lastSelection[k].classList.remove('highlight')
       for (let i = 0; i < ev.elements.length; i++) {
-        var note = ev.elements[i]
+        let note = ev.elements[i]
         for (let j = 0; j < note.length; j++) {
           note[j].classList.add('highlight')
         }
       }
 
-      var cursor = document.querySelector('.abcjs-container svg .abcjs-cursor')
+      const cursor = document.querySelector(
+        '.abcjs-container svg .abcjs-cursor',
+      )
       if (cursor) {
         cursor.setAttribute('x1', ev.left - 2)
         cursor.setAttribute('x2', ev.left - 2)
@@ -231,8 +230,8 @@ const CLIENT = (function () {
     },
 
     onFinished() {
-      var els = document.querySelectorAll('.abcjs-container svg .highlight')
-      for (var i = 0; i < els.length; i++) {
+      const els = document.querySelectorAll('.abcjs-container svg .highlight')
+      for (let i = 0; i < els.length; i++) {
         els[i].classList.remove('highlight')
       }
     },

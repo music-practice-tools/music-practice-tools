@@ -5,7 +5,7 @@ date: Last Modified
 ---
 <h1>{{ title }}</h1>
 
-{% timer 5, true %}
+{% timer "main", 5, true %}
 
 <time class="activitylist-date" datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate }}</time>
 

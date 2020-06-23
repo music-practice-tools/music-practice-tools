@@ -167,31 +167,30 @@ const CLIENT = (function () {
     const body = document.querySelector('body')
     body.classList.add('has-timer')
     const intialTime = { total: 0, elapsed: 0 }
+    const storageKey = `timer_${id}`
 
     return {
-      time: time * 60 * 1000,
+      time: time * 60,
       total: 0,
       elapsed: 0,
       timer: undefined,
       auto: timesp !== null,
-      timeStore: CLIENT.persistentStore(`${id}_lastTime`, intialTime),
 
       init() {
-        this.timeStore.subscribe(({ total, elapsed }) => {
-          this.total = total
-          this.elapsed = elapsed
-        })
+        const { total, elapsed } = readStorage(storageKey, intialTime)
+        this.total = total
+        this.elapsed = elapsed
         if (useURLTime) {
-          // Apline runs this function after DOM updates
+          // Alpine runs this function after DOM updates
           return () => {
             if (this.auto) this.btnAction()
           }
         }
       },
 
-      format(msTime, h = true, s = true) {
+      format(time, h = true, s = true) {
         const date = new Date(null)
-        date.setSeconds(msTime / 1000)
+        date.setSeconds(time)
         const utc = date.toUTCString()
         const len = (h ? 3 : 0) + 2 + (s ? 3 : 0)
         const offset = h ? -2 : 1
@@ -209,8 +208,8 @@ const CLIENT = (function () {
       btnAction() {
         if (!this.timer) {
           this.timer = setInterval(() => {
-            this.total += 1000
-            this.elapsed += 1000
+            this.total += 1
+            this.elapsed += 1
           }, 1000)
         } else {
           clearInterval(this.timer)
@@ -225,11 +224,14 @@ const CLIENT = (function () {
 
       reset() {
         this.elapsed = this.total = 0
-        this.timeStore.set(intialTime)
+        this.persist()
       },
 
       persist() {
-        this.timeStore.set({ total: this.total, elapsed: this.elapsed })
+        writeStorage(storageKey, {
+          total: this.total,
+          elapsed: this.elapsed,
+        })
       },
     }
   }
@@ -379,110 +381,18 @@ const CLIENT = (function () {
     }
   }
 
-  /**
-   * Writable Stores from Svelte
-   */
-
-  function safe_not_equal(a, b) {
-    return a != a
-      ? b == b
-      : a !== b || (a && typeof a === 'object') || typeof a === 'function'
-  }
-
-  function noop() {}
-
-  const subscriber_queue = []
-
-  function writable(value, start = noop) {
-    let stop
-    const subscribers = []
-
-    function set(new_value) {
-      if (safe_not_equal(value, new_value)) {
-        value = new_value
-        if (stop) {
-          // store is ready
-          const run_queue = !subscriber_queue.length
-          for (let i = 0; i < subscribers.length; i += 1) {
-            const s = subscribers[i]
-            s[1]()
-            subscriber_queue.push(s, value)
-          }
-          if (run_queue) {
-            for (let i = 0; i < subscriber_queue.length; i += 2) {
-              subscriber_queue[i][0](subscriber_queue[i + 1])
-            }
-            subscriber_queue.length = 0
-          }
-        }
-      }
-    }
-
-    function update(fn) {
-      set(fn(value))
-    }
-
-    function subscribe(run, invalidate = noop) {
-      const subscriber = [run, invalidate]
-      subscribers.push(subscriber)
-      if (subscribers.length === 1) {
-        stop = start(set) || noop
-      }
-      run(value)
-
-      return () => {
-        const index = subscribers.indexOf(subscriber)
-        if (index !== -1) {
-          subscribers.splice(index, 1)
-        }
-        if (subscribers.length === 0) {
-          stop()
-          stop = null
-        }
-      }
-    }
-
-    return { set, update, subscribe }
-  }
-
-  /* Settings  Store */
-  function read(key) {
+  function readStorage(key, def) {
     try {
       return JSON.parse(localStorage[key])
+    } catch (e) {
+      return def
+    } // eslint-disable-line no-empty
+  }
+
+  function writeStorage(key, value) {
+    try {
+      localStorage[key] = JSON.stringify(value)
     } catch (e) {} // eslint-disable-line no-empty
-  }
-
-  function updateToNewVersion(saved, initial) {
-    if (initial.version && initial.version !== saved.version) {
-      const withNew = Object.entries(initial).filter(
-        ([k]) => k != 'version' && saved[k] === undefined,
-      )
-      const newValue = { ...saved, ...withNew, version: initial.version }
-      return newValue
-    }
-    return saved
-  }
-
-  // if nothing saved return initial
-  // else if initial version is different then update the persisted value
-  function readOrUpdate(key, initial) {
-    const saved = read(key)
-    if (!saved) {
-      return initial
-    }
-    return typeof saved === 'object' // assume array, functions etc not passed
-      ? updateToNewVersion(saved, initial)
-      : saved
-  }
-
-  function persistentStore(key, initial) {
-    const store = writable(readOrUpdate(key, initial), () => {
-      return store.subscribe((value) => {
-        localStorage[key] = JSON.stringify(value)
-      })
-    })
-
-    return store
   }
 
   return {
@@ -493,7 +403,6 @@ const CLIENT = (function () {
     timer_data,
     seekVideo,
     replaceABCFences,
-    persistentStore,
   }
 })()
 

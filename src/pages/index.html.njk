@@ -15,7 +15,7 @@ eleventyNavigation:
 
 <h1>Tunes</h1>
 
-{% set itemlist = collections.tunes | head(3) %}
+{% set itemlist = collections.tunes | reverse | head(3) %}
 {% include "itemlist.html.njk" %}
 
 <p><a href="{{ '/tunes/' | url }}">More tunes ...</a>.</p>

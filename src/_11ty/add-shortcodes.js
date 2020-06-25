@@ -7,7 +7,15 @@
 function html(strings, ...expressions) {
   return strings.reduce(
     (result, currentString, i) =>
-      `${result}${currentString}${expressions[i] ? `${expressions[i]}` : ''}`,
+      `${result}${currentString}${
+        expressions[i]
+          ? expressions[i]
+          : expressions[i] == ''
+          ? `''`
+          : expressions[i] === undefined
+          ? ''
+          : expressions[i]
+      }`,
     '',
   )
 }
@@ -54,11 +62,18 @@ exports.addShortcodes = function (eleventyConfig) {
     min = 30,
     max = 250,
     step = 5,
+    id,
   ) {
+    bpm = bpm || 100
+    min = min || 30
+    max = max || 250
+    step = step || 5
+
+    console.log('x', bpm, min, max, step, id)
     // prettier-ignore
     return html`
 <span
-  x-data="CLIENT.metronome_data(${bpm}, ${min}, ${max}, ${step})"
+  x-data="CLIENT.metronome_data(${bpm}, ${min}, ${max}, ${step}, '${id}')"
   class="metronome widget"
   x-on:click="onClick($el, $event)">
   <button><</button>

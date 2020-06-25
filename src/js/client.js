@@ -22,9 +22,11 @@ const CLIENT = (function () {
     }
   }
 
-  function metronome_data(bpm, min, max, step) {
+  function metronome_data(bpm, min, max, step, key) {
+    const _bpm = readStorage(key, bpm)
+    console.log(bpm, min, max, step, key)
     return {
-      bpm: bpm,
+      bpm: _bpm,
       checked: false,
       stepper: stepper(min, max, step),
 
@@ -35,6 +37,8 @@ const CLIENT = (function () {
           if (this.checked && $event.target.tagName == 'BUTTON') {
             const delta = $event.target.textContent == '<' ? -1 : 1
             this.bpm = this.stepper(delta, this.bpm)
+            console.log(this.bpm)
+            writeStorage(key, this.bpm)
           } else {
             this.checked = !this.checked
             this.checked &&
@@ -113,7 +117,6 @@ const CLIENT = (function () {
   function persistedRandomItem(_items, key) {
     const defult = { item: undefined, items: [..._items] }
     const { item, items } = readStorage(key, defult)
-    console.log(_items, key)
 
     return {
       item,
@@ -150,7 +153,7 @@ const CLIENT = (function () {
     const items =
       scale == 'all-enharmonic' ? allNotes() : Tonal.Scale.get(scale).notes
     const _id = id != '' ? id : autoIdNote()
-    console.log(scale, id)
+
     return persistedRandomItem(items, _id)
   }
 

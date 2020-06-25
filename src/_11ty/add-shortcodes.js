@@ -20,29 +20,32 @@ exports.addShortcodes = function (eleventyConfig) {
   })
 
   /* widgets */
-  eleventyConfig.addShortcode('randomNote', function (
-    text = 'Random Note',
-    scale = 'all-enharmonic',
-  ) {
+  eleventyConfig.addShortcode('randomNote', function (text, scale, id) {
+    if (!text) text = 'Random Note'
+    if (!scale) scale = 'all-enharmonic'
+
     // prettier-ignore
     return html`
 <button type="button" class="random-note widget"
-  x-data="CLIENT.randomNote_data('${scale}')" x-on:click="getItem">
-  ${text} <span x-text="\`\${item}\`"><span>
+  x-data="CLIENT.randomNote_data('${scale}', '${id}')" x-on:click="getNextItem">
+  ${text} <span x-text="\`\${value}\`"><span>
 </button>`
   })
 
   /* widgets */
   eleventyConfig.addShortcode('randomNumber', function (
-    text = 'Random Note',
+    text,
     min = 1,
     max = 10,
+    id = null,
   ) {
+    if (!text) text = 'Random Number'
+
     // prettier-ignore
     return html`
 <button type="button" class="random-number widget"
-  x-data="CLIENT.randomNumber_data(${min}, ${max})" x-on:click="getItem">
-  ${text} <span x-text="\`\${item}\`"><span>
+  x-data="CLIENT.randomNumber_data(${min}, ${max}, '${id}')" x-on:click="getNextItem">
+  ${text} <span x-text="\`\${value}\`"><span>
 </button>`
   })
 

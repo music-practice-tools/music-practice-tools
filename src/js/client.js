@@ -98,57 +98,70 @@ const CLIENT = (function () {
     return notes
   }
 
-  function randomPicker(items) {
-    let itemsCopy
-    function copyItems() {
-      itemsCopy = [...items]
-    }
-    const obj = {
-      next() {
-        const index = randomInt(0, itemsCopy.length)
-        const item = itemsCopy[index]
-        itemsCopy = itemsCopy.filter((i) => i != item)
-        if (!itemsCopy.length) {
-          copyItems()
-        }
-        return item
-      },
-      reset() {
-        copyItems()
-      },
-    }
-
-    obj.reset()
-    return obj
+  function pickRandom(items) {
+    const index = randomInt(0, items.length)
+    const item = items[index]
+    const _items = items.filter((i) => i != item)
+    return { item, items: _items }
   }
 
-  function randomItem(items) {
-    const picker = randomPicker(items)
+  function autoid(prefix) {
+    let _autoid = 0
+    return () => `${prefix}_${(_autoid++).toString()}`
+  }
+
+  function persistedRandomItem(_items, key) {
+    const defult = { item: undefined, items: [..._items] }
+    const { item, items } = readStorage(key, defult)
+    console.log(_items, key)
+
     return {
-      item: picker.next(),
-      getItem() {
-        this.item = picker.next()
+      item,
+      get value() {
+        if (this.item === undefined) {
+          this.getNextItem()
+        }
+        return this.item
+      },
+      items: items,
+      getNextItem() {
+        if (!_items.length) {
+          return
+        }
+        if (!this.items.length) {
+          this.reset()
+        } else {
+          ;({ item: this.item, items: this.items } = pickRandom(this.items))
+        }
+        this._persist()
       },
       reset() {
-        picker.reset()
-        this.getItem()
+        ;({ item: this.item, items: this.items } = defult)
+        this.getNextItem()
+      },
+      _persist() {
+        writeStorage(key, { item: this.item, items: this.items })
       },
     }
   }
 
-  function randomNote_data(scale) {
+  const autoIdNote = autoid('note')
+  function randomNote_data(scale, id) {
     const items =
       scale == 'all-enharmonic' ? allNotes() : Tonal.Scale.get(scale).notes
-
-    return randomItem(items)
+    const _id = id != '' ? id : autoIdNote()
+    console.log(scale, id)
+    return persistedRandomItem(items, _id)
   }
 
-  function randomNumber_data(min, max) {
+  const autoIdNumber = autoid('number')
+  function randomNumber_data(min, max, id) {
     min = parseInt(min, 10)
     max = parseInt(max, 10)
     const items = range(min, max)
+    const _id = id != '' ? id : autoIdNumber()
 
-    return randomItem(items)
+    return persistedRandomItem(items, _id)
   }
 
   function seekVideo(minsec = '00:00', videoNum = 0) {

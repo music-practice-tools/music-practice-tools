@@ -17,13 +17,14 @@ Built using the following technology 'jamstack':
 - tonejs
 - tonal
 - abcjs
+- Youtube
 - the wonderful web platform
 - nodejs, eslint and prettier
 - hosting by Netlify
 - editing with VS Code
 - Windows
 
-Find out more or host your own on GitHub at [GitHub](https://github.com/music-practice-tools/music-practice-tools).
+Find out more or host your own on [GitHub](https://github.com/music-practice-tools/music-practice-tools).
 
 Here's an example tune page source:
 

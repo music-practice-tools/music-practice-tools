@@ -8,17 +8,14 @@ eleventyNavigation:
 
 <h1>Activities</h1>
 
-{% set itemlist = collections.orderedActivities | reverse | head(-3) %}
-{% set itemlistCounter = collections.orderdActivities | length %}
+{% set itemlist = collections.orderedActivities | head(3) %}
 {% include "itemlist.html.njk" %}
 
 <p><a href="{{ '/activities/' | url }}">More activities ...</a>.</p>
 
 <h1>Tunes</h1>
 
-{% set itemlist = collections.tunes | reverse | head(-3) %}
-{% set itemlistCounter = collections.tunes | length %}
-{% set itemlistReversed = true %}
+{% set itemlist = collections.tunes | head(3) %}
 {% include "itemlist.html.njk" %}
 
 <p><a href="{{ '/tunes/' | url }}">More tunes ...</a>.</p>

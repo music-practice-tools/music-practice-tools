@@ -8,6 +8,6 @@ eleventyNavigation:
 
 <h1>Tunes</h1>
 
-{% set itemlist = collections.tunes %}
+{% set itemlist = collections.tunes | reverse %}
 {% include "itemlist.html.njk" %}
 

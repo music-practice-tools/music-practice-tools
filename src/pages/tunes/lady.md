@@ -3,7 +3,7 @@ title: Lady
 artist: D'Angelo
 key: Eb
 meter: 4/4
-tempo: 1/4=145
+tempo: 1/4=85
 rhythm: Neo Soul
 date: 2020-06-25
 ---
@@ -11,7 +11,7 @@ date: 2020-06-25
 ## Dots
 
 {%- abc title, artist, key, meter, tempo, rhythm -%}
-|:_e:|
+|:e_gaz|ae=ez:|
 {%- endabc -%}
 
 ## Structure

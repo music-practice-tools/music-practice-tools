@@ -11,7 +11,12 @@ date: 2020-06-25
 ## Dots
 
 {%- abc title, artist, key, meter, tempo, rhythm -%}
-|:e_gaz|ae=ez:|
+P: Verse
+|:Ez_GzAz3|AzEz=Ez3|Ez_GzAz3| AzEz=Ez3:|
+P: Chorus
+|:Ez_GzAz3|AzEz=Ez3|Ez_GzAz3|1 AzEz=Ez3:|2 E_GAB GGA/2(G/2E/2)z/s:|
+P: Middle 8
+|:Bf_gb b3(ae):|
 {%- endabc -%}
 
 ## Structure
@@ -22,8 +27,10 @@ date: 2020-06-25
 - {% seekVideo "00:56" %} Chorus
 - {% seekVideo "01:19" %} Verse
 - {% seekVideo "01:42" %} Chorus
-- {% seekVideo "02:27" %} Instr
-- {% seekVideo "03:35" %} Vocal
+- {% seekVideo "02:05" %} Bridge
+- {% seekVideo "02:27" %} Middle 8
+- {% seekVideo "02:50" %} Chorus instr x2
+- {% seekVideo "03:35" %} Chorus 2 x2
 - {% seekVideo "04:22" %} Outro
 
 

@@ -22,58 +22,51 @@ function html(strings, ...expressions) {
 
 /* global exports */
 exports.addShortcodes = function (eleventyConfig) {
-  eleventyConfig.addShortcode('homeLink', function () {
+  eleventyConfig.addNunjucksShortcode('homeLink', function () {
     // prettier-ignore
     return `<a href="/">← Home</a>`
   })
 
   /* widgets */
-  eleventyConfig.addShortcode('randomNote', function (text, scale, id) {
-    if (!text) text = 'Random Note'
-    if (!scale) scale = 'all-enharmonic'
-
+  eleventyConfig.addNunjucksShortcode('randomNote', function ({
+    text = 'Random Note',
+    scale = 'all-enharmonic',
+    pid,
+  } = {}) {
     // prettier-ignore
     return html`
 <button type="button" class="random-note widget"
-  x-data="CLIENT.randomNote_data('${scale}', '${id}')" x-on:click="getNextItem">
+  x-data="CLIENT.randomNote_data('${scale}', '${pid}')" x-on:click="getNextItem">
   ${text} <span x-text="\`\${value}\`"><span>
 </button>`
   })
 
   /* widgets */
-  eleventyConfig.addShortcode('randomNumber', function (
-    text,
+  eleventyConfig.addNunjucksShortcode('randomNumber', function ({
+    text = 'Random Number',
     min = 1,
     max = 10,
-    id = null,
-  ) {
-    if (!text) text = 'Random Number'
-
+    pid,
+  } = {}) {
     // prettier-ignore
     return html`
 <button type="button" class="random-number widget"
-  x-data="CLIENT.randomNumber_data(${min}, ${max}, '${id}')" x-on:click="getNextItem">
+  x-data="CLIENT.randomNumber_data(${min}, ${max}, '${pid}')" x-on:click="getNextItem">
   ${text} <span x-text="\`\${value}\`"><span>
 </button>`
   })
 
-  eleventyConfig.addShortcode('metronome', function (
+  eleventyConfig.addNunjucksShortcode('metronome', function ({
     bpm = 100,
     min = 30,
     max = 250,
     step = 5,
-    id,
-  ) {
-    bpm = bpm || 100
-    min = min || 30
-    max = max || 250
-    step = step || 5
-
-    console.log('x', bpm, min, max, step, id)
+    pid,
+  } = {}) {
     // prettier-ignore
     return html`
 <span
-  x-data="CLIENT.metronome_data(${bpm}, ${min}, ${max}, ${step}, '${id}')"
+  x-data="CLIENT.metronome_data(${bpm}, ${min}, ${max}, ${step}, '${pid}')"
   class="metronome widget"
   x-on:click="onClick($el, $event)">
   <button><</button>
@@ -85,7 +78,10 @@ exports.addShortcodes = function (eleventyConfig) {
 </span>`
   })
 
-  eleventyConfig.addShortcode('seekVideo', function (time, videoNum) {
+  eleventyConfig.addNunjucksShortcode('seekVideo', function ({
+    time,
+    videoNum,
+  } = {}) {
     // prettier-ignore
     return html`
   <button type="button" class="seek-video widget"
@@ -95,17 +91,17 @@ exports.addShortcodes = function (eleventyConfig) {
    `
   })
 
-  eleventyConfig.addShortcode('timer', function (
-    id = 'timer',
+  eleventyConfig.addNunjucksShortcode('timer', function ({
     time = 5,
     useURLTime = false,
     s = true,
     h = false,
-  ) {
+    pid,
+  } = {}) {
     // prettier-ignore
     return html`
 <div
-  x-data="CLIENT.timer_data('${id}', ${time}, ${useURLTime})"
+  x-data="CLIENT.timer_data(${time}, ${useURLTime}, '${pid}' )"
   x-init="init()"
   x-on:unload.window="persist"
   class="timer widget">
@@ -133,7 +129,7 @@ exports.addShortcodes = function (eleventyConfig) {
     `
   })
 
-  eleventyConfig.addPairedNunjucksShortcode('abc', function (
+  eleventyConfig.addPairedNunjucksShortcode('abc', function ({
     content = '',
     title = '',
     artist = '',
@@ -142,7 +138,7 @@ exports.addShortcodes = function (eleventyConfig) {
     tempo = '4/4=100',
     rhythm = '',
     unitnotelength = '1/8',
-  ) {
+  } = {}) {
     // prettier-ignore
     return `
 \`\`\`abc

@@ -22,9 +22,10 @@ const CLIENT = (function () {
     }
   }
 
-  function metronome_data(bpm, min, max, step, key) {
+  function metronome_data(bpm, min, max, step, pid) {
+    const key = pid ? `metronome_${pid}` : null
+    console.log('pid', pid)
     const _bpm = readStorage(key, bpm)
-    console.log(bpm, min, max, step, key)
     return {
       bpm: _bpm,
       checked: false,
@@ -109,11 +110,6 @@ const CLIENT = (function () {
     return { item, items: _items }
   }
 
-  function autoid(prefix) {
-    let _autoid = 0
-    return () => `${prefix}_${(_autoid++).toString()}`
-  }
-
   function persistedRandomItem(_items, key) {
     const defult = { item: undefined, items: [..._items] }
     const { item, items } = readStorage(key, defult)
@@ -148,23 +144,21 @@ const CLIENT = (function () {
     }
   }
 
-  const autoIdNote = autoid('note')
-  function randomNote_data(scale, id) {
+  function randomNote_data(scale, pid) {
     const items =
       scale == 'all-enharmonic' ? allNotes() : Tonal.Scale.get(scale).notes
-    const _id = id != '' ? id : autoIdNote()
+    const key = pid ? `note_${pid}` : null
 
-    return persistedRandomItem(items, _id)
+    return persistedRandomItem(items, key)
   }
 
-  const autoIdNumber = autoid('number')
-  function randomNumber_data(min, max, id) {
+  function randomNumber_data(min, max, pid) {
     min = parseInt(min, 10)
     max = parseInt(max, 10)
     const items = range(min, max)
-    const _id = id != '' ? id : autoIdNumber()
+    const key = pid ? `number_${pid}` : null
 
-    return persistedRandomItem(items, _id)
+    return persistedRandomItem(items, key)
   }
 
   function seekVideo(minsec = '00:00', videoNum = 0) {
@@ -177,13 +171,13 @@ const CLIENT = (function () {
     YOUTUBE.seekTo(seconds, videoNum)
   }
 
-  function timer_data(id, time, useURLTime) {
+  function timer_data(time, useURLTime, pid) {
     const timesp = useURLTime ? this.getSearchParam('timer') : null
     time = timesp !== null ? timesp : time
     const body = document.querySelector('body')
     body.classList.add('has-timer')
     const intialTime = { total: 0, elapsed: 0 }
-    const storageKey = `timer_${id}`
+    const storageKey = pid ? `timer_${pid}` : null
 
     return {
       time: time * 60,
@@ -398,6 +392,9 @@ const CLIENT = (function () {
   }
 
   function readStorage(key, def) {
+    if (!key) {
+      return def
+    }
     try {
       return JSON.parse(localStorage[key])
     } catch (e) {
@@ -406,6 +403,9 @@ const CLIENT = (function () {
   }
 
   function writeStorage(key, value) {
+    if (!key) {
+      return
+    }
     try {
       localStorage[key] = JSON.stringify(value)
     } catch (e) {} // eslint-disable-line no-empty

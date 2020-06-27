@@ -10,6 +10,8 @@ eleventyNavigation:
 
 Steve's interactive music practice journal. An experiment to help with practicing and remote music lessons with [James Rintoul](https://www.facebook.com/james.rintoul) and courses with [Musical U](https://www.musical-u.com/).
 
+Note: uses the browser local storage to persist widgets state link timer time between pages. Use Browser F12 tools to reset if required.
+
 Built using the following technology 'jamstack':
 
 - 11ty with nunjucks and markdown

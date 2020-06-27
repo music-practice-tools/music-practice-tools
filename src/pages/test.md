@@ -5,6 +5,9 @@ layout: tune.html.njk
 permalink: '/{{ page.fileSlug }}/'
 ---
 
+{% timer pid="test", tid="test" %}
+{% activityCheck classes="task-list-item-checkbox", timerid="test" %}
+
 {% metronome bpm=99, pid="zzz" %}
 {% randomNumber text="1-3", min=1, max=3, pid='wibble' %}
 {% randomNumber text="1-4", min=1, max=4  %}

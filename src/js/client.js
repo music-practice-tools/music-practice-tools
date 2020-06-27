@@ -24,7 +24,6 @@ const CLIENT = (function () {
 
   function metronome_data(bpm, min, max, step, pid) {
     const key = pid ? `metronome_${pid}` : null
-    console.log('pid', pid)
     const _bpm = readStorage(key, bpm)
     return {
       bpm: _bpm,
@@ -38,7 +37,6 @@ const CLIENT = (function () {
           if (this.checked && $event.target.tagName == 'BUTTON') {
             const delta = $event.target.textContent == '<' ? -1 : 1
             this.bpm = this.stepper(delta, this.bpm)
-            console.log(this.bpm)
             writeStorage(key, this.bpm)
           } else {
             this.checked = !this.checked
@@ -171,7 +169,14 @@ const CLIENT = (function () {
     YOUTUBE.seekTo(seconds, videoNum)
   }
 
-  function timer_data(time, useURLTime, pid) {
+  const timers = {}
+  function lapTimer(timerid) {
+    console.log(timers)
+    const timer = timers[timerid]
+    timer.lap()
+  }
+
+  function timer_data(time, useURLTime, pid, tid) {
     const timesp = useURLTime ? this.getSearchParam('timer') : null
     time = timesp !== null ? timesp : time
     const body = document.querySelector('body')
@@ -195,6 +200,9 @@ const CLIENT = (function () {
           return () => {
             if (this.auto) this.btnAction()
           }
+        }
+        if (tid) {
+          timers[tid] = this //TODO this is too fragile
         }
       },
 
@@ -419,6 +427,7 @@ const CLIENT = (function () {
     timer_data,
     seekVideo,
     replaceABCFences,
+    lapTimer,
   }
 })()
 

@@ -97,11 +97,12 @@ exports.addShortcodes = function (eleventyConfig) {
     s = true,
     h = false,
     pid,
+    tid,
   } = {}) {
     // prettier-ignore
     return html`
 <div
-  x-data="CLIENT.timer_data(${time}, ${useURLTime}, '${pid}' )"
+  x-data="CLIENT.timer_data(${time}, ${useURLTime}, '${pid}', '${tid}')"
   x-init="init()"
   x-on:unload.window="persist"
   class="timer widget">
@@ -127,6 +128,27 @@ exports.addShortcodes = function (eleventyConfig) {
   </span>
 </div>
     `
+  })
+
+  const activityCheck = (classes, timerid) =>
+    // prettier-ignore
+    html`
+  <input
+    class="${classes}"
+    type="checkbox"
+    onclick="if (this.checked) {CLIENT.lapTimer('${timerid}')} else {return false}"/>
+  `
+
+  eleventyConfig.addNunjucksShortcode('activityCheck', function ({
+    classes = '',
+    timerid,
+  } = {}) {
+    return activityCheck(classes, timerid)
+  })
+
+  eleventyConfig.addNunjucksShortcode('dailyCheck', function () {
+    // prettier-ignore
+    return activityCheck('task-list-item-checkbox', 'main')
   })
 
   eleventyConfig.addPairedNunjucksShortcode('abc', function ({

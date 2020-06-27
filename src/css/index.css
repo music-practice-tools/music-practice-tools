@@ -118,7 +118,7 @@ img {
   margin-left: 0.3em;
 }
 .timer .time {
-  font-size: 0.4em;
+  font-size: 0.36em;
   color: var(--darkred);
   margin-top: 0.6em;
   font-weight: lighter;
@@ -344,7 +344,7 @@ a[href].direct-link:focus:visited,
   color: #aaa;
 }
 
-li.task-list-item {
+.task-list li {
   list-style: none;
 }
 

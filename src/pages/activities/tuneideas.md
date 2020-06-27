@@ -4,8 +4,6 @@ tags: practice
 order: 10
 ---
 
-- Lady - D'Agelo
-
 @[youtube](nmdUMwlrezs)
 
 - Hooverphonic - mad about you

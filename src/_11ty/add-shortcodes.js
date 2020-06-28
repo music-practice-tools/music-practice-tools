@@ -179,7 +179,7 @@ ${content}
   ) {
     // prettier-ignore
     return `
-<label class="abc-src" onclick="CLIENT.toggleABCSource(this.nextElementSibling.firstChild)">
+<label class="abc-src" onclick="CLIENT.toggleABCSource(this)">
   <span>Show ABC source</span>
   <input class="" type="checkbox" />
 </label>

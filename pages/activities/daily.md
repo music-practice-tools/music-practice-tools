@@ -6,6 +6,14 @@ tags: practice
 
 {% timer time=5, pid="main", tid="main" %}
 
+
+{% activityList %}
+
+{% dailyCheck %} **one**
+{% dailyCheck %} two
+
+{% endactivityList %}
+
 <div class="task-list">
 <!-- markdownlint-disable MD013 -->
 

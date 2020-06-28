@@ -428,7 +428,8 @@ const CLIENT = (function () {
     } catch (e) {} // eslint-disable-line no-empty
   }
 
-  function toggleABCSource(pre) {
+  function toggleABCSource(label) {
+    const pre = label.nextElementSibling.firstChild
     pre.style.display = pre.style.display == '' ? 'none' : ''
   }
 

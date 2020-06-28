@@ -8,9 +8,9 @@ eleventyNavigation:
   order: 10
 ---
 
-Steve's interactive music practice journal. An experiment to help with practicing and remote music lessons with [James Rintoul](https://www.facebook.com/james.rintoul) and courses with [Musical U](https://www.musical-u.com/).
+Steve's interactive music practice journal. An experiment to help with practicing and remote music lessons with [James Rintoul](https://www.facebook.com/james.rintoul) and courses with [Musical U](https://www.musical-u.com/). This is basically a blog (static web site) with some interactive widgets supporting common musical needs.
 
-Note: uses the browser local storage to persist widgets state link timer time between pages. Use Browser F12 tools to reset if required.
+Note: the browser local storage is used to persist widget state between pages, eg the timer's current time. Use Browser F12 tools to reset if required.
 
 Built using the following technology 'jamstack':
 

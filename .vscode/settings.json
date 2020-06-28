@@ -2,7 +2,10 @@
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "eslint.enable": true,
-  "eslint.autoFixOnSave": false,
+  "editor.codeActionsOnSave": { "source.fixAll.eslint": false },
   "eslint.alwaysShowStatus": true,
-  "lit-html.format.enabled": false
+  "lit-html.format.enabled": false,
+  "[markdown]": {
+    "editor.rulers": [80]
+  }
 }

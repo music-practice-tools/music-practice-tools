@@ -10,7 +10,7 @@ date: 2020-06-25
 
 ## Dots
 
-{%- abc title=title, artist=artist, key=key, tempo=tempo, rhythm=rythmn -%}
+{%- abc title=title, artist=artist, key=key, tempo=tempo, rhythm=rhythm -%}
 P: Verse
 |:Ez_GzAz3|AzEz=Ez3|Ez_GzAz3| AzEz=Ez3:|
 P: Chorus

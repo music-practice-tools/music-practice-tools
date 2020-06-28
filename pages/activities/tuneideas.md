@@ -4,9 +4,8 @@ tags: practice
 order: 10
 ---
 
-@[youtube](nmdUMwlrezs)
-
 - Hooverphonic - mad about you
+- zero 7 ?
 - Air ?
 - Joy Division
 - Culture - Two Sevens Clash

@@ -8,6 +8,7 @@ tags: practice
 
 <div class="task-list">
 <!-- markdownlint-disable MD013 -->
+
 - {% dailyCheck %} **Finger warm up**
 - {% dailyCheck %} **Rythmn** - 1/8ths downbeat, upbeat, octave pair, accuracy {% metronome bpm=70, pid="dp1" %}
 -{% dailyCheck %} **Fretboard** - all notes: CoF, all strings {% metronome bpm=60, pid="dp2" %} {% randomNote text="Start", scale="C chromatic", pid="dp3" %}
@@ -18,6 +19,7 @@ tags: practice
 - {% dailyCheck %} **Tune - [The Thrill is Gone](/tunes/the-thrill-is-gone)** - with metronome, {% metronome bpm=80, pid="dp6" %}
 - {% dailyCheck %} **Tune - [Crossfire](/tunes/crossfire?timer=6)** - play along up to speed
 - {% dailyCheck %} **Tune - [Brown eyed girl](/tunes/brown-eyed-girl/)** - play along up to speed, transcribe rest
+
 <!-- markdownlint-enable MD013 -->
 </div>
 

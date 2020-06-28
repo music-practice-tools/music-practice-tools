@@ -60,8 +60,9 @@ img {
   padding-left: 0.2rem;
   padding-right: 0.2rem;
 }
-.metronome * {
-  font-weight: 400;
+.metronome span {
+  color: var(--darkred);
+  font-weight: bold;
 }
 .metronome button,
 .timer button {
@@ -296,7 +297,7 @@ pre {
 }
 .tmpl-home .itemlist-link {
   font-size: 1.1875em; /* 19px /16 */
-  font-weight: 500;
+  font-weight: 400;
 }
 
 /* Tags */

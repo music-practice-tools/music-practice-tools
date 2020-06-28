@@ -12,6 +12,7 @@ module.exports = function (eleventyConfig) {
   require('./src/_11ty/add-filters').addFilters(eleventyConfig)
   require('./src/_11ty/add-shortcodes').addShortcodes(eleventyConfig)
   require('./src/_11ty/add-collections').addCollections(eleventyConfig)
+  require('./src/_11ty/configure-markdown').configureMarkdown(eleventyConfig)
 
   eleventyConfig.addPassthroughCopy({ 'src/img': 'img' })
   eleventyConfig.addPassthroughCopy({ 'src/css': 'css' })
@@ -31,11 +32,12 @@ module.exports = function (eleventyConfig) {
           res.end()
         })
 
-        browserSync.publicInstance.reload()
+        //        browserSync.publicInstance.reload()
       },
     },
     ui: false,
     ghostMode: false,
+    //reloadOnRestart: true,
     browser: 'msedge',
   })
 

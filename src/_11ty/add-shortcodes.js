@@ -151,16 +151,18 @@ exports.addShortcodes = function (eleventyConfig) {
     return activityCheck('task-list-item-checkbox', 'main')
   })
 
-  eleventyConfig.addPairedNunjucksShortcode('abc', function ({
-    content = '',
-    title = '',
-    artist = '',
-    key = 'c',
-    meter = '4/4',
-    tempo = '4/4=100',
-    rhythm = '',
-    unitnotelength = '1/8',
-  } = {}) {
+  eleventyConfig.addPairedNunjucksShortcode('abc', function (
+    content,
+    {
+      title = '',
+      artist = '',
+      key = 'c',
+      meter = '4/4',
+      tempo = '4/4=100',
+      rhythm = '',
+      unitnotelength = '1/8',
+    } = {},
+  ) {
     // prettier-ignore
     return `
 \`\`\`abc

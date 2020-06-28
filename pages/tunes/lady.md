@@ -10,7 +10,7 @@ date: 2020-06-25
 
 ## Dots
 
-{%- abc title, artist, key, meter, tempo, rhythm -%}
+{%- abc title=title, artist=artist, key=key, tempo=tempo, rhythm=rythmn -%}
 P: Verse
 |:Ez_GzAz3|AzEz=Ez3|Ez_GzAz3| AzEz=Ez3:|
 P: Chorus
@@ -23,16 +23,16 @@ P: Middle 8
 
 ## Structure
 
-- {% seekVideo "00:00" %} Intro
-- {% seekVideo "00:11" %} Chorus
-- {% seekVideo "00:34" %} Verse
-- {% seekVideo "00:56" %} Chorus
-- {% seekVideo "01:19" %} Verse
-- {% seekVideo "01:42" %} Chorus
-- {% seekVideo "02:05" %} Bridge
-- {% seekVideo "02:27" %} Middle 8
-- {% seekVideo "02:50" %} Instr x2
-- {% seekVideo "03:13" %} Chorus 2 x2
-- {% seekVideo "04:22" %} Outro
+- {% seekVideo time="00:00" %} Intro
+- {% seekVideo time="00:11" %} Chorus
+- {% seekVideo time="00:34" %} Verse
+- {% seekVideo time="00:56" %} Chorus
+- {% seekVideo time="01:19" %} Verse
+- {% seekVideo time="01:42" %} Chorus
+- {% seekVideo time="02:05" %} Bridge
+- {% seekVideo time="02:27" %} Middle 8
+- {% seekVideo time="02:50" %} Instr x2
+- {% seekVideo time="03:13" %} Chorus 2 x2
+- {% seekVideo time="04:22" %} Outro
 
 @[youtube](fLmkoiXuJlg)

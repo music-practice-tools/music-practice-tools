@@ -10,7 +10,7 @@ date: 2020-06-03
 
 ## Dots
 
-{%- abc title, artist, key, meter, tempo, rhythm -%}
+{%- abc title=title, artist=artist, key=key, tempo=tempo, rhythm=rythmn -%}
 P: A
 |:EE_GB_dd zB|_dd zBdBez:|
 P: B
@@ -21,16 +21,16 @@ P: C
 
 ## Structure
 
-- {% seekVideo "00:00" %} Intro A6
-- {% seekVideo "00:26" %} Verse A6
-- {% seekVideo "00:50" %} Chorus A4
-- {% seekVideo "01:08" %} Verse A4
-- {% seekVideo "01:24" %} Chorus A4
-- {% seekVideo "01:41" %} Bridge B2AC
-- {% seekVideo "01:58" %} Middle 8 / Solo A8
-- {% seekVideo "02:30" %} Bridge 2 B2A2
-- {% seekVideo "02:46" %} Verse A4
-- {% seekVideo "03:03" %} Chorus A7C
-- {% seekVideo "03:34" %} Solo A8
+- {% seekVideo time="00:00" %} Intro A6
+- {% seekVideo time="00:26" %} Verse A6
+- {% seekVideo time="00:50" %} Chorus A4
+- {% seekVideo time="01:08" %} Verse A4
+- {% seekVideo time="01:24" %} Chorus A4
+- {% seekVideo time="01:41" %} Bridge B2AC
+- {% seekVideo time="01:58" %} Middle 8 / Solo A8
+- {% seekVideo time="02:30" %} Bridge 2 B2A2
+- {% seekVideo time="02:46" %} Verse A4
+- {% seekVideo time="03:03" %} Chorus A7C
+- {% seekVideo time="03:34" %} Solo A8
 
 @[youtube](ZPBRzwIjgv4)

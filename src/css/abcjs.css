@@ -209,3 +209,10 @@
 .abcjs-container .label {
   color: #888888;
 }
+
+.abc-src {
+  font-size: smaller;
+}
+.abc-src input[type='checkbox'] {
+  transform: scale(1.8);
+}

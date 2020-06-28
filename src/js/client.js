@@ -311,7 +311,7 @@ const CLIENT = (function () {
   function replaceABCFences() {
     const abcNodes = document.querySelectorAll('code.language-abc')
     for (const node of abcNodes) {
-      // TODO concider optmising so not a synth per ABC section
+      // TODO consider optmising so not a synth per ABC section
       let visualObj
       let synthControl
       let tuneLoaded = false
@@ -365,7 +365,16 @@ const CLIENT = (function () {
       })
 
       node.style.display = 'none' // hide the abc source
-
+      /*      const checkbox = document.createElement('label')
+      checkbox.nnnn = node
+      checkbox.innerHTML = `
+<label>
+  <span>Show ABC source</span>
+  <input class="" type="checkbox" onclick="console.log(this,this.parentNode.nextElementSibling);this.nextElementSibling.style.display = ''"/>
+</label>
+`
+      node.parentNode.insertBefore(checkbox, node)
+*/
       const divAudio = document.createElement('div')
       divAudio.id = 'audioControls'
       node.parentElement.appendChild(divDisplay)
@@ -419,6 +428,10 @@ const CLIENT = (function () {
     } catch (e) {} // eslint-disable-line no-empty
   }
 
+  function toggleABCSource(pre) {
+    pre.style.display = pre.style.display == '' ? 'none' : ''
+  }
+
   return {
     getSearchParam,
     metronome_data,
@@ -428,6 +441,7 @@ const CLIENT = (function () {
     seekVideo,
     replaceABCFences,
     lapTimer,
+    toggleABCSource,
   }
 })()
 

@@ -130,6 +130,20 @@ exports.addShortcodes = function (eleventyConfig) {
     `
   })
 
+  eleventyConfig.addPairedNunjucksShortcode('activityList', function (
+    content,
+    pid,
+  ) {
+    const items = content.split('\n- ')
+    //items.filter((i) => i != '-'  && i != '')
+    console.log(items, items.length)
+    return `
+<ul class="task-slist">
+${content}
+</ul>
+`
+  })
+
   const activityCheck = (classes, timerid) =>
     // prettier-ignore
     html`
@@ -165,6 +179,11 @@ exports.addShortcodes = function (eleventyConfig) {
   ) {
     // prettier-ignore
     return `
+<label class="abc-src" onclick="CLIENT.toggleABCSource(this.nextElementSibling.firstChild)">
+  <span>Show ABC source</span>
+  <input class="" type="checkbox" />
+</label>
+
 \`\`\`abc
 X: 1
 K: ${key} clef=bass transpose=-12

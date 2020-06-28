@@ -32,12 +32,11 @@ module.exports = function (eleventyConfig) {
           res.end()
         })
 
-        //        browserSync.publicInstance.reload()
+        browserSync.publicInstance.reload()
       },
     },
     ui: false,
     ghostMode: false,
-    //reloadOnRestart: true,
     browser: 'msedge',
   })
 

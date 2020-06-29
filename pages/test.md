@@ -5,6 +5,13 @@ layout: tune.html.njk
 permalink: '/{{ page.fileSlug }}/'
 ---
 
+{% activityList %}
+
+- {% dailyCheck %} **one**
+- {% dailyCheck %} two
+
+{% endactivityList %}
+
 {% timer pid="test", tid="test" %}
 {% activityCheck classes="task-list-item-checkbox", timerid="test" %}
 

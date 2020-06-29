@@ -321,8 +321,6 @@ const CLIENT = (function () {
         if (!tuneLoaded && synthControl) {
           const p = synthControl
             .setTune(visualObj[0], interactive, {
-              /*soundFontUrl:
-                'https://paulrosen.github.io/midi-js-soundfonts/MusyngKite/',*/
               chordsOff: true,
             })
             .catch(function (error) {
@@ -396,8 +394,10 @@ const CLIENT = (function () {
       midiBuffer
         .init({
           visualObj: visualObj[0],
-          soundFontUrl:
-            'https://paulrosen.github.io/midi-js-soundfonts/MusyngKite/',
+          options: {
+            soundFontUrl:
+              'https://paulrosen.github.io/midi-js-soundfonts/MusyngKite/',
+          },
         })
         .then(function () {
           loadTune(false)

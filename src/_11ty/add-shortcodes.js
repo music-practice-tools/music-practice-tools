@@ -134,11 +134,15 @@ exports.addShortcodes = function (eleventyConfig) {
     content,
     pid,
   ) {
-    const items = content.split('\n- ')
-    //items.filter((i) => i != '-'  && i != '')
-    console.log(items, items.length)
+    const items = content
+      .split('\n- ')
+      .filter((i) => i != '\n')
+      .map((i) => i.replace(/<input/g, '<li><input'))
+      .map((i) => i.replace(/\/>/g, '/></li>'))
+    console.log('z', content, items, items.length)
+
     return `
-<ul class="task-slist">
+<ul class="task-list">
 ${content}
 </ul>
 `
@@ -175,6 +179,7 @@ ${content}
       tempo = '4/4=100',
       rhythm = '',
       unitnotelength = '1/8',
+      midiprogram = '33',
     } = {},
   ) {
     // prettier-ignore
@@ -186,14 +191,14 @@ ${content}
 
 \`\`\`abc
 X: 1
-K: ${key} clef=bass transpose=-12
 M: ${meter}
 Q: ${tempo}
 L: ${unitnotelength}
 C: ${artist}
 T: ${title}
 R: ${rhythm}
-[I: MIDI=program 33]
+%%MIDI program ${midiprogram}
+K: ${key} clef=bass transpose=-12
 ${content}
 \`\`\`
 `

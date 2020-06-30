@@ -2,7 +2,6 @@
 
 /* global Tone Tonal YOUTUBE ABCJS */
 
-// eslint-disable-next-line no-unused-vars
 const CLIENT = (function () {
   'use strict'
 
@@ -171,9 +170,10 @@ const CLIENT = (function () {
 
   const timers = {}
   function lapTimer(timerid) {
-    console.log(timers)
     const timer = timers[timerid]
-    timer.lap()
+    if (timer) {
+      timer.lap()
+    }
   }
 
   function timer_data(time, useURLTime, pid, tid) {
@@ -250,6 +250,39 @@ const CLIENT = (function () {
           total: this.total,
           elapsed: this.elapsed,
         })
+      },
+    }
+  }
+
+  function taskList_data(root, pid) {
+    const storageKey = pid ? `tasklist_${pid}` : null
+    const checkboxes = root.querySelectorAll("input[type='checkbox'")
+    const initial = new Array(checkboxes.length).fill(false)
+
+    const setBoxes = (items) => {
+      checkboxes.forEach((c, i) => {
+        return (c.checked = items[i])
+      })
+    }
+    const getBoxes = () => {
+      const items = []
+      checkboxes.forEach((c, i) => (items[i] = c.checked))
+      return items
+    }
+
+    return {
+      init() {
+        const items = readStorage(storageKey, initial)
+        setBoxes(items)
+      },
+
+      reset() {
+        setBoxes(initial)
+        this.persist()
+      },
+
+      persist() {
+        writeStorage(storageKey, getBoxes())
       },
     }
   }
@@ -363,16 +396,7 @@ const CLIENT = (function () {
       })
 
       node.style.display = 'none' // hide the abc source
-      /*      const checkbox = document.createElement('label')
-      checkbox.nnnn = node
-      checkbox.innerHTML = `
-<label>
-  <span>Show ABC source</span>
-  <input class="" type="checkbox" onclick="console.log(this,this.parentNode.nextElementSibling);this.nextElementSibling.style.display = ''"/>
-</label>
-`
-      node.parentNode.insertBefore(checkbox, node)
-*/
+
       const divAudio = document.createElement('div')
       divAudio.id = 'audioControls'
       node.parentElement.appendChild(divDisplay)
@@ -408,6 +432,11 @@ const CLIENT = (function () {
     }
   }
 
+  function toggleABCSource(label) {
+    const pre = label.nextElementSibling.firstChild
+    pre.style.display = pre.style.display == '' ? 'none' : ''
+  }
+
   function readStorage(key, def) {
     if (!key) {
       return def
@@ -428,17 +457,13 @@ const CLIENT = (function () {
     } catch (e) {} // eslint-disable-line no-empty
   }
 
-  function toggleABCSource(label) {
-    const pre = label.nextElementSibling.firstChild
-    pre.style.display = pre.style.display == '' ? 'none' : ''
-  }
-
   return {
     getSearchParam,
     metronome_data,
     randomNote_data,
     randomNumber_data,
     timer_data,
+    taskList_data,
     seekVideo,
     replaceABCFences,
     lapTimer,

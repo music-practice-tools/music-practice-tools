@@ -7,7 +7,7 @@ permalink: '/{{ page.fileSlug }}/'
 
 {% activityList %}
 
-- {% dailyCheck %} **one**
+- {% dailyCheck %} **Finger warm up**
 - {% dailyCheck %} two
 
 {% endactivityList %}

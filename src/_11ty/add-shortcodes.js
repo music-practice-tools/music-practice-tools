@@ -132,20 +132,20 @@ exports.addShortcodes = function (eleventyConfig) {
 
   eleventyConfig.addPairedNunjucksShortcode('activityList', function (
     content,
-    pid,
+    { pid } = {},
   ) {
-    const items = content
-      .split('\n- ')
-      .filter((i) => i != '\n')
-      .map((i) => i.replace(/<input/g, '<li><input'))
-      .map((i) => i.replace(/\/>/g, '/></li>'))
-    console.log('z', content, items, items.length)
-
-    return `
-<ul class="task-list">
+    // prettier-ignore
+    return html`
+<div
+  x-data="CLIENT.taskList_data($el, '${pid}')"
+  x-init="init()"
+  x-on:unload.window="persist"
+  x-on:click="persist"
+  class="task-list">
+<button x-on:click="reset">Clear</button>
 ${content}
-</ul>
-`
+</div>
+    `
   })
 
   const activityCheck = (classes, timerid) =>
@@ -154,7 +154,7 @@ ${content}
   <input
     class="${classes}"
     type="checkbox"
-    onclick="if (this.checked) {CLIENT.lapTimer('${timerid}')} else {return false}"/>
+    onclick="CLIENT.lapTimer('${timerid}')"/>
   `
 
   eleventyConfig.addNunjucksShortcode('activityCheck', function ({

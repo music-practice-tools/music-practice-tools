@@ -6,8 +6,8 @@ tags: practice
 
 {% timer time=5, pid="main", tid="main" %}
 
-<div class="task-list">
 <!-- markdownlint-disable MD013 -->
+{% activityList pid="daily" %}
 
 - {% dailyCheck %} **Finger warm up**
 - {% dailyCheck %} **Rythmn** - 1/8ths downbeat, upbeat, octave pair, accuracy {% metronome bpm=70, pid="dp1" %}
@@ -20,8 +20,8 @@ tags: practice
 - {% dailyCheck %} **Tune - [Crossfire](/tunes/crossfire?timer=6)** - play along up to speed
 - {% dailyCheck %} **Tune - [Brown eyed girl](/tunes/brown-eyed-girl/)** - play along up to speed, transcribe rest
 
+{% endactivityList %}
 <!-- markdownlint-enable MD013 -->
-</div>
 
 **Notes:**
 

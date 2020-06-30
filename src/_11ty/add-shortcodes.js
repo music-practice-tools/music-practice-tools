@@ -140,7 +140,7 @@ exports.addShortcodes = function (eleventyConfig) {
   x-data="CLIENT.taskList_data($el, '${pid}')"
   x-init="init()"
   x-on:unload.window="persist"
-  x-on:click="persist"
+  x-on:click="persist""
   class="task-list">
 <button x-on:click="reset">Clear</button>
 ${content}
@@ -154,7 +154,7 @@ ${content}
   <input
     class="${classes}"
     type="checkbox"
-    onclick="CLIENT.lapTimer('${timerid}')"/>
+    onclick="if (this.checked) {CLIENT.lapTimer('${timerid}')}"/>
   `
 
   eleventyConfig.addNunjucksShortcode('activityCheck', function ({

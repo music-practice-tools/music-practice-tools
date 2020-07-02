@@ -41,9 +41,9 @@ The non pages source code is in the [`src`](https://github.com/music-practice-to
 
 ### Notes
 
-This is basically a static site using nunjucks templates with a little client-side javascript added behviours to provide interactive widgets. 11ty supports a range of templates and provides a few light utilites and abstractions. This project is based on the 11ty blog example which supports tags.
+This is basically a static site using nunjucks templates with a little client-side javascript added for behaviours to provide interactive widgets. This project is based on the 11ty blog example which supports tags.
 
-Template short codes are used for the custom interactive widgets. These provide a very clean authoring experience but does mean some widget code is server side and some client side. In general the source code under `src` is:
+Template shortcodes are used for the custom interactive widgets. These provide a clean authoring experience but does mean some widget code is server side and some client side. In general the source code under `src` is:
 
 - Page templates in `pages`
 - 11ty config in `_11ty\*`

@@ -12,7 +12,7 @@ Steve's interactive music practice journal. An experiment to help with practicin
 
 Note: the browser local storage is used to persist widget state between pages, eg the timer's current time. Use Browser F12 tools to reset if required.
 
-Built using the following technology 'jamstack':
+Built using the following technology 'jamstack' as described [in this blog post](https://opendirective.net/2020/07/01/music-practice-tools/):
 
 - 11ty with nunjucks and markdown
 - alpinejs

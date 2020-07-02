@@ -256,7 +256,7 @@ const CLIENT = (function () {
 
   function taskList_data(root, pid) {
     const storageKey = pid ? `tasklist_${pid}` : null
-    const checkboxes = root.querySelectorAll("input[type='checkbox'")
+    const checkboxes = root.querySelectorAll('.task-list-item-checkbox')
     const initial = new Array(checkboxes.length).fill(false)
 
     const setBoxes = (items) => {

@@ -35,15 +35,10 @@ exports.addCollections = function (eleventyConfig) {
 
   eleventyConfig.addCollection('orderedActivities', function (collectionApi) {
     return collectionApi.getFilteredByTag('activities').sort(function (a, b) {
-      console.log(
-        'order',
-        a.data.title,
-        a.data.order || 0,
-        b.data.title,
-        b.data.order || 0,
-        (a.data.order || 0) - (b.data.order || 0),
+      return (
+        (a.data.order || Number.MAX_SAFE_INTEGER) -
+        (b.data.order || Number.MAX_SAFE_INTEGER)
       )
-      return (a.data.order || 9999) - (b.data.order || 9999)
     })
   })
 }

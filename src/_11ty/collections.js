@@ -38,11 +38,12 @@ exports.addCollections = function (eleventyConfig) {
       console.log(
         'order',
         a.data.title,
-        a.data.order,
+        a.data.order || 0,
         b.data.title,
-        b.data.order,
+        b.data.order || 0,
+        (a.data.order || 0) - (b.data.order || 0),
       )
-      return a.data.order - b.data.order
+      return (a.data.order || 9999) - (b.data.order || 9999)
     })
   })
 }

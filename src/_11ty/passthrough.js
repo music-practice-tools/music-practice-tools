@@ -18,9 +18,9 @@ exports.passthroughCopy = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({
     'node_modules/alpinejs/dist/alpine.js': 'js/vendor/alpine.js',
   })
-  // Note currently abcjs is missing the build folder contents so I copied.
-  eleventyConfig.addPassthroughCopy({
-    'node_modules/abcjs/dist/abcjs_basic_6.0.0-beta.12-min.js':
-      'js/vendor/abcjs_basic_6.0.0-beta.12-min.js',
-  })
+  // Note currently abcjs is missing the build folder contents so I copied to src/js/vendor.
+  //eleventyConfig.addPassthroughCopy({
+  //  'node_modules/abcjs/dist/abcjs_basic_6.0.0-beta.12-min.js':
+  //    'js/vendor/abcjs_basic_6.0.0-beta.12-min.js',
+  //})
 }

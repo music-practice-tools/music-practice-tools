@@ -35,6 +35,13 @@ exports.addCollections = function (eleventyConfig) {
 
   eleventyConfig.addCollection('orderedActivities', function (collectionApi) {
     return collectionApi.getFilteredByTag('activities').sort(function (a, b) {
+      console.log(
+        'order',
+        a.data.title,
+        a.data.order,
+        b.data.title,
+        b.data.order,
+      )
       return a.data.order - b.data.order
     })
   })

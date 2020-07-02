@@ -5,6 +5,7 @@ exports.passthroughCopy = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ 'src/css': 'css' })
   eleventyConfig.addPassthroughCopy({ 'src/sounds': 'sounds' })
   eleventyConfig.addPassthroughCopy({ 'src/favicons/': '/' })
+  eleventyConfig.addPassthroughCopy({ 'src/robots.txt': '/robots.txt' })
   eleventyConfig.addPassthroughCopy({ 'src/js': 'js' })
 
   eleventyConfig.addPassthroughCopy({
@@ -19,7 +20,7 @@ exports.passthroughCopy = function (eleventyConfig) {
   })
   // Note currently abcjs is missing the build folder contents so I copied.
   eleventyConfig.addPassthroughCopy({
-    'node_modules/abcjs/dist/abcjs_basic_6.0.0-beta.12.js':
-      'js/vendor/abcjs_basic_6.0.0-beta.12.js',
+    'node_modules/abcjs/dist/abcjs_basic_6.0.0-beta.12-min.js':
+      'js/vendor/abcjs_basic_6.0.0-beta.12-min.js',
   })
 }

@@ -9,16 +9,11 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addLayoutAlias('activity', 'activity.html.njk')
 
-  require('./src/_11ty/add-filters').addFilters(eleventyConfig)
-  require('./src/_11ty/add-shortcodes').addShortcodes(eleventyConfig)
-  require('./src/_11ty/add-collections').addCollections(eleventyConfig)
-  require('./src/_11ty/configure-markdown').configureMarkdown(eleventyConfig)
-
-  eleventyConfig.addPassthroughCopy({ 'src/img': 'img' })
-  eleventyConfig.addPassthroughCopy({ 'src/css': 'css' })
-  eleventyConfig.addPassthroughCopy({ 'src/sounds': 'sounds' })
-  eleventyConfig.addPassthroughCopy({ 'src/favicons/': '/' })
-  eleventyConfig.addPassthroughCopy({ 'src/js': 'js' })
+  require('./src/_11ty/filters').addFilters(eleventyConfig)
+  require('./src/_11ty/shortcodes').addShortcodes(eleventyConfig)
+  require('./src/_11ty/collections').addCollections(eleventyConfig)
+  require('./src/_11ty/markdown').configureMarkdown(eleventyConfig)
+  require('./src/_11ty/passthrough').passthroughCopy(eleventyConfig)
 
   // Browsersync Overrides
   eleventyConfig.setBrowserSyncConfig({

@@ -2,9 +2,10 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/c2677289-ece4-4fd0-97a0-aa0c1ca166e2/deploy-status)](https://app.netlify.com/sites/music-practice-tools/deploys)
 
-Tools to help with practicing and improving musicality, including with remote lessons.
+Tools to help with music practice and improving musicality as well as remote lessons.
 
-The concept is a blog / journal which contains interactive elements for making life easier. These include:
+The format is a blog / journal which contains interactive elements for making life easier.
+These include:
 
 - Metronomes with predefined yet adjusable bpm
 - [quasi]Random note and number selectors (all items in a range are presented)
@@ -15,18 +16,28 @@ The concept is a blog / journal which contains interactive elements for making l
 
 Uses [this stack](https://musicpracticetools.net/about/) of awesome opensource technology.
 
-Pages are authored using nunjucks templates, rendered by the 11ty static site generator.
-
-## Developers
+All pages live in the [`pages`](https://github.com/music-practice-tools/music-practice-tools/tree/master/pages) folder and are authored using nunjucks templated markdown which are rendered by the awesome 11ty static site generator. Widgets are added with shortcodes.
 
 This use a typical nodejs development platform so:
 
 - clone the repo
 - `npm install`
 - `npm run devall`
+- edit pages
 - browse to the localhost URL printed on the cli (usually `http://localhost:8080/`).
 
-I publish to https://musicpracticetools.net/ via Netlify which makes it trivial.
+---
+
+Get your own version of https://musicpracticetools.net/ on the web with Netlify using this button.
+It will clone this repo to your own GitHub account and link it to a new site for you on Netlfy.
+
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/music-practice-tools/music-practice-tools)
+
+---
+
+## Developers
+
+The non pages source code is in the [`src`](https://github.com/music-practice-tools/music-practice-tools/tree/master/src). The usual dev tool config files are in the project root.
 
 ### Notes
 

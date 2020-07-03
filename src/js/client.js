@@ -91,15 +91,6 @@ const CLIENT = (function () {
     return rnd
   }
 
-  function allNotes() {
-    const notes = Tonal.Range.chromatic(['C2', 'B2']).flatMap((n) => {
-      const bare = Tonal.Note.get(n).pc // drop octave
-      const enh = Tonal.Note.enharmonic(bare)
-      return enh != bare ? [enh, bare] : bare
-    })
-    return notes
-  }
-
   function pickRandom(items) {
     const index = randomInt(0, items.length)
     const item = items[index]
@@ -141,11 +132,29 @@ const CLIENT = (function () {
     }
   }
 
+  const circleoffourthsNotes = [
+    'C',
+    'F',
+    'Bb',
+    'Eb',
+    'Ab',
+    'Db',
+    'Gb',
+    'F#',
+    'B',
+    'E',
+    'A',
+    'D',
+    'G',
+  ]
+
   function randomNote_data(scale, pid) {
     const items =
-      scale == 'all-enharmonic' ? allNotes() : Tonal.Scale.get(scale).notes
+      scale == 'circleoffourths'
+        ? circleoffourthsNotes
+        : Tonal.Scale.get(scale).notes
     const key = pid ? `note_${pid}` : null
-
+    console.log('zzz', key)
     return persistedRandomItem(items, key)
   }
 

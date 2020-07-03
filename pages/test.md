@@ -13,10 +13,7 @@ permalink: '/{{ page.fileSlug }}/'
 {% endactivityList %}
 
 {% timer pid="test", tid="test" %}
-{% activityCheck classes="task-list-item-checkbox", timerid="test" %}
 
 {% metronome bpm=99, pid="zzz" %}
 {% randomNumber text="1-3", min=1, max=3, pid='wibble' %}
-{% randomNumber text="1-4", min=1, max=4  %}
-{% randomNumber text="1-5", min=1, max=5  %}
-{% randomNote %}
+{% randomNote text="Start", pid="test"%}

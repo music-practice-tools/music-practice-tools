@@ -11,7 +11,7 @@ tags: practice
 
 - {% dailyCheck %} **Finger warm up**
 - {% dailyCheck %} **Rythmn** - 1/8ths downbeat, upbeat, octave pair, accuracy {% metronome bpm=70, pid="dp1" %}
--{% dailyCheck %} **Fretboard** - all notes: CoF, all strings {% metronome bpm=60, pid="dp2" %} {% randomNote text="Start", scale="C chromatic", pid="dp3" %}
+-{% dailyCheck %} **Fretboard** - all notes: CoF, all strings {% metronome bpm=60, pid="dp2" %} {% randomNote text="Start", pid="dp3" %}
 - {% dailyCheck %} **Scale** - play and name: maj and rel min x 3 {% randomNote text="Scale", pid="dp4" %}
 - {% dailyCheck %} **Ear training** - C, F, G: Do Mi Fa So Do
 - {% dailyCheck %} **Improvisation** - play 3 patterns, a few lines each
@@ -26,4 +26,3 @@ tags: practice
 **Notes:**
 
 - Metronome: choose speed can play at with no mistakes, play x 3 to progress
-- Think about ways to record progress

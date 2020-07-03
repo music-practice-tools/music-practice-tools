@@ -30,9 +30,10 @@ exports.addShortcodes = function (eleventyConfig) {
   /* widgets */
   eleventyConfig.addNunjucksShortcode('randomNote', function ({
     text = 'Random Note',
-    scale = 'all-enharmonic',
+    scale = 'circleoffourths',
     pid,
   } = {}) {
+    console.log('ssas', pid)
     // prettier-ignore
     return html`
 <button type="button" class="random-note widget"

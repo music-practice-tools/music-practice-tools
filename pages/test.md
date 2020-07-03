@@ -5,6 +5,8 @@ layout: tune.html.njk
 permalink: '/{{ page.fileSlug }}/'
 ---
 
+{% videoRecorder %}
+
 {% activityList %}
 
 - {% dailyCheck %} **Finger warm up**

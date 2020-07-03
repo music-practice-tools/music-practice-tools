@@ -37,6 +37,16 @@ img {
   background-color: var(--lightgray);
 }
 
+video {
+  margin-top: 2px;
+  border: 1px solid black;
+  border-radius: 0.25em;
+  max-width: 15vw;
+}
+.video {
+  display: flex;
+  flex-direction: column;
+}
 /* activity list */
 /* metronome */
 .task-list input[type='checkbox'],
@@ -66,7 +76,8 @@ img {
   font-weight: bold;
 }
 .metronome button,
-.timer button {
+.timer button,
+.video button {
   background-color: var(--widget-bg);
   border-radius: 0.25rem;
 }
@@ -78,17 +89,19 @@ img {
 .seek-video,
 .metronome,
 .timer,
-.timer button {
+.timer button,
+.video * {
   border-radius: 0.25rem;
 }
 .random-note,
 .random-number,
 .seek-video,
-.metronome label {
+.metronome label .video button {
   font-size: calc(var(--font-size) - 3px);
 }
 /* timer */
-.timer {
+.timer,
+.video {
   font-size: 5vw;
   display: flex;
   flex-direction: column;
@@ -98,14 +111,16 @@ img {
   top: 0.5em;
   padding: 0.13em;
   padding-bottom: 0.1rem;
-  border: solid 0.05em black;
   border-radius: 0.25em;
   font-family: Arial, helvetica, sans-serif;
   z-index: 9999;
   line-height: 0.8;
 }
-.has-timer div#mpt-videotime {
+.video {
   top: 3em;
+}
+.has-timer div#mpt-videotime {
+  top: 3.1em;
 }
 .timer div {
   display: flex;
@@ -115,7 +130,8 @@ img {
 .timer :first-child {
   margin: 0;
 }
-.timer button {
+.timer button,
+.video button {
   font-size: 0.4em;
   margin-left: 0.3em;
 }

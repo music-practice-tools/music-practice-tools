@@ -465,6 +465,114 @@ const CLIENT = (function () {
     } catch (e) {} // eslint-disable-line no-empty
   }
 
+  function record() {
+    let preview = document.getElementById('preview')
+    if (!preview) {
+      return
+    }
+
+    let recordingTimeMS = 30000
+
+    function log(msg) {
+      console.log(msg)
+    }
+
+    function wait(delayInMS) {
+      return new Promise((resolve) => setTimeout(resolve, delayInMS))
+    }
+
+    function startRecording(stream, lengthInMS) {
+      let recorder = new MediaRecorder(stream)
+      let data = []
+
+      recorder.ondataavailable = (event) => data.push(event.data)
+      recorder.start()
+
+      let stopped = new Promise((resolve, reject) => {
+        recorder.onstop = resolve
+        recorder.onerror = (event) => reject(event.name)
+      })
+
+      let recorded = wait(lengthInMS).then(
+        () => recorder.state == 'recording' && recorder.stop(),
+      )
+
+      return Promise.race([stopped, Promise.all([stopped, recorded])]).then(
+        () => data,
+      )
+    }
+
+    function stop(stream) {
+      stream.getTracks().forEach((track) => track.stop())
+    }
+
+    function pause() {
+      preview.pause()
+    }
+
+    function setButtonState(state, p) {
+      const button = document.getElementById('button')
+      const stopper = () => {
+        stop(p)
+      }
+      if (state == 'paused') {
+        button.textContent = 'Record'
+        button.removeEventListener('click', pause)
+        button.addEventListener('click', record, false)
+      } else if (state == 'recording') {
+        button.textContent = 'Play'
+        button.removeEventListener('click', record)
+        button.addEventListener('click', stopper, false)
+      } else if (state == 'looping') {
+        button.textContent = 'Stop'
+        button.removeEventListener('click', stopper)
+        button.addEventListener('click', pause, false)
+      }
+    }
+
+    preview.addEventListener('pause', () => {
+      setButtonState('paused')
+    })
+
+    function record() {
+      navigator.mediaDevices
+        .getUserMedia({
+          video: true,
+          audio: true,
+        })
+        .then((stream) => {
+          preview.src = null
+          preview.autoplay = true
+          preview.muted = true
+          preview.srcObject = stream
+          preview.captureStream =
+            preview.captureStream || preview.mozCaptureStream
+          return new Promise((resolve) => (preview.onplaying = resolve))
+        })
+        .then(() => {
+          setButtonState('recording', preview.srcObject)
+          return startRecording(preview.captureStream(), recordingTimeMS)
+        })
+        .then((recordedChunks) => {
+          let recordedBlob = new Blob(recordedChunks, { type: 'video/webm' })
+
+          preview.srcObject = null
+          //preview.captureStream=null
+          preview.controls = true
+          preview.loop = true
+          preview.muted = false
+          preview.src = URL.createObjectURL(recordedBlob)
+          setButtonState('looping')
+        })
+
+        .catch(log)
+    }
+
+    setButtonState('paused')
+  }
+
+  record()
+
   return {
     getSearchParam,
     metronome_data,

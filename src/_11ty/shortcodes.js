@@ -56,6 +56,17 @@ exports.addShortcodes = function (eleventyConfig) {
 </button>`
   })
 
+  eleventyConfig.addNunjucksShortcode('resetSettings', function ({
+    text = 'Reset Settings',
+  } = {}) {
+    // prettier-ignore
+    return html`
+<button type="button" class="widget"
+  onclick="if (confirm('Do you want to reset all settings?')) {localStorage.clear()}">
+  ${text}
+</button>`
+  })
+
   eleventyConfig.addNunjucksShortcode('metronome', function ({
     bpm = 100,
     min = 30,
@@ -88,6 +99,19 @@ exports.addShortcodes = function (eleventyConfig) {
           onclick="CLIENT.seekVideo('${time}', ${videoNum})">
     ${time}
   </button>
+   `
+  })
+
+  eleventyConfig.addNunjucksShortcode('videoRecorder', function ({
+    time,
+    videoNum,
+  } = {}) {
+    // prettier-ignore
+    return html`
+<div class="video widget">
+  <button type="button" id="button" class="button"></button>
+  <video id="preview" autoplay muted></video>
+</div>
    `
   })
 

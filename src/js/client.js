@@ -154,7 +154,6 @@ const CLIENT = (function () {
         ? circleoffourthsNotes
         : Tonal.Scale.get(scale).notes
     const key = pid ? `note_${pid}` : null
-    console.log('zzz', key)
     return persistedRandomItem(items, key)
   }
 

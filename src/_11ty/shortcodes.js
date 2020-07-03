@@ -33,7 +33,6 @@ exports.addShortcodes = function (eleventyConfig) {
     scale = 'circleoffourths',
     pid,
   } = {}) {
-    console.log('ssas', pid)
     // prettier-ignore
     return html`
 <button type="button" class="random-note widget"

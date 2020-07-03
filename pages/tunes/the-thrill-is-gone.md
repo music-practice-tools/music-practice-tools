@@ -10,6 +10,7 @@ date: 2020-06-01
 
 ## Dots
 
+<!-- prettier-ignore -->
 {%- abc title=title, artist=artist, key=key, tempo=tempo, rhythm=rhythm -%}
 |:^A|"Bm"BB z=F ^FF z^A|"Bm"BB z=F ^FF z^A|"Bm"BB z=F ^FF z^A|"Bm"BB z=F ^FFB^d|
 |"Em"ee z^A BB z^d|"Em"ee z^A ^BBdc|"Bm"BB z=F ^FF z^A|"Bm"BB z=F ^FF^A=A|

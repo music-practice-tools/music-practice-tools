@@ -1,5 +1,4 @@
 public/bundle.*
 _site/
 src/client-js/3rdparty
-pages/*/*.md
 

@@ -10,6 +10,7 @@ date: 2020-06-03
 
 ## Dots
 
+<!-- prettier-ignore -->
 {%- abc title=title, artist=artist, key=key, tempo=tempo, rhythm=rhythm -%}
 P: A
 |:EE_GB_dd zB|_dd zBdBez:|

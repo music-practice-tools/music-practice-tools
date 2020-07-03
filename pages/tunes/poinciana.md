@@ -11,6 +11,7 @@ date: 2020-06-29
 
 ## Dots
 
+<!-- prettier-ignore -->
 {%- abc title=title, artist=artist, key=key, tempo=tempo, rhythm=rhythm, midiprogram=midiprogram -%}
 |: EGc :|
 {%- endabc -%}

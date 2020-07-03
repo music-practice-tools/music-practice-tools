@@ -42,6 +42,7 @@ video {
   border: 1px solid black;
   border-radius: 0.25em;
   max-width: 15vw;
+  transform: rotateY(180deg);
 }
 .video {
   display: flex;

@@ -131,7 +131,7 @@ exports.addShortcodes = function (eleventyConfig) {
   x-on:unload.window="persist"
   class="timer widget">
   <div style="display: flex; justify-content: space-around; width:100%">
-    <button x-on:click="btnAction" x-text="\`\${btnText()}\`"></button>
+    <button x-on:click="toggle" x-text="\`\${btnText()}\`"></button>
     <button x-on:click="lap">Lap</button>
     <button x-on:click="reset">Rst</button>
   </div>
@@ -156,7 +156,7 @@ exports.addShortcodes = function (eleventyConfig) {
 
   eleventyConfig.addPairedNunjucksShortcode('activityList', function (
     content,
-    { pid } = {},
+    { timerid, pid } = {},
   ) {
     // prettier-ignore
     return html`
@@ -166,6 +166,7 @@ exports.addShortcodes = function (eleventyConfig) {
   x-on:unload.window="persist"
   x-on:click="persist""
   class="task-list">
+<button onclick="{CLIENT.startTimer('${timerid}')}">Start</button>
 <button x-on:click="reset">Clear</button>
 ${content}
 </div>

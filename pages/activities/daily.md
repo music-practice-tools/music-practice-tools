@@ -10,7 +10,7 @@ date: 2020-05-29
 
 <!-- markdownlint-disable MD013 -->
 
-{% activityList pid="daily" %}
+{% activityList timerid='main', pid="daily" %}
 
 - {% dailyCheck %} **Finger warm up**
 - {% dailyCheck %} **Rythmn** - 1/8ths downbeat, upbeat, octave pair, accuracy {% metronome bpm=70, pid="dp1" %}

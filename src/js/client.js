@@ -184,6 +184,13 @@ const CLIENT = (function () {
     }
   }
 
+  function startTimer(timerid) {
+    const timer = timers[timerid]
+    if (timer) {
+      timer.start()
+    }
+  }
+
   function timer_data(time, useURLTime, pid, tid) {
     const timesp = useURLTime ? this.getSearchParam('timer') : null
     time = timesp !== null ? timesp : time
@@ -231,15 +238,27 @@ const CLIENT = (function () {
         return this.timer ? 'Stp' : 'Sta'
       },
 
-      btnAction() {
+      start() {
         if (!this.timer) {
           this.timer = setInterval(() => {
             this.total += 1
             this.elapsed += 1
           }, 1000)
-        } else {
+        }
+      },
+
+      stop() {
+        if (this.timer) {
           clearInterval(this.timer)
           this.timer = undefined
+        }
+      },
+
+      toggle() {
+        if (!this.timer) {
+          this.start()
+        } else {
+          this.stop()
         }
       },
 
@@ -594,6 +613,7 @@ const CLIENT = (function () {
     seekVideo,
     replaceABCFences,
     lapTimer,
+    startTimer,
     toggleABCSource,
   }
 })()

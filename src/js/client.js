@@ -577,10 +577,11 @@ const CLIENT = (function () {
           buttonClicked = () => {
             stop(stream)
           }
-        } else if (state == 'looping' || state == 'paused') {
+        } else if (state == 'looping') {
           preview.classList.remove('hidden')
           button.textContent = 'End'
           buttonClicked = () => {
+            preview.pause()
             statefunc('stopped')
           }
         }

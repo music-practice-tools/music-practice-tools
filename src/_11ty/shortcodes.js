@@ -109,7 +109,7 @@ exports.addShortcodes = function (eleventyConfig) {
     // prettier-ignore
     return html`
 <div class="video widget">
-  <button type="button" id="button" class="button"></button>
+  <button type="button" id="recorderbutton" class="button"></button>
   <video id="preview" autoplay muted></video>
 </div>
    `

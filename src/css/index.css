@@ -37,16 +37,21 @@ img {
   background-color: var(--lightgray);
 }
 
+.video {
+  align-items: center;
+  min-width: 17vw;
+}
 video {
-  margin-top: 2px;
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
   border: 1px solid black;
   border-radius: 0.25em;
   max-width: 15vw;
   transform: rotateY(180deg);
+  display: block;
 }
-.video {
-  display: flex;
-  flex-direction: column;
+video.hidden {
+  display: none;
 }
 /* activity list */
 /* metronome */
@@ -97,7 +102,8 @@ video {
 .random-note,
 .random-number,
 .seek-video,
-.metronome label .video button {
+.metronome label,
+.video button {
   font-size: calc(var(--font-size) - 3px);
 }
 /* timer */

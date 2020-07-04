@@ -465,13 +465,11 @@ const CLIENT = (function () {
     } catch (e) {} // eslint-disable-line no-empty
   }
 
-  function record() {
-    let preview = document.getElementById('preview')
+  function record(recordingTime) {
+    const preview = document.getElementById('preview')
     if (!preview) {
       return
     }
-
-    let recordingTimeMS = 30000
 
     function log(msg) {
       console.log(msg)
@@ -502,38 +500,6 @@ const CLIENT = (function () {
       )
     }
 
-    function stop(stream) {
-      stream.getTracks().forEach((track) => track.stop())
-    }
-
-    function pause() {
-      preview.pause()
-    }
-
-    function setButtonState(state, p) {
-      const button = document.getElementById('button')
-      const stopper = () => {
-        stop(p)
-      }
-      if (state == 'paused') {
-        button.textContent = 'Record'
-        button.removeEventListener('click', pause)
-        button.addEventListener('click', record, false)
-      } else if (state == 'recording') {
-        button.textContent = 'Play'
-        button.removeEventListener('click', record)
-        button.addEventListener('click', stopper, false)
-      } else if (state == 'looping') {
-        button.textContent = 'Stop'
-        button.removeEventListener('click', stopper)
-        button.addEventListener('click', pause, false)
-      }
-    }
-
-    preview.addEventListener('pause', () => {
-      setButtonState('paused')
-    })
-
     function record() {
       navigator.mediaDevices
         .getUserMedia({
@@ -541,7 +507,7 @@ const CLIENT = (function () {
           audio: true,
         })
         .then((stream) => {
-          preview.src = null
+          //         preview.src = null
           preview.autoplay = true
           preview.muted = true
           preview.srcObject = stream
@@ -551,10 +517,10 @@ const CLIENT = (function () {
         })
         .then(() => {
           setButtonState('recording', preview.srcObject)
-          return startRecording(preview.captureStream(), recordingTimeMS)
+          return startRecording(preview.captureStream(), recordingTime * 1000)
         })
         .then((recordedChunks) => {
-          let recordedBlob = new Blob(recordedChunks, { type: 'video/webm' })
+          const recordedBlob = new Blob(recordedChunks, { type: 'video/webm' })
 
           preview.srcObject = null
           //preview.captureStream=null
@@ -568,10 +534,55 @@ const CLIENT = (function () {
         .catch(log)
     }
 
-    setButtonState('paused')
+    function buttonHandler(button, preview, record, stop) {
+      let buttonClicked = () => {}
+      button.addEventListener(
+        'click',
+        () => {
+          buttonClicked()
+        },
+        false,
+      )
+
+      const statefunc = (state, stream) => {
+        const recorder = record
+        if (state == 'stopped') {
+          preview.classList.add('hidden')
+          button.textContent = 'Record'
+          buttonClicked = () => {
+            recorder()
+          }
+        } else if (state == 'recording') {
+          preview.classList.remove('hidden')
+          button.textContent = 'Play'
+          buttonClicked = () => {
+            stop(stream)
+          }
+        } else if (state == 'looping' || state == 'paused') {
+          preview.classList.remove('hidden')
+          button.textContent = 'End'
+          buttonClicked = () => {
+            statefunc('stopped')
+          }
+        }
+      }
+      return statefunc
+    }
+
+    function stop(stream) {
+      stream.getTracks().forEach((track) => track.stop())
+    }
+
+    const button = document.getElementById('recorderbutton')
+    const setButtonState = buttonHandler(button, preview, record, stop)
+    preview.addEventListener('pause', () => {
+      setButtonState('paused')
+    })
+
+    setButtonState('stopped')
   }
 
-  record()
+  record(30)
 
   return {
     getSearchParam,

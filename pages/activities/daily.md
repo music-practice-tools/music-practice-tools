@@ -13,7 +13,8 @@ date: 2020-05-29
 {% activityList pid="daily" %}
 
 - {% dailyCheck %} **Finger warm up**
-- {% dailyCheck %} **Rythmn** - 1/8ths downbeat, upbeat, octave pair, accuracy {% metronome bpm=70, pid="dp1" %} -{% dailyCheck %} **Fretboard** - All strings, order = CoF {% metronome bpm=60, pid="dp2" %} {% randomNote text="Start", pid="dp3" %}
+- {% dailyCheck %} **Rythmn** - 1/8ths downbeat, upbeat, octave pair, accuracy {% metronome bpm=70, pid="dp1" %}
+- {% dailyCheck %} **Fretboard** - All strings, order = CoF {% metronome bpm=60, pid="dp2" %} {% randomNote text="Start", pid="dp3" %}
 - {% dailyCheck %} **Scales** - Play & name: maj, rel minor triads on 1 6 4 5 {% randomNote text="Scale", pid="dp4" %}
 - {% dailyCheck %} **Ear training** - C, F, G: Do Fa So La Do
 - {% dailyCheck %} **Improvisation** - play 3 patterns, a few lines each

@@ -24,6 +24,7 @@ const CLIENT = (function () {
   function metronome_data(bpm, min, max, step, pid) {
     const key = pid ? `metronome_${pid}` : null
     const _bpm = readStorage(key, bpm)
+
     return {
       bpm: _bpm,
       checked: false,
@@ -484,21 +485,17 @@ const CLIENT = (function () {
     } catch (e) {} // eslint-disable-line no-empty
   }
 
-  function record(recordingTime) {
+  function recorder_data(recordingTime) {
     const preview = document.getElementById('preview')
     if (!preview) {
       return
-    }
-
-    function log(msg) {
-      console.log(msg)
     }
 
     function wait(delayInMS) {
       return new Promise((resolve) => setTimeout(resolve, delayInMS))
     }
 
-    function startRecording(stream, lengthInMS) {
+    function recordStream(stream, time) {
       let recorder = new MediaRecorder(stream)
       let data = []
 
@@ -510,7 +507,7 @@ const CLIENT = (function () {
         recorder.onerror = (event) => reject(event.name)
       })
 
-      let recorded = wait(lengthInMS).then(
+      let recorded = wait(time * 1000).then(
         () => recorder.state == 'recording' && recorder.stop(),
       )
 
@@ -526,31 +523,26 @@ const CLIENT = (function () {
           audio: true,
         })
         .then((stream) => {
-          //         preview.src = null
-          preview.autoplay = true
+          preview.loop = false
           preview.muted = true
+          preview.autoplay = true
           preview.srcObject = stream
-          preview.captureStream =
-            preview.captureStream || preview.mozCaptureStream
-          return new Promise((resolve) => (preview.onplaying = resolve))
+          return new Promise((resolve) => (preview.oncanplay = resolve))
         })
         .then(() => {
           setButtonState('recording', preview.srcObject)
-          return startRecording(preview.captureStream(), recordingTime * 1000)
+          return recordStream(preview.srcObject, recordingTime)
         })
         .then((recordedChunks) => {
           const recordedBlob = new Blob(recordedChunks, { type: 'video/webm' })
-
-          preview.srcObject = null
-          //preview.captureStream=null
-          preview.controls = true
           preview.loop = true
           preview.muted = false
+          preview.srcObject = null
           preview.src = URL.createObjectURL(recordedBlob)
           setButtonState('looping')
         })
 
-        .catch(log)
+        .catch((err) => console.warn('Recorder error', err))
     }
 
     function buttonHandler(button, preview, record, stop) {
@@ -599,10 +591,12 @@ const CLIENT = (function () {
       setButtonState('paused')
     })
 
-    setButtonState('stopped')
+    return {
+      init() {
+        setButtonState('stopped')
+      },
+    }
   }
-
-  record(30)
 
   return {
     getSearchParam,
@@ -616,6 +610,7 @@ const CLIENT = (function () {
     lapTimer,
     startTimer,
     toggleABCSource,
+    recorder_data,
   }
 })()
 

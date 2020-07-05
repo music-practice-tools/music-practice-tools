@@ -103,14 +103,13 @@ exports.addShortcodes = function (eleventyConfig) {
   })
 
   eleventyConfig.addNunjucksShortcode('videoRecorder', function ({
-    time,
-    videoNum,
+    time = 15,
   } = {}) {
     // prettier-ignore
     return html`
-<div class="video widget">
+<div x-data="CLIENT.recorder_data(${time})" x-init="init()" class="video widget">
   <button type="button" id="recorderbutton" class="button"></button>
-  <video id="preview" autoplay muted></video>
+  <video id="preview"></video>
 </div>
    `
   })

@@ -519,7 +519,7 @@ const CLIENT = (function () {
     function record() {
       navigator.mediaDevices
         .getUserMedia({
-          video: true,
+          video: { width: 320 },
           audio: true,
         })
         .then((stream) => {

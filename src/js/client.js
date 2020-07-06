@@ -520,8 +520,8 @@ const CLIENT = (function () {
     function record() {
       navigator.mediaDevices
         .getUserMedia({
-          video: { width: 640 },
-          audio: true,
+          video: { width: 320 },
+          //audio: true,
         })
         .then((stream) => {
           preview.loop = false

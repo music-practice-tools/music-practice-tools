@@ -516,6 +516,7 @@ const CLIENT = (function () {
       )
     }
 
+    console.dir(navigator.mediaDevices.getSupportedConstraints())
     function record() {
       navigator.mediaDevices
         .getUserMedia({

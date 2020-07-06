@@ -516,12 +516,11 @@ const CLIENT = (function () {
       )
     }
 
-    console.dir(navigator.mediaDevices.getSupportedConstraints())
     function record() {
       navigator.mediaDevices
         .getUserMedia({
-          video: { width: 320 },
-          //audio: true,
+          video: true,
+          audio: true,
         })
         .then((stream) => {
           preview.loop = false

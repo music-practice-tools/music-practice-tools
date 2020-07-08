@@ -4,11 +4,11 @@
   "description": "Tools to help with practicing and improving musicality.",
   "private": true,
   "scripts": {
-    "build": "eleventy",
-    "watch": "eleventy --watch",
-    "dev": "eleventy --serve",
-    "debug": "DEBUG=* eleventy",
-    "devall": "nodemon --watch .eleventy.js --watch src/_11ty --exec \"eleventy --serve\""
+    "clean": "shx rm -rf _site build",
+    "spdev": "snowpack dev",
+    "spbuild": "snowpack build",
+    "build": "npm run clean && npm run spbuild",
+    "dev": "npm run clean && npm run spdev"
   },
   "repository": {
     "type": "git",
@@ -23,10 +23,11 @@
   "bugs": {
     "url": "https://opendirective.com"
   },
-  "homepage": "https://musicpracticetools.net",
+  "homepage": "",
   "devDependencies": {
     "@11ty/eleventy": "0.11.0",
     "@11ty/eleventy-navigation": "0.1.6",
+    "@snowpack/plugin-parcel": "^1.3.0",
     "@tonaljs/tonal": "4.0.2",
     "abcjs": "6.0.0-beta.12",
     "alpinejs": "^2.4.1",
@@ -39,7 +40,10 @@
     "markdown-it-block-embed": "0.0.3",
     "markdown-it-task-lists": "2.1.1",
     "nodemon": "2.0.4",
+    "parcel": "^1.12.4",
     "prettier": "2.0.5",
+    "shx": "^0.3.2",
+    "snowpack": "2.6.3",
     "tone": "13.8.25"
   },
   "dependencies": {}

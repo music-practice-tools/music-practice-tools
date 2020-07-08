@@ -1,7 +1,5 @@
 'use strict'
 
-/* global YT */
-
 const YOUTUBE = (function () {
   'use strict'
 
@@ -230,7 +228,4 @@ const YOUTUBE = (function () {
 
 document.addEventListener('DOMContentLoaded', YOUTUBE.init)
 
-// eslint-disable-next-line no-unused-vars
-function onYouTubeIframeAPIReady() {
-  YOUTUBE.onYouTubeIframeAPIReady()
-}
+export default YOUTUBE

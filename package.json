@@ -7,13 +7,8 @@
     "clean": "shx rm -rf _site build",
     "spdev": "snowpack dev",
     "spbuild": "snowpack build",
-    "zbuild": "eleventy",
     "build": "npm run clean && npm run spbuild",
-    "watch": "eleventy --watch",
-    "dev": "npm run clean && npm run spdev",
-    "devz": "eleventy --serve",
-    "debug": "DEBUG=* eleventy",
-    "devall": "nodemon --watch .eleventy.js --watch src/_11ty --exec \"eleventy --serve\""
+    "dev": "npm run clean && npm run spdev"
   },
   "repository": {
     "type": "git",
@@ -32,6 +27,7 @@
   "devDependencies": {
     "@11ty/eleventy": "0.11.0",
     "@11ty/eleventy-navigation": "0.1.6",
+    "@snowpack/plugin-parcel": "^1.3.0",
     "@tonaljs/tonal": "4.0.2",
     "abcjs": "6.0.0-beta.12",
     "alpinejs": "^2.4.1",

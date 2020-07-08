@@ -2,7 +2,7 @@
   publish = "build"
   command = "snowpack build"
 [build.processing]
-  skip_processing = false
+  skip_processing = true
 [build.processing.css]
   bundle = true
   minify = true

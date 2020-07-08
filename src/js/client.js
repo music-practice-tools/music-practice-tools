@@ -1,6 +1,10 @@
 // Note this cannot be a module as would be defered, breaking refs in the body
-
 /* global Tone Tonal YOUTUBE ABCJS */
+
+import ABCJS from 'abcjs'
+import Tone from 'tone'
+import { Tonal } from '@tonaljs/tonal'
+import YOUTUBE from './youtube.js'
 
 const CLIENT = (function () {
   'use strict'
@@ -615,3 +619,5 @@ const CLIENT = (function () {
 })()
 
 document.addEventListener('DOMContentLoaded', CLIENT.replaceABCFences)
+
+export default CLIENT

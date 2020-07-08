@@ -1,0 +1,11 @@
+{
+  "install": ["alpinejs"],
+  "scripts": {
+    "mount:_site": "mount _site --to /",
+    "run:11ty": "eleventy",
+    "run:11ty::watch": "nodemon --watch .eleventy.js --watch src/_11ty --exec \"eleventy --watch\""
+  },
+  "devOptions": { "open": "none" },
+  "buildOptions": { "clear": true },
+  "plugins": []
+}

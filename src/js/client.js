@@ -1,3 +1,6 @@
+// @ts-ignore
+window.parcelRequire = undefined // stop run warning from parcel
+
 import { seekTo } from './widgets/youtube.js'
 import { timer_data, startTimer, lapTimer } from './widgets/timer.js'
 import { metronome_data } from './widgets/metronome.js'
@@ -7,6 +10,7 @@ import { replaceABCFences } from './widgets/abc.js'
 import { recorder_data } from './widgets/recorder.js'
 
 // provide access for global scripts - eg in HTML
+// @ts-ignore
 window.CLIENT = {
   metronome_data,
   randomNote_data,

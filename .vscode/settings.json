@@ -7,5 +7,6 @@
   "lit-html.format.enabled": false,
   "[markdown]": {
     "editor.rulers": [80]
-  }
+  },
+  "javascript.implicitProjectConfig.checkJs": true
 }

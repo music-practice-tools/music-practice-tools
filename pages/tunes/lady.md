@@ -15,9 +15,9 @@ date: 2020-06-25
 P: Verse
 |:Ez_GzAz3|AzEz=Ez3|Ez_GzAz3| AzEz=Ez3:|
 P: Chorus
-|:Ez_GzAz3|AzEz=Ez3|Ez_GzAz3|1 AzEz=Ez3:|2 .E_.G.A.B GGA/2(G/2E/2)z/s|
+|:Ez_GzAz3|AzEz=Ez3|Ez_GzAz3|1 AzEz=Ez3:|2 .E_.G.A.B GGA/2(G/2E/2)z/2:|
 P: Bridge
-E_GAB ge/2f/2gb|: b4(ae)z2|Ez3/2E/2_d=d 2ge/2f/2gb:|
+|:Ez_GzAz3|E_GAB Ee/2f/2gb|=b4(_ba)z2|.EE/2d ee/2f/2gb:|
 P: Middle 8
 |:Bf_gb b3(ae):|
 {%- endabc -%}

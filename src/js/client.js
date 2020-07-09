@@ -6,6 +6,7 @@ import { taskList_data } from './widgets/tasklist.js'
 import { replaceABCFences } from './widgets/abc.js'
 import { recorder_data } from './widgets/recorder.js'
 
+// provide access for global scripts - eg in HTML
 window.CLIENT = {
   metronome_data,
   randomNote_data,

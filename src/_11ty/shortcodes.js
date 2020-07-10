@@ -31,7 +31,7 @@ exports.addShortcodes = function (eleventyConfig) {
   eleventyConfig.addNunjucksShortcode('randomNote', function ({
     text = 'Random Note',
     scale = 'circleoffourths',
-    pid,
+    pid = undefined,
   } = {}) {
     // prettier-ignore
     return html`
@@ -46,7 +46,7 @@ exports.addShortcodes = function (eleventyConfig) {
     text = 'Random Number',
     min = 1,
     max = 10,
-    pid,
+    pid = undefined,
   } = {}) {
     // prettier-ignore
     return html`
@@ -69,10 +69,10 @@ exports.addShortcodes = function (eleventyConfig) {
 
   eleventyConfig.addNunjucksShortcode('metronome', function ({
     bpm = 100,
-    min = 30,
+    min = 20,
     max = 250,
     step = 5,
-    pid,
+    pid = undefined,
   } = {}) {
     // prettier-ignore
     return html`
@@ -90,8 +90,8 @@ exports.addShortcodes = function (eleventyConfig) {
   })
 
   eleventyConfig.addNunjucksShortcode('seekVideo', function ({
-    time,
-    videoNum,
+    time = '00:00',
+    videoNum = 0,
   } = {}) {
     // prettier-ignore
     return html`
@@ -119,8 +119,8 @@ exports.addShortcodes = function (eleventyConfig) {
     useURLTime = false,
     s = true,
     h = false,
-    pid,
-    tid,
+    pid = undefined,
+    tid = undefined,
   } = {}) {
     // prettier-ignore
     return html`
@@ -155,7 +155,7 @@ exports.addShortcodes = function (eleventyConfig) {
 
   eleventyConfig.addPairedNunjucksShortcode('activityList', function (
     content,
-    { timerid, pid } = {},
+    { timerid = undefined, pid = undefined } = {},
   ) {
     // prettier-ignore
     return html`
@@ -183,7 +183,7 @@ ${content}
 
   eleventyConfig.addNunjucksShortcode('activityCheck', function ({
     classes = '',
-    timerid,
+    timerid = undefined,
   } = {}) {
     return activityCheck(classes, timerid)
   })

@@ -120,12 +120,12 @@ exports.addShortcodes = function (eleventyConfig) {
     s = true,
     h = false,
     pid = undefined,
-    tid = undefined,
+    timerid = undefined,
   } = {}) {
     // prettier-ignore
     return html`
 <div
-  x-data="CLIENT.timer_data(${time}, ${useURLTime}, '${pid}', '${tid}')"
+  x-data="CLIENT.timer_data(${time}, ${useURLTime}, '${pid}', '${timerid}')"
   x-init="init()"
   x-on:unload.window="persist"
   class="timer widget">
@@ -159,38 +159,38 @@ exports.addShortcodes = function (eleventyConfig) {
   ) {
     // prettier-ignore
     return html`
-<div
-  x-data="CLIENT.taskList_data($el, '${pid}')"
+<div data-widget="activityList"
+  x-data="CLIENT.activityList_data($el, '${timerid}', '${pid}')"
   x-init="init()"
   x-on:unload.window="persist"
-  x-on:click="persist""
+  x-on:click="childClick"
   class="task-list">
-<button onclick="{CLIENT.startTimer('${timerid}')}">Start</button>
-<button x-on:click="reset">Clear</button>
+<button class="toggle" x-show="true">Start</button>
+<button class="reset">Clear</button>
 ${content}
 </div>
     `
   })
 
-  const activityCheck = (classes, timerid) =>
+  const activityCheck = (classes) =>
     // prettier-ignore
     html`
-  <input
+  <input data-widget="activity"
     class="${classes}"
     type="checkbox"
-    onclick="if (this.checked) {CLIENT.lapTimer('${timerid}')}"/>
+    />
   `
+  // onclick="if (this.checked) {CLIENT.lapTimer('${timerid}')}"
 
   eleventyConfig.addNunjucksShortcode('activityCheck', function ({
     classes = '',
-    timerid = undefined,
   } = {}) {
-    return activityCheck(classes, timerid)
+    return activityCheck(classes)
   })
 
   eleventyConfig.addNunjucksShortcode('dailyCheck', function () {
     // prettier-ignore
-    return activityCheck('task-list-item-checkbox', 'main')
+    return activityCheck('task-list-item-checkbox')
   })
 
   eleventyConfig.addPairedNunjucksShortcode('abc', function (

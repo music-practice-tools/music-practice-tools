@@ -2,10 +2,10 @@
 window.parcelRequire = undefined // stop run warning from parcel
 
 import { seekTo } from './widgets/youtube.js'
-import { timer_data, startTimer, lapTimer } from './widgets/timer.js'
+import { timer_data } from './widgets/timer.js'
 import { metronome_data } from './widgets/metronome.js'
 import { randomNote_data, randomNumber_data } from './widgets/random.js'
-import { taskList_data } from './widgets/tasklist.js'
+import { activityList_data } from './widgets/activityList.js'
 import { replaceABCFences } from './widgets/abc.js'
 import { recorder_data } from './widgets/recorder.js'
 
@@ -16,9 +16,7 @@ window.CLIENT = {
   randomNote_data,
   randomNumber_data,
   timer_data,
-  startTimer,
-  lapTimer,
-  taskList_data,
+  activityList_data,
   replaceABCFences,
   recorder_data,
   seekVideo,

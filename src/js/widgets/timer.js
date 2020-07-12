@@ -1,31 +1,18 @@
 import { readStorage, writeStorage } from './storage.js'
 
 const timers = {}
-function lapTimer(timerid) {
-  const timer = timers[timerid]
-  if (timer) {
-    timer.lap()
-  }
-}
-
-function startTimer(timerid) {
-  const timer = timers[timerid]
-  if (timer) {
-    timer.start()
-  }
-}
 
 function getSearchParam(name) {
   const sp = new URLSearchParams(window.location.search)
   return sp.get(name)
 }
 
-function timer_data(time, useURLTime, pid, tid) {
+function timer_data(time, useURLTime, pid, timerid) {
   const timesp = useURLTime ? getSearchParam('timer') : null
   time = timesp !== null ? timesp : time
   const body = document.querySelector('body')
   body.classList.add('has-timer')
-  const intialTime = { total: 0, elapsed: 0 }
+  const initialTime = { total: 0, elapsed: 0 }
   const storageKey = pid ? `timer_${pid}` : null
 
   return {
@@ -36,7 +23,7 @@ function timer_data(time, useURLTime, pid, tid) {
     auto: timesp !== null,
 
     init() {
-      const { total, elapsed } = readStorage(storageKey, intialTime)
+      const { total, elapsed } = readStorage(storageKey, initialTime)
       this.total = total
       this.elapsed = elapsed
       if (useURLTime) {
@@ -45,8 +32,8 @@ function timer_data(time, useURLTime, pid, tid) {
           if (this.auto) this.toggle()
         }
       }
-      if (tid) {
-        timers[tid] = this //TODO this is too fragile
+      if (timerid) {
+        timers[timerid] = this //TODO this is too fragile
       }
     },
 
@@ -74,6 +61,10 @@ function timer_data(time, useURLTime, pid, tid) {
           this.elapsed += 1
         }, 1000)
       }
+    },
+
+    isRunning() {
+      return !!this.timer
     },
 
     stop() {
@@ -110,4 +101,9 @@ function timer_data(time, useURLTime, pid, tid) {
   }
 }
 
-export { timer_data, startTimer, lapTimer }
+// Careful, gives full access
+function getTimer(timerid) {
+  return timers[timerid]
+}
+
+export { timer_data, getTimer }

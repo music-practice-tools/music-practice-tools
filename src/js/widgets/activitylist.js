@@ -31,7 +31,6 @@ function activityList_data(root, timerid, pid) {
     reset() {
       setBoxes(initial)
       this.persist()
-      alert('r' + timer)
       if (timer) {
         timer.stop()
         timer.reset()

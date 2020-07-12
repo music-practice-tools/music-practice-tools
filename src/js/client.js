@@ -5,7 +5,7 @@ import { seekTo } from './widgets/youtube.js'
 import { timer_data } from './widgets/timer.js'
 import { metronome_data } from './widgets/metronome.js'
 import { randomNote_data, randomNumber_data } from './widgets/random.js'
-import { activityList_data } from './widgets/activityList.js'
+import { activityList_data } from './widgets/activitylist.js'
 import { replaceABCFences } from './widgets/abc.js'
 import { recorder_data } from './widgets/recorder.js'
 

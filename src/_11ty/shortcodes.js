@@ -89,6 +89,20 @@ exports.addShortcodes = function (eleventyConfig) {
 </span>`
   })
 
+  eleventyConfig.addPairedNunjucksShortcode('videoSeekList', function (
+    content,
+    { videoNum = 0 } = {},
+  ) {
+    // prettier-ignore
+    return html`
+<div data-widget="videoSeekList"
+  x-data="CLIENT.videoSeekList_data($el, ${videoNum})"
+  x-init="init()">
+${content}
+</div>
+   `
+  })
+
   eleventyConfig.addNunjucksShortcode('seekVideo', function ({
     time = '00:00',
     videoNum = 0,
@@ -165,7 +179,7 @@ exports.addShortcodes = function (eleventyConfig) {
   x-on:unload.window="persist"
   x-on:click="childClick"
   class="task-list">
-<button class="toggle" x-show="true">Start</button>
+<button class="toggle" x-show="hasTimer">Start</button>
 <button class="reset">Clear</button>
 ${content}
 </div>

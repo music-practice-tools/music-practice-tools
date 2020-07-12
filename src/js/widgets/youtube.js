@@ -80,6 +80,8 @@ div#mpt-videotime button {
   injectYTAPI(head)
 }
 
+let renderFunc
+
 // Needs to be a global function in order for YT iFrame API to call it
 // eslint-disable-next-line no-unused-vars
 function onYouTubeIframeAPIReady() {
@@ -101,6 +103,7 @@ function onYouTubeIframeAPIReady() {
       // Reload with API enabled
       frame.src += frame.src.includes('?') ? '' : '?feature=oembed'
       frame.src += `&enablejsapi=1&domain=${window.location.host}`
+      // @ts-ignore
       frame.ytPlayer = new YT.Player(frame, {
         events: {
           onStateChange: onPlayerStateChange,
@@ -134,6 +137,7 @@ function onYouTubeIframeAPIReady() {
 
         // eslint-disable-next-line no-inner-declarations
         function onClick() {
+          // @ts-ignore
           if (player.getPlayerState() == YT.PlayerState.PLAYING) {
             player.pauseVideo()
           } else {
@@ -146,7 +150,12 @@ function onYouTubeIframeAPIReady() {
 
     function startPoll(player) {
       if (!interval) {
-        interval = setInterval(() => render(player), 500)
+        interval = setInterval(() => {
+          render(player)
+          if (renderFunc) {
+            renderFunc(player)
+          }
+        }, 500)
       }
     }
 
@@ -157,6 +166,7 @@ function onYouTubeIframeAPIReady() {
     function onPlayerStateChange(event) {
       const { data: playerStatus, target: player } = event
 
+      // @ts-ignore
       if (playerStatus == YT.PlayerState.PLAYING) {
         if (currentPlayer && currentPlayer !== player) {
           currentPlayer.pauseVideo()
@@ -164,12 +174,14 @@ function onYouTubeIframeAPIReady() {
         currentPlayer = player
 
         const divTimer = document.querySelector('#mpt-videotime')
+        // @ts-ignore
         divTimer.style.display = 'block'
 
         stopPoll()
         startPoll(player)
         render(player)
       } else if (
+        // @ts-ignore
         [YT.PlayerState.ENDED, YT.PlayerState.PAUSED].includes(playerStatus)
       ) {
         if (currentPlayer === player) {
@@ -196,7 +208,7 @@ function wrapVideo() {
   }
 }
 
-function seekTo(seconds, playerNum = undefined) {
+function getPlayer(playerNum = undefined) {
   const frames = getYTFrames()
   if (
     !frames.length ||
@@ -206,9 +218,16 @@ function seekTo(seconds, playerNum = undefined) {
   }
   playerNum |= 0
 
-  const player = frames[playerNum].ytPlayer
-  player.seekTo(seconds, true)
-  player.playVideo()
+  // @ts-ignore
+  return frames[playerNum].ytPlayer
+}
+
+function seekTo(seconds, playerNum = undefined) {
+  const player = getPlayer(playerNum)
+  if (player) {
+    player.seekTo(seconds, true)
+    player.playVideo()
+  }
 }
 
 function init() {
@@ -216,10 +235,37 @@ function init() {
   mpt_inject({ showOnPlay: false })
 }
 
+// @ts-ignore
 window.onYouTubeIframeAPIReady = function () {
   onYouTubeIframeAPIReady()
 }
 
 document.addEventListener('DOMContentLoaded', init)
 
-export { seekTo }
+function videoSeekList_data(root, videoNum) {
+  const seekButtons = root.querySelectorAll('button.seek-video')
+
+  return {
+    init() {
+      renderFunc = (player) => this.showTime(player)
+    },
+
+    showTime(player) {
+      seekButtons.forEach((button) => {
+        // TOD make this more efficient
+        const a = button.textContent.split(':')
+        if (a.length == 1) {
+          a.unshift('0')
+        }
+        const seconds = +a[0] * 60 + +a[1]
+        if (seconds <= player.getCurrentTime()) {
+          button.style = 'color:var(--darkred); font-weight:bold;'
+        } else {
+          button.style = ''
+        }
+      })
+    },
+  }
+}
+
+export { videoSeekList_data, seekTo }

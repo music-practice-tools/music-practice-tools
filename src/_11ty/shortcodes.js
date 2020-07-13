@@ -1,30 +1,8 @@
-// WARNING - changes to this file will require restarting the dev server
-// as it is loaded from elventy.js
-
-// return the string as entered. Only used so VS Code lit-html extension works
-// without associated runtime error
-// TODO find better way without runtime impact
-function html(strings, ...expressions) {
-  return strings.reduce(
-    (result, currentString, i) =>
-      `${result}${currentString}${
-        expressions[i]
-          ? expressions[i]
-          : expressions[i] == ''
-          ? `''`
-          : expressions[i] === undefined
-          ? ''
-          : expressions[i]
-      }`,
-    '',
-  )
-}
-
 /* global exports */
 exports.addShortcodes = function (eleventyConfig) {
   eleventyConfig.addNunjucksShortcode('homeLink', function () {
     // prettier-ignore
-    return `<a href="/">← Home</a>`
+    return /* html */ `<a href="/">← Home</a>`
   })
 
   /* widgets */
@@ -34,7 +12,7 @@ exports.addShortcodes = function (eleventyConfig) {
     pid = undefined,
   } = {}) {
     // prettier-ignore
-    return html`
+    return /* html */ `
 <button type="button" class="random-note widget"
   x-data="CLIENT.randomNote_data('${scale}', '${pid}')" x-on:click="getNextItem">
   ${text} <span x-text="\`\${value}\`"><span>
@@ -49,7 +27,7 @@ exports.addShortcodes = function (eleventyConfig) {
     pid = undefined,
   } = {}) {
     // prettier-ignore
-    return html`
+    return /* html */ `
 <button type="button" class="random-number widget"
   x-data="CLIENT.randomNumber_data(${min}, ${max}, '${pid}')" x-on:click="getNextItem">
   ${text} <span x-text="\`\${value}\`"><span>
@@ -60,7 +38,7 @@ exports.addShortcodes = function (eleventyConfig) {
     text = 'Reset Settings',
   } = {}) {
     // prettier-ignore
-    return html`
+    return /* html */ `
 <button type="button" class="widget"
   onclick="if (confirm('Do you want to reset all settings?')) {localStorage.clear()}">
   ${text}
@@ -75,7 +53,7 @@ exports.addShortcodes = function (eleventyConfig) {
     pid = undefined,
   } = {}) {
     // prettier-ignore
-    return html`
+    return /* html */ `
 <span
   x-data="CLIENT.metronome_data(${bpm}, ${min}, ${max}, ${step}, '${pid}')"
   class="metronome widget"
@@ -94,7 +72,7 @@ exports.addShortcodes = function (eleventyConfig) {
     { videoNum = 0 } = {},
   ) {
     // prettier-ignore
-    return html`
+    return /* html */ `
 <div data-widget="videoSeekList"
   x-data="CLIENT.videoSeekList_data($el, ${videoNum})"
   x-init="init()"
@@ -113,7 +91,7 @@ ${content}
     }
     const seconds = (+a[0] * 60 + +a[1]).toString()
     // prettier-ignore
-    return html`
+    return /* html */ `
   <button data-widget="seekVideo" data-seconds="${seconds}" type="button" class="seek-video widget">
     ${time}
   </button>
@@ -124,7 +102,7 @@ ${content}
     time = 15,
   } = {}) {
     // prettier-ignore
-    return html`
+    return /* html */ `
 <div x-data="CLIENT.recorder_data(${time})" x-init="init()" class="video widget">
   <button type="button" id="recorderbutton" class="button"></button>
   <video id="preview"></video>
@@ -139,15 +117,16 @@ ${content}
     h = false,
     pid = undefined,
     timerid = undefined,
+    controls = true,
   } = {}) {
     // prettier-ignore
-    return html`
-<div
+    return /* html */ `
+<div data-widget="timer"
   x-data="CLIENT.timer_data(${time}, ${useURLTime}, '${pid}', '${timerid}')"
   x-init="init()"
   x-on:unload.window="persist"
   class="timer widget">
-  <div style="display: flex; justify-content: space-around; width:100%">
+  <div x-show="${true}" style="display: flex; justify-content: space-around; width:100%">
     <button x-on:click="toggle" x-text="\`\${btnText()}\`"></button>
     <button x-on:click="lap">Lap</button>
     <button x-on:click="reset">Rst</button>
@@ -176,7 +155,7 @@ ${content}
     { timerid = undefined, pid = undefined } = {},
   ) {
     // prettier-ignore
-    return html`
+    return /* html */ `
 <div data-widget="activityList"
   x-data="CLIENT.activityList_data($el, '${timerid}', '${pid}')"
   x-init="init()"
@@ -192,7 +171,7 @@ ${content}
 
   const activityCheck = (classes) =>
     // prettier-ignore
-    html`
+    /* html */ `
   <input data-widget="activity"
     class="${classes}"
     type="checkbox"
@@ -225,7 +204,7 @@ ${content}
     } = {},
   ) {
     // prettier-ignore
-    return `
+    return /* html */ `
 <label class="abc-src" onclick="CLIENT.toggleABCSource(this)">
   <span>Show ABC source</span>
   <input class="" type="checkbox" />

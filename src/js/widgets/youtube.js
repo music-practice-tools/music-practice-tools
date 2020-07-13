@@ -244,6 +244,4 @@ window.onYouTubeIframeAPIReady = function () {
   onYouTubeIframeAPIReady()
 }
 
-document.addEventListener('DOMContentLoaded', init)
-
-export { seekTo, setRenderFunc }
+export { seekTo, setRenderFunc, init }

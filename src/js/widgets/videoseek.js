@@ -38,3 +38,4 @@ function videoSeekList_data(root, videoNum) {
 }
 
 export { videoSeekList_data }
+export { init as initYoutube } from './youtube'

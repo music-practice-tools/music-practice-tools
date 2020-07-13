@@ -11,10 +11,10 @@ const abcCursorControl = {
       'line',
     )
     cursor.setAttribute('class', 'abcjs-cursor')
-    cursor.setAttributeNS(null, 'x1', 0)
-    cursor.setAttributeNS(null, 'y1', 0)
-    cursor.setAttributeNS(null, 'x2', 0)
-    cursor.setAttributeNS(null, 'y2', 0)
+    cursor.setAttributeNS(null, 'x1', '0')
+    cursor.setAttributeNS(null, 'y1', '0')
+    cursor.setAttributeNS(null, 'x2', '0')
+    cursor.setAttributeNS(null, 'y2', '0')
     svg.appendChild(cursor)
   },
 
@@ -37,10 +37,10 @@ const abcCursorControl = {
 
     const cursor = document.querySelector('.abcjs-container svg .abcjs-cursor')
     if (cursor) {
-      cursor.setAttribute('x1', ev.left - 2)
-      cursor.setAttribute('x2', ev.left - 2)
-      cursor.setAttribute('y1', ev.top)
-      cursor.setAttribute('y2', ev.top + ev.height)
+      cursor.setAttribute('x1', (ev.left - 2).toString())
+      cursor.setAttribute('x2', (ev.left - 2).toString())
+      cursor.setAttribute('y1', ev.top.toString())
+      cursor.setAttribute('y2', (ev.top + ev.height).toString())
     }
   },
 
@@ -143,4 +143,9 @@ function replaceABCFences() {
   }
 }
 
-export { replaceABCFences }
+function toggleABCSource(label) {
+  const pre = label.nextElementSibling.firstChild
+  pre.style.display = pre.style.display == '' ? 'none' : ''
+}
+
+export { replaceABCFences, toggleABCSource }

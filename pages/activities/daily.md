@@ -5,7 +5,7 @@ tags: practice
 date: 2020-05-29
 ---
 
-{% timer time=5, pid="main", timerid="main" %}
+{% timer time=5, pid="main", timerid="main", controls=false %}
 {% videoRecorder time=30 %}
 
 <!-- markdownlint-disable MD013 -->

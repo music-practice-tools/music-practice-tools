@@ -117,7 +117,7 @@ ${content}
     h = false,
     pid = undefined,
     timerid = undefined,
-    controls = true,
+    controls = 'true',
   } = {}) {
     // prettier-ignore
     return /* html */ `
@@ -126,7 +126,7 @@ ${content}
   x-init="init()"
   x-on:unload.window="persist"
   class="timer widget">
-  <div x-show="${true}" style="display: flex; justify-content: space-around; width:100%">
+  <div x-show="${controls.toString()}" style="display: flex; justify-content: space-around; width:100%">
     <button x-on:click="toggle" x-text="\`\${btnText()}\`"></button>
     <button x-on:click="lap">Lap</button>
     <button x-on:click="reset">Rst</button>

@@ -57,7 +57,9 @@ exports.addShortcodes = function (eleventyConfig) {
 <span data-widget="metronome"
   x-data="CLIENT.metronome_data(${bpm}, ${min}, ${max}, ${step}, '${pid}')"
   class="metronome widget"
-  x-on:click="onClick($el, $event)">
+  x-on:click="onClick($el, $event, $dispatch)"
+  x-on:metronome-start.window="onStart"
+  x-on:stop-sounds.window="onStop">
   <button><</button>
   <label>
     <span x-text="\`\${bpm} bpm\`"></span>
@@ -160,11 +162,12 @@ ${content}
   x-data="CLIENT.activityList_data($el, '${timerid}', '${pid}')"
   x-init="init()"
   x-on:unload.window="persist"
-  x-on:click="childClick"
+  x-on:click="childClick($event, $dispatch)"
   class="task-list">
-<button class="toggle" x-show="hasTimer">Start</button>
+<button class="toggle" x-show="hasTimer" x-text="toggleText()"></button>
 <button class="reset">Clear</button>
 ${content}
+<button class="done">Done</button>
 </div>
     `
   })

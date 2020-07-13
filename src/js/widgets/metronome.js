@@ -19,34 +19,35 @@ export function metronome_data(bpm, min, max, step, pid) {
     bpm: _bpm,
     checked: false,
     stepper: stepper(min, max, step),
+    starting: false,
 
-    onClick($el, $event) {
-      if ($event.isTrusted) {
-        // not from unCheckOthers
-        $event.preventDefault() // we control check box state
-        if (this.checked && $event.target.tagName == 'BUTTON') {
-          const delta = $event.target.textContent == '<' ? -1 : 1
-          this.bpm = this.stepper(delta, this.bpm)
-          writeStorage(key, this.bpm)
-        } else {
-          this.checked = !this.checked
-          this.checked &&
-            this.uncheckOthers($el.querySelector('input[type="checkbox"]'))
-        }
-        this.renderAudio()
+    onClick($el, $event, $dispatch) {
+      // not from unCheckOthers
+      $event.preventDefault() // we control check box state
+      if (this.checked && $event.target.tagName == 'BUTTON') {
+        const delta = $event.target.textContent == '<' ? -1 : 1
+        this.bpm = this.stepper(delta, this.bpm)
+        writeStorage(key, this.bpm)
       } else {
         this.checked = !this.checked
+        if (this.checked) {
+          this.starting = true
+          $dispatch('metronome-start')
+        }
       }
+      this.renderAudio()
     },
 
-    uncheckOthers(source) {
-      document
-        .querySelectorAll('.metronome input[type="checkbox"]:checked')
-        .forEach((e) => {
-          if (e !== source) {
-            e.click()
-          }
-        })
+    onStart() {
+      if (!this.starting) {
+        this.checked = false
+      }
+      this.starting = false
+    },
+
+    onStop() {
+      this.checked = false
+      this.renderAudio()
     },
 
     renderAudio() {

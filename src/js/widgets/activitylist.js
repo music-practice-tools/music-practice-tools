@@ -22,6 +22,10 @@ function activityList_data(root, timerid, pid) {
 
   return {
     hasTimer: !!timer,
+    isRunning: false,
+    toggleText() {
+      return this.isRunning ? 'Pause' : 'Start'
+    },
 
     init() {
       const items = readStorage(storageKey, initial)
@@ -41,25 +45,27 @@ function activityList_data(root, timerid, pid) {
       writeStorage(storageKey, getBoxes())
     },
 
-    childClick(ev) {
+    childClick(ev, dispatch) {
       const child = ev.target
       if (child.dataset.widget == 'activity') {
         this.persist()
 
         if (timer && child.checked) {
+          timer.start()
           timer.lap()
+          this.isRunning = true
         }
+        dispatch('stop-sounds')
       } else if (child.classList.contains('toggle')) {
-        this.setTimeButtonState()
+        timer.toggle()
+        this.isRunning = timer.isRunning()
       } else if (child.classList.contains('reset')) {
         this.reset()
-      }
-    },
-
-    setTimeButtonState() {
-      if (timer) {
-        toggleButton.textContent = timer.isRunning() ? 'Start' : 'Pause'
-        timer.toggle()
+        this.isRunning = false
+      } else if (child.classList.contains('done')) {
+        timer.stop()
+        timer.lap()
+        this.isRunning = false
       }
     },
   }

@@ -11,8 +11,8 @@ permalink: '/{{ page.fileSlug }}/'
 
 {% activityList timerid="test" %}
 
-- {% dailyCheck %} **Finger warm up**
-- {% dailyCheck %} two
+- {% activity %} **Finger warm up**
+- {% activity %} two
 
 {% endactivityList %}
 

@@ -12,18 +12,18 @@ date: 2020-05-29
 
 {% activityList timerid='main', pid="daily" %}
 
-- {% dailyCheck %} **Finger warm up**
-- {% dailyCheck %} **Rythmn** - 1/8ths downbeat, upbeat, octave pair, accuracy {% metronome bpm=70, pid="dp1" %}
-- {% dailyCheck %} **Fretboard** - All strings, order = CoF {% metronome bpm=60, pid="dp2" %} {% randomNote text="Start", pid="dp3" %}
-- {% dailyCheck %} **Scales** - Play & name: maj, rel minor triads on 1 6 4 5 {% randomNote text="Scale", pid="dp4" %}
-- {% dailyCheck %} **Ear training** - C, F, G: Do Fa So La Do
-- {% dailyCheck %} **Improvisation** - play 3 patterns, a few lines each
-- {% dailyCheck %} **Reading** - p14-18 pitch, rhythm, together {% randomNumber text="Etude", min=1, max=8, pid="dp5"  %}
-- {% dailyCheck %} **Tune - [Poinciana](/tunes/poinciana/)** - transcribe and learn
-- {% dailyCheck %} **Tune - [Lady](/tunes/lady)** - transcribe and learn last few parts
-- {% dailyCheck %} **Tune - [The Thrill is Gone](/tunes/the-thrill-is-gone)** - with metronome on 2 & 4, {% metronome bpm=35, pid="dp6" %}
-- {% dailyCheck %} **Tune - [Crossfire](/tunes/crossfire?timer=6)** - play along up to speed
-- {% dailyCheck %} **Tune - [Brown eyed girl](/tunes/brown-eyed-girl/)** - transcribe rest
+- {% activity %} **Finger warm up**
+- {% activity %} **Rythmn** - 1/8ths downbeat, upbeat, octave pair, accuracy {% metronome bpm=70, pid="dp1" %}
+- {% activity %} **Fretboard** - All strings, order = CoF {% metronome bpm=60, pid="dp2" %} {% randomNote text="Start", pid="dp3" %}
+- {% activity %} **Scales** - Play & name: maj, rel minor triads on 1 6 4 5 {% randomNote text="Scale", pid="dp4" %}
+- {% activity %} **Ear training** - C, F, G: Do Fa So La Do
+- {% activity %} **Improvisation** - play 3 patterns, a few lines each
+- {% activity %} **Reading** - p14-18 pitch, rhythm, together {% randomNumber text="Etude", min=1, max=8, pid="dp5"  %}
+- {% activity %} **Tune - [Poinciana](/tunes/poinciana/)** - transcribe and learn
+- {% activity %} **Tune - [Lady](/tunes/lady)** - transcribe and learn last few parts
+- {% activity %} **Tune - [The Thrill is Gone](/tunes/the-thrill-is-gone)** - with metronome on 2 & 4, {% metronome bpm=35, pid="dp6" %}
+- {% activity %} **Tune - [Crossfire](/tunes/crossfire?timer=6)** - play along up to speed
+- {% activity %} **Tune - [Brown eyed girl](/tunes/brown-eyed-girl/)** - transcribe rest
 
 {% endactivityList %}
 

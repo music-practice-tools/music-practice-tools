@@ -2,7 +2,7 @@
 exports.addShortcodes = function (eleventyConfig) {
   eleventyConfig.addNunjucksShortcode('homeLink', function () {
     // prettier-ignore
-    return /* html */ `<a href="/">← Home</a>`
+    return /* html */ `<a data-widget="homeLink" href="/">← Home</a>`
   })
 
   /* widgets */
@@ -13,7 +13,7 @@ exports.addShortcodes = function (eleventyConfig) {
   } = {}) {
     // prettier-ignore
     return /* html */ `
-<button type="button" class="random-note widget"
+<button data-widget="randomNote" type="button" class="random-note widget"
   x-data="CLIENT.randomNote_data('${scale}', '${pid}')" x-on:click="getNextItem">
   ${text} <span x-text="\`\${value}\`"><span>
 </button>`
@@ -28,7 +28,7 @@ exports.addShortcodes = function (eleventyConfig) {
   } = {}) {
     // prettier-ignore
     return /* html */ `
-<button type="button" class="random-number widget"
+<button data-widget="randomNumber" type="button" class="random-number widget"
   x-data="CLIENT.randomNumber_data(${min}, ${max}, '${pid}')" x-on:click="getNextItem">
   ${text} <span x-text="\`\${value}\`"><span>
 </button>`
@@ -39,7 +39,7 @@ exports.addShortcodes = function (eleventyConfig) {
   } = {}) {
     // prettier-ignore
     return /* html */ `
-<button type="button" class="widget"
+<button data-widget="resetSettings" type="button" class="widget"
   onclick="if (confirm('Do you want to reset all settings?')) {localStorage.clear()}">
   ${text}
 </button>`
@@ -54,7 +54,7 @@ exports.addShortcodes = function (eleventyConfig) {
   } = {}) {
     // prettier-ignore
     return /* html */ `
-<span
+<span data-widget="metronome"
   x-data="CLIENT.metronome_data(${bpm}, ${min}, ${max}, ${step}, '${pid}')"
   class="metronome widget"
   x-on:click="onClick($el, $event)">
@@ -103,7 +103,7 @@ ${content}
   } = {}) {
     // prettier-ignore
     return /* html */ `
-<div x-data="CLIENT.recorder_data(${time})" x-init="init()" class="video widget">
+<div data-widget="videoRecorder" x-data="CLIENT.recorder_data(${time})" x-init="init()" class="video widget">
   <button type="button" id="recorderbutton" class="button"></button>
   <video id="preview"></video>
 </div>
@@ -169,25 +169,17 @@ ${content}
     `
   })
 
-  const activityCheck = (classes) =>
+  eleventyConfig.addNunjucksShortcode('activity', function ({
+    classes = 'task-list-item-checkbox',
+  } = {}) {
+    // NB indenting required to get correct font size
     // prettier-ignore
-    /* html */ `
+    return /* html */`
   <input data-widget="activity"
     class="${classes}"
     type="checkbox"
-    />
-  `
-  // onclick="if (this.checked) {CLIENT.lapTimer('${timerid}')}"
-
-  eleventyConfig.addNunjucksShortcode('activityCheck', function ({
-    classes = '',
-  } = {}) {
-    return activityCheck(classes)
-  })
-
-  eleventyConfig.addNunjucksShortcode('dailyCheck', function () {
-    // prettier-ignore
-    return activityCheck('task-list-item-checkbox')
+  />
+`
   })
 
   eleventyConfig.addPairedNunjucksShortcode('abc', function (
@@ -205,7 +197,7 @@ ${content}
   ) {
     // prettier-ignore
     return /* html */ `
-<label class="abc-src" onclick="CLIENT.toggleABCSource(this)">
+<label data-widget="abc" class="abc-src" onclick="CLIENT.toggleABCSource(this)">
   <span>Show ABC source</span>
   <input class="" type="checkbox" />
 </label>

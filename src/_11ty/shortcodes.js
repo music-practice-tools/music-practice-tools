@@ -174,11 +174,12 @@ ${content}
 
   eleventyConfig.addNunjucksShortcode('activity', function ({
     classes = 'task-list-item-checkbox',
+    time = 3,
   } = {}) {
     // NB indenting required to get correct font size
     // prettier-ignore
     return /* html */`
-  <input data-widget="activity"
+  <input data-widget="activity" data-time="${time}"
     class="${classes}"
     type="checkbox"
   />

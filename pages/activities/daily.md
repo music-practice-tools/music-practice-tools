@@ -12,7 +12,7 @@ date: 2020-05-29
 
 {% activityList timerid='main', pid="daily" %}
 
-- {% activity %} **Finger warm up**
+- {% activity time=2 %} **Finger warm up**
 - {% activity %} **Rythmn** - 1/8ths downbeat, upbeat, octave pair, accuracy {% metronome bpm=70, pid="dp1" %}
 - {% activity %} **Fretboard** - All strings, order = CoF {% metronome bpm=60, pid="dp2" %} {% randomNote text="Start", pid="dp3" %}
 - {% activity %} **Scales** - Play & name: maj, rel minor triads on 1 6 4 5 {% randomNote text="Scale", pid="dp4" %}

@@ -51,6 +51,7 @@ function activityList_data(root, timerid, pid) {
         this.persist()
 
         if (timer && child.checked) {
+          timer.setTime(parseInt(child.dataset.time))
           timer.start()
           timer.lap()
           this.isRunning = true

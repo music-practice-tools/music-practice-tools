@@ -22,6 +22,10 @@ function timer_data(time, useURLTime, pid, timerid) {
     timer: undefined,
     auto: timesp !== null,
 
+    setTime(time) {
+      this.time = time * 60
+    },
+
     init() {
       const { total, elapsed } = readStorage(storageKey, initialTime)
       this.total = total

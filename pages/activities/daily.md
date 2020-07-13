@@ -19,8 +19,9 @@ date: 2020-05-29
 - {% dailyCheck %} **Ear training** - C, F, G: Do Fa So La Do
 - {% dailyCheck %} **Improvisation** - play 3 patterns, a few lines each
 - {% dailyCheck %} **Reading** - p14-18 pitch, rhythm, together {% randomNumber text="Etude", min=1, max=8, pid="dp5"  %}
-- {% dailyCheck %} **Tune - [Lady](/tunes/lady)** - transcribe and learn
-- {% dailyCheck %} **Tune - [The Thrill is Gone](/tunes/the-thrill-is-gone)** - with metronome, {% metronome bpm=80, pid="dp6" %}
+- {% dailyCheck %} **Tune - [Poinciana](/tunes/poinciana/)** - transcribe and learn
+- {% dailyCheck %} **Tune - [Lady](/tunes/lady)** - transcribe and learn last few parts
+- {% dailyCheck %} **Tune - [The Thrill is Gone](/tunes/the-thrill-is-gone)** - with metronome on 2 & 4, {% metronome bpm=35, pid="dp6" %}
 - {% dailyCheck %} **Tune - [Crossfire](/tunes/crossfire?timer=6)** - play along up to speed
 - {% dailyCheck %} **Tune - [Brown eyed girl](/tunes/brown-eyed-girl/)** - transcribe rest
 

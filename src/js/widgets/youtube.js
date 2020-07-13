@@ -82,6 +82,10 @@ div#mpt-videotime button {
 
 let renderFunc
 
+function setRenderFunc(fn) {
+  renderFunc = fn
+}
+
 // Needs to be a global function in order for YT iFrame API to call it
 // eslint-disable-next-line no-unused-vars
 function onYouTubeIframeAPIReady() {
@@ -242,30 +246,4 @@ window.onYouTubeIframeAPIReady = function () {
 
 document.addEventListener('DOMContentLoaded', init)
 
-function videoSeekList_data(root, videoNum) {
-  const seekButtons = root.querySelectorAll('button.seek-video')
-
-  return {
-    init() {
-      renderFunc = (player) => this.showTime(player)
-    },
-
-    showTime(player) {
-      seekButtons.forEach((button) => {
-        // TOD make this more efficient
-        const a = button.textContent.split(':')
-        if (a.length == 1) {
-          a.unshift('0')
-        }
-        const seconds = +a[0] * 60 + +a[1]
-        if (seconds <= player.getCurrentTime()) {
-          button.style = 'color:var(--darkred); font-weight:bold;'
-        } else {
-          button.style = ''
-        }
-      })
-    },
-  }
-}
-
-export { videoSeekList_data, seekTo }
+export { seekTo, setRenderFunc }

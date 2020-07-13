@@ -1,7 +1,7 @@
 // @ts-ignore
 window.parcelRequire = undefined // stop run warning from parcel
 
-import { videoSeekList_data, seekTo } from './widgets/youtube.js'
+import { videoSeekList_data } from './widgets/videoseek.js'
 import { timer_data } from './widgets/timer.js'
 import { metronome_data } from './widgets/metronome.js'
 import { randomNote_data, randomNumber_data } from './widgets/random.js'
@@ -20,18 +20,7 @@ window.CLIENT = {
   replaceABCFences,
   recorder_data,
   videoSeekList_data,
-  seekVideo,
   toggleABCSource,
-}
-
-function seekVideo(minsec = '00:00', videoNum = 0) {
-  const a = minsec.split(':')
-  if (a.length == 1) {
-    a.unshift('0')
-  }
-  const seconds = +a[0] * 60 + +a[1]
-
-  seekTo(seconds, videoNum)
 }
 
 function toggleABCSource(label) {

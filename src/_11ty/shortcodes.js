@@ -97,7 +97,8 @@ exports.addShortcodes = function (eleventyConfig) {
     return html`
 <div data-widget="videoSeekList"
   x-data="CLIENT.videoSeekList_data($el, ${videoNum})"
-  x-init="init()">
+  x-init="init()"
+  x-on:click="childClick">
 ${content}
 </div>
    `
@@ -105,12 +106,15 @@ ${content}
 
   eleventyConfig.addNunjucksShortcode('seekVideo', function ({
     time = '00:00',
-    videoNum = 0,
   } = {}) {
+    const a = time.split(':')
+    if (a.length == 1) {
+      a.unshift('0')
+    }
+    const seconds = (+a[0] * 60 + +a[1]).toString()
     // prettier-ignore
     return html`
-  <button type="button" class="seek-video widget"
-          onclick="CLIENT.seekVideo('${time}', ${videoNum})">
+  <button data-widget="seekVideo" data-seconds="${seconds}" type="button" class="seek-video widget">
     ${time}
   </button>
    `

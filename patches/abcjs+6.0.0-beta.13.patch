@@ -1,0 +1,13 @@
+diff --git a/node_modules/abcjs/src/write/top-text.js b/node_modules/abcjs/src/write/top-text.js
+index e4efa98..62f1ff3 100644
+--- a/node_modules/abcjs/src/write/top-text.js
++++ b/node_modules/abcjs/src/write/top-text.js
+@@ -50,7 +50,7 @@ TopText.prototype.addTextIf = function (marginLeft, text, font, klass, marginTop
+ 		this.rows.push({move: marginTop});
+ 	this.rows.push({left: marginLeft, text: text, font: font, klass: klass, anchor: anchor, absElemType: absElemType});
+ 	if (!noMove) {
+-		size = getTextSize.calc(text, font, klass);
++		var size = getTextSize.calc(text, font, klass);
+ 		this.rows.push({move: size.height});
+ 		if (marginBottom)
+ 			this.rows.push({move: marginBottom});

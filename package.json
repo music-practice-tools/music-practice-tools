@@ -4,8 +4,9 @@
   "description": "Tools to help with practicing and improving musicality.",
   "private": true,
   "scripts": {
-    "build": "shx rm -rf _site build && snowpack build && rm -rf build/css build/js",
-    "dev": "shx rm -rf _site && snowpack dev"
+    "build": "shx rm -rf _site build && snowpack build --reload && shx rm -rf build/css build/js",
+    "dev": "shx rm -rf _site && snowpack dev",
+    "postinstall": "patch-package"
   },
   "repository": {
     "type": "git",
@@ -38,6 +39,7 @@
     "markdown-it-task-lists": "2.1.1",
     "nodemon": "2.0.4",
     "parcel": "^1.12.4",
+    "patch-package": "^6.2.2",
     "prettier": "2.0.5",
     "shx": "^0.3.2",
     "snowpack": "2.6.4",

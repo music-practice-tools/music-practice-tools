@@ -19,6 +19,8 @@ date: 2020-06-01
 
 ## Structure
 
+{% videoSeekList %}
+
 - {% seekVideo time="00:01" %} Intro 12 bars
 - {% seekVideo time="00:35" %} Verse 12 bars
 - {% seekVideo time="01:06" %} Verse 12 bars
@@ -27,5 +29,7 @@ date: 2020-06-01
 - {% seekVideo time="02:42" %} Verse 12 bars
 - {% seekVideo time="03:14" %} Middle 8 12 bars
 - {% seekVideo time="03:46" %} Vamp Outro
+
+{% endvideoSeekList %}
 
 @[youtube](oica5jG7FpU)

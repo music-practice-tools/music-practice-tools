@@ -77,8 +77,12 @@ exports.addShortcodes = function (eleventyConfig) {
     return /* html */ `
 <div data-widget="videoSeekList"
   x-data="CLIENT.videoSeekList_data($el, ${videoNum})"
-  x-init="init()"
+  x-init="init"
   x-on:click="childClick">
+  <label>
+    Loop Section
+    <input type="checkbox" x-model="looping"/>
+  </label>
 ${content}
 </div>
    `

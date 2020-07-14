@@ -159,7 +159,7 @@ function onYouTubeIframeAPIReady() {
           if (renderFunc) {
             renderFunc(player)
           }
-        }, 500)
+        }, 450)
       }
     }
 
@@ -191,6 +191,9 @@ function onYouTubeIframeAPIReady() {
         if (currentPlayer === player) {
           stopPoll()
           render(player)
+          if (renderFunc) {
+            renderFunc(player)
+          }
         }
       }
     }

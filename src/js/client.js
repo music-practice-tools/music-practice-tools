@@ -8,6 +8,7 @@ import { randomNote_data, randomNumber_data } from './widgets/random.js'
 import { activityList_data } from './widgets/activitylist.js'
 import { replaceABCFences, toggleABCSource } from './widgets/abc.js'
 import { recorder_data } from './widgets/recorder.js'
+import { globalErrorHandler } from './globalerror'
 
 // provide access for global scripts - eg in HTML
 // @ts-ignore
@@ -26,3 +27,5 @@ document.addEventListener('DOMContentLoaded', () => {
   replaceABCFences()
   initYoutube()
 })
+
+window.onerror = globalErrorHandler

@@ -17,7 +17,7 @@ exports.addShortcodes = function (eleventyConfig) {
   })
 
   require('./widgets/abc').addWidgets(eleventyConfig)
-  require('./widgets/activityList').addWidgets(eleventyConfig)
+  require('./widgets/activitylist').addWidgets(eleventyConfig)
   require('./widgets/metronome').addWidgets(eleventyConfig)
   require('./widgets/random').addWidgets(eleventyConfig)
   require('./widgets/recorder').addWidgets(eleventyConfig)

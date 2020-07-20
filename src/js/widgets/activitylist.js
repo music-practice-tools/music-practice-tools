@@ -5,7 +5,6 @@ function activityList_data(root, timerid, pid) {
   const storageKey = pid ? `activityList_${pid}` : null
   const checkboxes = root.querySelectorAll('.task-list-item-checkbox')
   const initial = new Array(checkboxes.length).fill(false)
-  const toggleButton = root.querySelector('.toggle')
   const timer = getTimer(timerid)
 
   const setBoxes = (items) => {

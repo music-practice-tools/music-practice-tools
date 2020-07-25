@@ -30,6 +30,6 @@ date: 2020-06-01
 - {% seekVideo time="03:14" %} Middle 8 12 bars
 - {% seekVideo time="03:46" %} Vamp Outro
 
-{% endvideoSeekList %}
-
 @[youtube](oica5jG7FpU)
+
+{% endvideoSeekList %}

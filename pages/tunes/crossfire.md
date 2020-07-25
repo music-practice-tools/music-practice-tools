@@ -36,6 +36,6 @@ P: C
 - {% seekVideo time="03:03" %} Chorus A7C
 - {% seekVideo time="03:34" %} Solo A8
 
-{% endvideoSeekList %}
-
 @[youtube](ZPBRzwIjgv4)
+
+{% endvideoSeekList %}

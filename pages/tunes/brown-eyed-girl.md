@@ -27,6 +27,6 @@ EF|:"G"G2z3GB2|"C"c2zce2f2|"G"g2z3c^c2|"D"d2zEz=Fz^F:|
 - {% seekVideo time="02:04" %} Verse
 - {% seekVideo time="02:42" %} Chorus
 
-{% endvideoSeekList %}
-
 @[youtube](kqXSBe-qMGo)
+
+{% endvideoSeekList %}

@@ -10,7 +10,7 @@ function getYTFrames() {
   return ytFrames
 }
 
-function mpt_inject({ showOnPlay = false } = {}) {
+function YTInject({ showOnPlay = false } = {}) {
   if (!getYTFrames().length) {
     return
   }
@@ -80,15 +80,10 @@ div#mpt-videotime button {
   injectYTAPI(head)
 }
 
-let renderFunc
-
-function setRenderFunc(fn) {
-  renderFunc = fn
-}
-
 // Needs to be a global function in order for YT iFrame API to call it
 // eslint-disable-next-line no-unused-vars
 function onYouTubeIframeAPIReady() {
+  // TODO fix unsociable grabbing
   window.onunload = cleanup
 
   let interval
@@ -103,7 +98,7 @@ function onYouTubeIframeAPIReady() {
   function enhanceYTFrames(ytFrames) {
     let currentPlayer = undefined
 
-    ytFrames.forEach((frame) => {
+    ytFrames.forEach((frame, i) => {
       // Reload with API enabled
       frame.src += frame.src.includes('?') ? '' : '?feature=oembed'
       frame.src += `&enablejsapi=1&domain=${window.location.host}`
@@ -111,14 +106,15 @@ function onYouTubeIframeAPIReady() {
       frame.ytPlayer = new YT.Player(frame, {
         events: {
           onStateChange: onPlayerStateChange,
-          onReady: (e) => {
-            if (!currentPlayer) {
-              currentPlayer = e.target
-              render(e.target)
-            }
+          onReady: () => {
+            // needs to be closure for frame
+            callReadyFunc(frame, frame.ytPlayer)
           },
         },
       })
+      if (i == 0) {
+        extendPlayer(frame.ytPlayer)
+      }
     })
 
     function formatTime(seconds) {
@@ -127,28 +123,38 @@ function onYouTubeIframeAPIReady() {
       return `${mins.padStart(2, '0')}:${secs.padStart(2, '0')}`
     }
 
+    function getPlayerState(player) {
+      return {
+        time: player.getCurrentTime(),
+        // @ts-ignore
+        isPlaying: player.getPlayerState() == YT.PlayerState.PLAYING,
+      }
+    }
+
     function render(player) {
+      if (!player) return
+
       const div = document.querySelector('#mpt-videotime')
 
-      if (player) {
-        const timeEl = div.querySelector('div')
-        timeEl.removeAttribute('disabled')
-        timeEl.textContent = formatTime(player.getCurrentTime())
+      const { time, isPlaying } = getPlayerState(player)
 
-        const playEl = div.querySelector('button')
-        playEl.removeAttribute('disabled')
-        playEl.textContent = player.getPlayerState() == 1 ? 'Pause' : 'Play'
+      const timeEl = div.querySelector('div')
+      timeEl.removeAttribute('disabled')
+      timeEl.textContent = formatTime(time)
 
-        // eslint-disable-next-line no-inner-declarations
-        function onClick() {
-          // @ts-ignore
-          if (player.getPlayerState() == YT.PlayerState.PLAYING) {
-            player.pauseVideo()
-          } else {
-            player.playVideo()
-          }
-        }
-        playEl.onclick = onClick
+      const playEl = div.querySelector('button')
+      playEl.removeAttribute('disabled')
+      playEl.textContent = isPlaying ? 'Pause' : 'Play'
+
+      // eslint-disable-next-line no-inner-declarations
+      const fnClick = isPlaying ? player.pauseVideo : player.playVideo
+      playEl.onclick = () => {
+        fnClick.bind(player)()
+      }
+
+      const stateFunc = player._yt_stateFunc
+      if (stateFunc) {
+        stateFunc(time, isPlaying)
       }
     }
 
@@ -156,9 +162,6 @@ function onYouTubeIframeAPIReady() {
       if (!interval) {
         interval = setInterval(() => {
           render(player)
-          if (renderFunc) {
-            renderFunc(player)
-          }
         }, 450)
       }
     }
@@ -191,10 +194,26 @@ function onYouTubeIframeAPIReady() {
         if (currentPlayer === player) {
           stopPoll()
           render(player)
-          if (renderFunc) {
-            renderFunc(player)
-          }
         }
+      }
+    }
+
+    function extendPlayer(player) {
+      const proto = Object.getPrototypeOf(player)
+      proto.yt_seekToAndPlay = (seconds) => {
+        player.seekTo(seconds, true)
+        player.playVideo()
+      }
+      proto.yt_toggle = () => {
+        const { isPlaying } = getPlayerState(player)
+        if (isPlaying) {
+          player.pauseVideo()
+        } else {
+          player.playVideo()
+        }
+      }
+      proto.yt_setStateFunc = (func) => {
+        proto._yt_stateFunc = func
       }
     }
 
@@ -204,42 +223,19 @@ function onYouTubeIframeAPIReady() {
   enhanceYTFrames(getYTFrames())
 }
 
-function wrapVideo() {
-  const elements = document.querySelectorAll('.video-embed')
-  for (const element of elements) {
-    var parent = element.parentNode
-    var wrapper = document.createElement('div')
-    wrapper.className = 'video-embed-wrapper'
-    parent.replaceChild(wrapper, element)
-    wrapper.appendChild(element)
+const readyFuncs = []
+function addReadyFunc(ytFrame, func) {
+  readyFuncs.push({ ytFrame, func })
+}
+function callReadyFunc(frame, player) {
+  const match = readyFuncs.filter(({ ytFrame }) => ytFrame === frame)[0]
+  if (match) {
+    match.func(player)
   }
 }
 
-function getPlayer(playerNum = undefined) {
-  const frames = getYTFrames()
-  if (
-    !frames.length ||
-    (playerNum !== undefined && playerNum >= frames.length)
-  ) {
-    return
-  }
-  playerNum |= 0
-
-  // @ts-ignore
-  return frames[playerNum].ytPlayer
-}
-
-function seekTo(seconds, playerNum = undefined) {
-  const player = getPlayer(playerNum)
-  if (player) {
-    player.seekTo(seconds, true)
-    player.playVideo()
-  }
-}
-
-function init() {
-  wrapVideo()
-  mpt_inject({ showOnPlay: false })
+function initYoutube() {
+  YTInject({ showOnPlay: true })
 }
 
 // @ts-ignore
@@ -247,4 +243,4 @@ window.onYouTubeIframeAPIReady = function () {
   onYouTubeIframeAPIReady()
 }
 
-export { seekTo, setRenderFunc, init }
+export { addReadyFunc, initYoutube }

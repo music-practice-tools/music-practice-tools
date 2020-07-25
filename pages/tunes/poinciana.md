@@ -22,6 +22,6 @@ date: 2020-06-29
 
 - {% seekVideo time="00:00" %} Start
 
-{% endvideoSeekList %}
-
 @[youtube](Z0e2G32f3IU)
+
+{% endvideoSeekList %}

@@ -33,9 +33,9 @@ P: C
 
 - {% seekVideo time="00:00" %} Start
 
-{% endvideoSeekList %}
-
 @[youtube](u37RF5xKNq8)
+
+{% endvideoSeekList %}
 
 ## Other versions
 

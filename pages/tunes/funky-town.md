@@ -24,6 +24,6 @@ Good for locking in upbeats.
 
 - {% seekVideo time="00:00" %} Start
 
-{% endvideoSeekList %}
-
 @[youtube](GnodEEnMvC8)
+
+{% endvideoSeekList %}

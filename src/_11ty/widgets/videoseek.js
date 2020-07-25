@@ -7,9 +7,10 @@ exports.addWidgets = function (eleventyConfig) {
     // prettier-ignore
     return /* html */ `
 <div data-widget="videoSeekList"
-  x-data="CLIENT.videoSeekList_data($el, ${videoNum})"
-  x-init="init"
+  x-data="CLIENT.videoSeekList_data($el)"
+  x-init="init($dispatch)"
   x-on:click="childClick">
+  <button class="toggle" x-text="toggleText()"></button>
   <label>
     Loop Section
     <input type="checkbox" x-model="looping"/>

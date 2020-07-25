@@ -1,7 +1,7 @@
 // @ts-ignore
 window.parcelRequire = undefined // stop run warning from parcel
 
-import { videoSeekList_data, initYoutube } from './widgets/videoseek.js'
+import { videoSeekList_data, initVideo } from './widgets/videoseek.js'
 import { timer_data } from './widgets/timer.js'
 import { metronome_data } from './widgets/metronome.js'
 import { randomNote_data, randomNumber_data } from './widgets/random.js'
@@ -23,9 +23,13 @@ window.CLIENT = {
   toggleABCSource,
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  replaceABCFences()
-  initYoutube()
-})
+document.addEventListener(
+  'DOMContentLoaded',
+  () => {
+    replaceABCFences()
+    initVideo()
+  },
+  { once: true },
+)
 
 window.onerror = globalErrorHandler

@@ -29,11 +29,9 @@ P: C
 
 ## Structure
 
-{% videoSeekList %}
+{% videoSeekList vid="u37RF5xKNq8" %}
 
 - {% seekVideo time="00:00" %} Start
-
-@[youtube](u37RF5xKNq8)
 
 {% endvideoSeekList %}
 

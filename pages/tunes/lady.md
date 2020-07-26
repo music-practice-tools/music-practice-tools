@@ -25,7 +25,7 @@ P: Middle 8
 
 ## Structure
 
-{% videoSeekList %}
+{% videoSeekList vid="fLmkoiXuJlg" %}
 
 - {% seekVideo time="00:00" %} Intro
 - {% seekVideo time="00:11" %} Chorus
@@ -38,7 +38,5 @@ P: Middle 8
 - {% seekVideo time="02:50" %} Instr x2
 - {% seekVideo time="03:13" %} Chorus 2 x2
 - {% seekVideo time="04:22" %} Outro
-
-@[youtube](fLmkoiXuJlg)
 
 {% endvideoSeekList %}

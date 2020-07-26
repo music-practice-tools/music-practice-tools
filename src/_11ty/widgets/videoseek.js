@@ -2,20 +2,39 @@
 exports.addWidgets = function (eleventyConfig) {
   eleventyConfig.addPairedNunjucksShortcode('videoSeekList', function (
     content,
-    { videoNum = 0 } = {},
+    { vid = '' } = {},
   ) {
     // prettier-ignore
     return /* html */ `
 <div data-widget="videoSeekList"
   x-data="CLIENT.videoSeekList_data($el)"
   x-init="init($dispatch)"
-  x-on:click="childClick">
+  x-on:click="childEvent"
+  x-on:change="childEvent">
   <button class="toggle" x-text="toggleText()"></button>
   <label>
     Loop Section
     <input type="checkbox" x-model="looping"/>
   </label>
+  <label>
+    Show Video
+    <input type="checkbox" x-model="showVideo"/>
+  </label>
+  <label>
+    Speed
+    <select class="speed">
+      <option value="0.25">0.25</option>
+      <option value="0.5">0.5</option>
+      <option value="0.75">0.75</option>
+      <option value="1" selected>Normal</option>
+    </select>
+  </label>
 ${content}
+<div x-show="showVideo">
+
+@[youtube](${vid})
+
+</div>
 </div>
    `
   })

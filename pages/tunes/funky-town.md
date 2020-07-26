@@ -20,10 +20,8 @@ Good for locking in upbeats.
 
 ## Structure
 
-{% videoSeekList %}
+{% videoSeekList vid="GnodEEnMvC8" %}
 
 - {% seekVideo time="00:00" %} Start
-
-@[youtube](GnodEEnMvC8)
 
 {% endvideoSeekList %}

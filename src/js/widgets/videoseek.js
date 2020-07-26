@@ -6,6 +6,7 @@ function videoSeekList_data(root) {
 
   return {
     looping: false,
+    showVideo: false,
     loopSeconds: parseInt(seekButtons[0].dataset.seconds),
     isPlaying: false,
     player: undefined,
@@ -63,7 +64,7 @@ function videoSeekList_data(root) {
       }
     },
 
-    childClick(ev) {
+    childEvent(ev) {
       const child = ev.target
       if (child && child.dataset && child.dataset.widget == 'seekVideo') {
         const seconds = parseInt(ev.target.dataset.seconds)
@@ -72,6 +73,11 @@ function videoSeekList_data(root) {
       } else if (child && child.classList.contains('toggle')) {
         if (this.player) {
           this.player.yt_toggle()
+        }
+      } else if (child && child.classList.contains('speed')) {
+        if (this.player) {
+          const rate = parseFloat(ev.target.value)
+          this.player.setPlaybackRate(rate)
         }
       }
     },

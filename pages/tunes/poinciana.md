@@ -18,10 +18,8 @@ date: 2020-06-29
 
 ## Structure
 
-{% videoSeekList %}
+{% videoSeekList vid="Z0e2G32f3IU" %}
 
 - {% seekVideo time="00:00" %} Start
-
-@[youtube](Z0e2G32f3IU)
 
 {% endvideoSeekList %}

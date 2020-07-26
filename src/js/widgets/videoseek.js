@@ -2,7 +2,6 @@ import { addReadyFunc } from './youtube.js'
 
 function videoSeekList_data(root) {
   const seekButtons = [...root.querySelectorAll('button.seek-video')]
-  const toggleButton = root.querySelector('.toggle')
 
   return {
     looping: false,
@@ -24,7 +23,7 @@ function videoSeekList_data(root) {
     },
 
     toggleText() {
-      return this.isPlaying ? 'Pause' : 'Start'
+      return this.isPlaying ? 'Pause' : 'Play '
     },
 
     highlightTime(player) {

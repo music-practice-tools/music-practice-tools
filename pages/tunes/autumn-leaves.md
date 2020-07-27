@@ -8,9 +8,6 @@ rhythm: Medium Swing
 date: 2020-07-20
 ---
 
-Theory exercise to write out chord chart from basics
-TODO: transpose to B♭, from basics
-
 ## Dots
 
 <!-- prettier-ignore -->

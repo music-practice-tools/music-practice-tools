@@ -62,7 +62,6 @@ function replaceABCFences() {
 
     // eslint-disable-next-line no-inner-declarations
     function loadTune(interactive) {
-      console.log(synthControl, visualObj)
       if (!tuneLoaded && synthControl) {
         const p = synthControl
           .setTune(visualObj[0], interactive, {

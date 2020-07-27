@@ -54,7 +54,7 @@ const abcCursorControl = {
 
 function replaceABCFences() {
   const abcNodes = document.querySelectorAll('code.language-abc')
-  for (const node of abcNodes) {
+  abcNodes.forEach((node, i) => {
     // TODO consider optmising so not a synth per ABC section
     let visualObj
     let synthControl
@@ -62,6 +62,7 @@ function replaceABCFences() {
 
     // eslint-disable-next-line no-inner-declarations
     function loadTune(interactive) {
+      console.log(synthControl, visualObj)
       if (!tuneLoaded && synthControl) {
         const p = synthControl
           .setTune(visualObj[0], interactive, {
@@ -106,16 +107,17 @@ function replaceABCFences() {
       clickListener: supportsAudio ? abcClickListener : undefined,
     })
 
+    // @ts-ignore
     node.style.display = 'none' // hide the abc source
 
     const divAudio = document.createElement('div')
-    divAudio.id = 'audioControls'
+    divAudio.id = `audioControls${i}`
     node.parentElement.appendChild(divDisplay)
     node.parentElement.appendChild(divAudio)
 
     if (supportsAudio) {
       synthControl = new ABCJS.synth.SynthController()
-      synthControl.load('#audioControls', abcCursorControl, {
+      synthControl.load(`#audioControls${i}`, abcCursorControl, {
         displayLoop: true,
         displayRestart: true,
         displayPlay: true,
@@ -124,7 +126,7 @@ function replaceABCFences() {
       })
     }
 
-    // TODO this synth may be unnessary - only used by click before playing
+    // TODO this synth may be unnecessary - only used by click before playing
     let midiBuffer = new ABCJS.synth.CreateSynth()
     midiBuffer
       .init({
@@ -140,7 +142,7 @@ function replaceABCFences() {
       .catch(function (error) {
         console.warn('Audio problem:', error)
       })
-  }
+  })
 }
 
 function toggleABCSource(label) {

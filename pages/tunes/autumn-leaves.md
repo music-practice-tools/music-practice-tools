@@ -11,7 +11,7 @@ date: 2020-07-20
 ## Dots
 
 <!-- prettier-ignore -->
-{%- abc title=title, artist=artist, key=key, unitnotelength=1, tempo=tempo, rhythm=rhythm -%}
+{%- abc title=title, artist=artist, key=key,unitnotelength=1, tempo=tempo, rhythm=rhythm,  midiprogram=midiprogram -%}
 P: A
 |: "A-7"A | "D7"d | "G△7"G | "C△7"c |
 | "F♯ø"F | "B-7"B | "E-7"E | "E-7"E :|
@@ -27,7 +27,7 @@ P: C
 ---
 
 <!-- prettier-ignore -->
-{%- abc title=title, artist=artist, key="Bb", unitnotelength=1, tempo=tempo, rhythm=rhythm -%}
+{%- abc title=title, artist=artist, key="Bb", unitnotelength=1, tempo=tempo, rhythm=rhythm,  midiprogram=midiprogram  -%}
 P: A
 |: "C-7"c | "F7"f | "B♭△7"_B | "E♭△7"_e |
 | "Aø"a | "D-7"d | "G-7"g | "G-7"g :|

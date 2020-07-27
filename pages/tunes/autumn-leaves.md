@@ -44,8 +44,15 @@ P: C
 
 {% videoSeekList vid="u37RF5xKNq8" %}
 
-- {% seekVideo time="00:01" %} Start
-- {% seekVideo time="00:52" %} Head
+- {% seekVideo time="00:01" %} Intro
+- {% seekVideo time="00:52" %} Head A x2
+- {% seekVideo time="01:28" %} Head B
+- {% seekVideo time="01:46" %} Head C
+- {% seekVideo time="02:02" %} Solos
+- {% seekVideo time="07:45" %} Head A x2
+- {% seekVideo time="08:19" %} Head B
+- {% seekVideo time="08:37" %} Head C - piano only
+- {% seekVideo time="08:57" %} Outro
 
 {% endvideoSeekList %}
 

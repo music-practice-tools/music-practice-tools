@@ -2,10 +2,11 @@ import ABCJS from 'abcjs'
 
 // https://github.com/paulrosen/abcjs/blob/master/examples/full-synth.html
 const abcCursorControl = {
-  onReady() {},
+  onReady(controller) {
+    this.svg = controller.options.divDisplay.querySelector('svg')
+  },
 
   onStart() {
-    const svg = document.querySelector('.abcjs-container svg')
     const cursor = document.createElementNS(
       'http://www.w3.org/2000/svg',
       'line',
@@ -15,7 +16,7 @@ const abcCursorControl = {
     cursor.setAttributeNS(null, 'y1', '0')
     cursor.setAttributeNS(null, 'x2', '0')
     cursor.setAttributeNS(null, 'y2', '0')
-    svg.appendChild(cursor)
+    this.svg.appendChild(cursor)
   },
 
   onEvent(ev) {
@@ -23,9 +24,7 @@ const abcCursorControl = {
       return
     } // this was the second part of a tie across a measure line. Just ignore it.
 
-    const lastSelection = document.querySelectorAll(
-      '.abcjs-container svg .highlight',
-    )
+    const lastSelection = this.svg.querySelectorAll('.highlight')
     for (let k = 0; k < lastSelection.length; k++)
       lastSelection[k].classList.remove('highlight')
     for (let i = 0; i < ev.elements.length; i++) {
@@ -35,7 +34,7 @@ const abcCursorControl = {
       }
     }
 
-    const cursor = document.querySelector('.abcjs-container svg .abcjs-cursor')
+    const cursor = this.svg.querySelector('.abcjs-cursor')
     if (cursor) {
       cursor.setAttribute('x1', (ev.left - 2).toString())
       cursor.setAttribute('x2', (ev.left - 2).toString())
@@ -45,7 +44,7 @@ const abcCursorControl = {
   },
 
   onFinished() {
-    const els = document.querySelectorAll('.abcjs-container svg .highlight')
+    const els = this.svg.querySelectorAll('.highlight')
     for (let i = 0; i < els.length; i++) {
       els[i].classList.remove('highlight')
     }
@@ -61,11 +60,12 @@ function replaceABCFences() {
     let tuneLoaded = false
 
     // eslint-disable-next-line no-inner-declarations
-    function loadTune(interactive) {
+    function loadTune(interactive, divDisplay) {
       if (!tuneLoaded && synthControl) {
         const p = synthControl
           .setTune(visualObj[0], interactive, {
             chordsOff: true,
+            divDisplay, // bit hacky but so CursorControl can access
           })
           .catch(function (error) {
             console.warn('Audio problem:', error)
@@ -83,7 +83,7 @@ function replaceABCFences() {
       const lastClicked = abcElem.midiPitches
       if (!lastClicked) return
 
-      loadTune(true).then(() => {
+      loadTune(true, divDisplay).then(() => {
         ABCJS.synth
           .playEvent(
             lastClicked,
@@ -136,7 +136,7 @@ function replaceABCFences() {
         },
       })
       .then(function () {
-        loadTune(false)
+        loadTune(false, divDisplay)
       })
       .catch(function (error) {
         console.warn('Audio problem:', error)

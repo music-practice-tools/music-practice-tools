@@ -12,10 +12,12 @@ exports.addWidgets = function (eleventyConfig) {
   x-on:unload.window="persist"
   x-on:click="childClick($event, $dispatch)"
   class="task-list">
-<button class="toggle" x-show="hasTimer" x-text="toggleText()"></button>
-<button class="reset">Clear</button>
+<template x-if="hasTimer">
+  <button class="toggle" x-text="toggleText()"></button>
+  <button class="stop">Clear</button>
+  <button class="reset">Zero</button>
+</template>
 ${content}
-<button class="done">Done</button>
 </div>
     `
   })

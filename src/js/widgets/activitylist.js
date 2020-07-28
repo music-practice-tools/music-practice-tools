@@ -50,10 +50,13 @@ function activityList_data(root, timerid, pid) {
         this.persist()
 
         if (timer && child.checked) {
-          timer.setTime(parseInt(child.dataset.time))
-          timer.start()
-          timer.lap()
-          this.isRunning = true
+          const time = child.dataset.time
+          if (time != -1) {
+            timer.setTime(parseInt(time))
+            timer.start()
+            timer.lap()
+            this.isRunning = true
+          }
         }
         dispatch('stop-sounds')
       } else if (child.classList.contains('toggle')) {
@@ -62,7 +65,7 @@ function activityList_data(root, timerid, pid) {
       } else if (child.classList.contains('reset')) {
         this.reset()
         this.isRunning = false
-      } else if (child.classList.contains('done')) {
+      } else if (child.classList.contains('stop')) {
         timer.stop()
         timer.lap()
         this.isRunning = false

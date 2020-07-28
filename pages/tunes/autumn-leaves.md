@@ -42,16 +42,16 @@ P: C
 ---
 
 <!-- prettier-ignore -->
-{%- abc title=title, artist=artist, key="Bb", unitnotelength=1, tempo=tempo, rhythm=rhythm,  midiprogram=midiprogram  -%}
+{%- abc title=title, artist=artist, key="Bb", unitnotelength="1/2", tempo=tempo, rhythm=rhythm,  midiprogram=midiprogram  -%}
 P: A
-|: "C-7"c | "F7"f | "B♭△7"_B | "E♭△7"_e |
-| "Aø"a | "D-7"d | "G-7"g | "G-7"g :|
+|: "C-7"cg | "F7"fc | "B♭△7"Bf | "E♭△7"eb |
+| "Aø"Ae | "D-7"dA | "G-7"gd | "G-7"Gd :|
 P: B
-|| "Aø"a | "D-7"d | "G-7"g | "G-7"g |
-| "C-7"c | "F7"f | "B♭△7"_B | "E♭△7"_e ||
+|| "Aø"A_e | "D-7"dA | "G-7"gd | "G-7"Gd |
+| "C-7"cg | "F7"fc | "B♭△7"Bf | "E♭△7"eb ||
 P: C
-|| "Aø"a | "D-7"d | "G-7"g/2 "G♭7"_g/2 | "F7"f/2 "F♭7"_f/2 |
-| "Aø"a | "D-7"d | "G-7"g | "G-7"g |]
+|| "Aø"Ae | "D-7"dA | "G-7"G "G♭7"_G | "F7"F "F♭7"_F |
+| "Aø"Ae | "D-7"dA | "G-7"gd | "G-7"Gd |]
 
 {%- endabc -%}
 

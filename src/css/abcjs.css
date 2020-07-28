@@ -216,3 +216,7 @@
 .abc-src input[type='checkbox'] {
   transform: scale(1.8);
 }
+
+.abcjs-container.fit-height svg {
+  max-height: 100vh;
+}

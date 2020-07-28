@@ -100,6 +100,7 @@ function replaceABCFences() {
     const supportsAudio = ABCJS.synth.supportsAudio()
 
     const divDisplay = document.createElement('div')
+    divDisplay.classList.add('fit-height')
     visualObj = ABCJS.renderAbc(divDisplay, abc, {
       visualTranspose: -24, // makes notes easier to write by transposing
       responsive: 'resize',

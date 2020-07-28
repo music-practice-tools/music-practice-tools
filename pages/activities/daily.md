@@ -3,6 +3,10 @@ title: Daily Practice
 order: 1
 tags: practice
 date: 2020-07-27
+permalink: /
+eleventyNavigation:
+  key: Daily
+  order: 1
 ---
 
 {% timer time=5, pid="main", timerid="main", controls=false %}

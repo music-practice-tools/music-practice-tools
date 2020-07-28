@@ -32,8 +32,7 @@ img {
 }
 .tmpl-activity,
 .tmpl-tune,
-.tmpl-about,
-.tmpl-home {
+.tmpl-about {
   background-color: var(--lightgray);
 }
 
@@ -320,7 +319,7 @@ pre {
 .itemlist-item-active .itemlist-link {
   font-weight: bold;
 }
-.tmpl-home .itemlist-link {
+.itemlist-link {
   font-size: 1.1875em; /* 19px /16 */
   font-weight: 400;
 }

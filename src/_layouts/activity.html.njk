@@ -11,4 +11,6 @@ date: Last Modified
 
 {{ content | safe }}
 
+{% if page.url != '/' %}
 <p>{% homeLink %}</p>
+{% endif %}

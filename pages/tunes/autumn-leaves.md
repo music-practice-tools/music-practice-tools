@@ -8,8 +8,21 @@ midiprogram: 32
 date: 2020-07-20
 ---
 
+## Activities
+
+{% activityList pid="autumnleaves" %}
+
+- {% activity %} Play with iReal - semibreves
+- {% activity %} Play with iReal - minims
+- {% activity %} Rewrite with 1st and 5th in each bar
+- {% activity %} Transpose 1st 16 bars, learn and play along
+
+{% endactivityList %}
+
 ## Dots
 
+<details>
+<summary>Score in G</summary>
 <!-- prettier-ignore -->
 {%- abc title=title, artist=artist, key=key,unitnotelength=1, tempo=tempo, rhythm=rhythm,  midiprogram=midiprogram -%}
 P: A
@@ -23,6 +36,8 @@ P: C
 | "F♯ø"F | "B-7"B | "E-7"E | "E-7"E |]
 
 {%- endabc -%}
+
+</details>
 
 ---
 

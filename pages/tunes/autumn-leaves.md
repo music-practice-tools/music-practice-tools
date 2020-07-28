@@ -44,11 +44,11 @@ P: C
 <!-- prettier-ignore -->
 {%- abc title=title, artist=artist, key="Bb", unitnotelength="1/2", tempo=tempo, rhythm=rhythm,  midiprogram=midiprogram  -%}
 P: A
-|: "C-7"cg | "F7"fc | "B♭△7"Bf | "E♭△7"eb |
+|: "C-7"cg | "F7"fc' | "B♭△7"Bf | "E♭△7"eb |
 | "Aø"Ae | "D-7"dA | "G-7"gd | "G-7"Gd :|
 P: B
-|| "Aø"A_e | "D-7"dA | "G-7"gd | "G-7"Gd |
-| "C-7"cg | "F7"fc | "B♭△7"Bf | "E♭△7"eb ||
+|| "Aø"Ae | "D-7"dA | "G-7"gd | "G-7"Gd |
+| "C-7"cg | "F7"fc' | "B♭△7"Bf | "E♭△7"eb ||
 P: C
 || "Aø"Ae | "D-7"dA | "G-7"G "G♭7"_G | "F7"F "F♭7"_F |
 | "Aø"Ae | "D-7"dA | "G-7"gd | "G-7"Gd |]

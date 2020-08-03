@@ -72,7 +72,7 @@ P: Head
 
 ## Structure
 
-{% videoSeekList vid="u37RF5xKNq8" %}
+{% videoSeekList vid="u37RF5xKNq8", title="Canoball Adderley"%}
 
 - {% seekVideo time="00:01" %} Intro
 - {% seekVideo time="00:52" %} Head A x2
@@ -88,18 +88,18 @@ P: Head
 
 ## Other versions
 
-@[youtube](xXBNlApwh0c)
+{% video vid="xXBNlApwh0c", title="Eva Cassidy" %}
 
-@[youtube](Q9vZ3hHyJL8)
+{% video vid="Q9vZ3hHyJL8", title="Frank Sinatra" %}
 
-@[youtube](xnW9wNN_IVg)
+{% video vid="xnW9wNN_IVg", title="Ahmed Jamal" %}
 
-@[youtube](DsKBnkI_6Tk)
+{% video vid="DsKBnkI_6Tk", title="Gonzalo Rubacala" %}
 
-@[youtube](Gsz3mrnIBd0)
+{% video vid="Gsz3mrnIBd0", title="Chet Baker" %}
 
-@[youtube](Gnp58oepHUQ)
+{% video vid="Gnp58oepHUQ", title="Nat King Cole" %}
 
-@[youtube](rsz6TE6t7-A)
+{% video vid="rsz6TE6t7-A", title="Miles Davis" %}
 
-@[youtube](5jiXQmWBXbY)
+{% video vid="5jiXQmWBXbY", title="Chick Corea Acoustic Band" %}

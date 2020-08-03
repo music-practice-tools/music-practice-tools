@@ -51,13 +51,36 @@ const abcCursorControl = {
   },
 }
 
+function swingMapTrack(noteMapTrack, swingFactor) {
+  noteMapTrack.forEach((noteMap) => {
+    noteMap.start += noteMap.start % 0.25 ? swingFactor : 0
+    noteMap.end += noteMap.end % 0.25 ? swingFactor : 0
+  })
+}
+
+function clamp(v, min, max) {
+  return Math.max(Math.min(v, max), min)
+}
+
+// Soft = 0.04167 hard = 0.0625
+function sequenceCallback(noteMapTracks, callbackContext) {
+  // note mutates noteMapTracks
+  const swingFactor = callbackContext.swing * 0.0208
+
+  noteMapTracks.forEach((noteMapTrack) => {
+    swingMapTrack(noteMapTrack, swingFactor)
+  })
+}
+
 function replaceABCFences() {
   const abcNodes = document.querySelectorAll('code.language-abc')
   abcNodes.forEach((node, i) => {
-    // TODO consider optmising so not a synth per ABC section
+    // TODO consider optimising so not a synth per ABC section
     let visualObj
     let synthControl
     let tuneLoaded = false
+    const widgetDiv = node.parentNode.parentNode
+    const swing = clamp(parseInt(widgetDiv.dataset.swing), 0, 3)
 
     // eslint-disable-next-line no-inner-declarations
     function loadTune(interactive, divDisplay) {
@@ -65,6 +88,9 @@ function replaceABCFences() {
         const p = synthControl
           .setTune(visualObj[0], interactive, {
             chordsOff: true,
+            sequenceCallback,
+            // none = 0 soft 0.0208 medium/triplet = 0.0417 dotted hard = 0.0625
+            callbackContext: { swing },
             divDisplay, // bit hacky but so CursorControl can access
           })
           .catch(function (error) {

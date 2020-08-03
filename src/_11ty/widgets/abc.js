@@ -1,3 +1,7 @@
+function parseSwing(swing) {
+  return swing == 'hard' ? 3 : swing == 'medium' ? 2 : swing == 'soft' ? 1 : 0
+}
+
 /* global exports */
 exports.addWidgets = function (eleventyConfig) {
   eleventyConfig.addPairedNunjucksShortcode('abc', function (
@@ -11,11 +15,13 @@ exports.addWidgets = function (eleventyConfig) {
       rhythm = '',
       unitnotelength = '1/8',
       midiprogram = '33',
+      swing = 'straight',
     } = {},
   ) {
     // prettier-ignore
     return /* html */ `
-<label data-widget="abc" class="abc-src" onclick="CLIENT.toggleABCSource(this)">
+<div data-widget="abc" data-swing="${parseSwing(swing)}">
+<label class="abc-src" onclick="CLIENT.toggleABCSource(this)">
 <span>Show ABC source</span>
 <input class="" type="checkbox" />
 </label>
@@ -32,6 +38,7 @@ R: ${rhythm}
 K: ${key} clef=bass transpose=-12
 ${content}
 \`\`\`
+</div>
 `
   })
 }

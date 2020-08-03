@@ -66,7 +66,7 @@ P: C
 <!-- prettier-ignore -->
 {%- abc title=title, artist=artist, key="Bb", unitnotelength="1/4", tempo=tempo, rhythm=rhythm,  midiprogram=midiprogram -%}
 P: Head
-| "C-7"c2c2 | "F7"f2c'f | "B♭△7"b2f3/2d/2 | "E♭△7"e2be |]
+| "C-7"c'2c'2 | "F7"f2c'f | "B♭△7"b2f3/2d/2 | "E♭△7"e2be |]
 
 {%- endabc -%}
 

@@ -13,9 +13,11 @@ exports.addWidgets = function (eleventyConfig) {
   x-on:click="childClick($event, $dispatch)"
   class="task-list">
 <template x-if="hasTimer">
-  <button class="toggle" x-text="toggleText()"></button>
-  <button class="stop">Clear</button>
-  <button class="reset">Zero</button>
+  <div>
+    <button class="toggle" x-text="toggleText()"></button>
+    <button class="stop">Clear</button>
+    <button class="reset">Zero</button>
+  </div>
 </template>
 ${content}
 </div>

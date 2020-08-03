@@ -1,18 +1,16 @@
 /* global exports */
-exports.addWidgets = function (eleventyConfig) {
-  eleventyConfig.addPairedNunjucksShortcode('videoSeekList', function (
-    content,
-    { vid = '' } = {},
-  ) {
-    // prettier-ignore
-    return /* html */ `
-<div data-widget="videoSeekList"
-  x-data="CLIENT.videoSeekList_data($el)"
+
+function videoList(content = '', vid, noLoop = false, title = '') {
+  // prettier-ignore
+  return /* html */ `
+<div data-widget="videoSeekList" data-vid="${vid}"
+  x-data="CLIENT.videoSeekList_data($el, ${noLoop})"
   x-init="init($dispatch)"
   x-on:click="childEvent"
   x-on:change="childEvent">
+  <div class="video-title">${title}</div>
   <button class="toggle" x-text="toggleText()"></button>
-  <label>
+  <label x-show="!noLoop">
     Loop Section
     <input type="checkbox" x-model="looping"/>
   </label>
@@ -37,6 +35,14 @@ ${content}
 </div>
 </div>
    `
+}
+
+exports.addWidgets = function (eleventyConfig) {
+  eleventyConfig.addPairedNunjucksShortcode('videoSeekList', function (
+    content,
+    { vid = '', title = '' } = {},
+  ) {
+    return videoList(content, vid, false, title)
   })
 
   eleventyConfig.addNunjucksShortcode('seekVideo', function ({
@@ -53,5 +59,12 @@ ${content}
     ${time}
   </button>
    `
+  })
+
+  eleventyConfig.addNunjucksShortcode('video', function ({
+    vid = '',
+    title = '',
+  } = {}) {
+    return videoList('', vid, false, title)
   })
 }

@@ -97,12 +97,14 @@ function onYouTubeIframeAPIReady() {
 
   function enhanceYTFrames(ytFrames) {
     let currentPlayer = undefined
+    extendPlayer(YT.Player.prototype)
 
     ytFrames.forEach((frame, i) => {
       // Reload with API enabled
       frame.src += frame.src.includes('?') ? '' : '?feature=oembed'
       frame.src += `&enablejsapi=1&domain=${window.location.host}`
       // @ts-ignore
+
       frame.ytPlayer = new YT.Player(frame, {
         events: {
           onStateChange: onPlayerStateChange,
@@ -112,9 +114,6 @@ function onYouTubeIframeAPIReady() {
           },
         },
       })
-      if (i == 0) {
-        extendPlayer(frame.ytPlayer)
-      }
     })
 
     function formatTime(seconds) {
@@ -123,20 +122,12 @@ function onYouTubeIframeAPIReady() {
       return `${mins.padStart(2, '0')}:${secs.padStart(2, '0')}`
     }
 
-    function getPlayerState(player) {
-      return {
-        time: player.getCurrentTime(),
-        // @ts-ignore
-        isPlaying: player.getPlayerState() == YT.PlayerState.PLAYING,
-      }
-    }
-
     function render(player) {
       if (!player) return
 
       const div = document.querySelector('#mpt-videotime')
 
-      const { time, isPlaying } = getPlayerState(player)
+      const { time, isPlaying } = player.getPlayerTimeState()
 
       const timeEl = div.querySelector('div')
       timeEl.removeAttribute('disabled')
@@ -198,22 +189,29 @@ function onYouTubeIframeAPIReady() {
       }
     }
 
-    function extendPlayer(player) {
-      const proto = Object.getPrototypeOf(player)
-      proto.yt_seekToAndPlay = (seconds) => {
-        player.seekTo(seconds, true)
-        player.playVideo()
+    function extendPlayer(proto) {
+      // TODO MDN says this kills optimisations
+      proto.yt_seekToAndPlay = function (seconds) {
+        this.seekTo(seconds, true)
+        this.playVideo()
       }
-      proto.yt_toggle = () => {
-        const { isPlaying } = getPlayerState(player)
+      proto.yt_toggle = function () {
+        const { isPlaying } = this.getPlayerTimeState()
         if (isPlaying) {
-          player.pauseVideo()
+          this.pauseVideo()
         } else {
-          player.playVideo()
+          this.playVideo()
         }
       }
-      proto.yt_setStateFunc = (func) => {
-        proto._yt_stateFunc = func
+      proto.yt_setStateFunc = function (func) {
+        this._yt_stateFunc = func
+      }
+      proto.getPlayerTimeState = function () {
+        return {
+          time: this.getCurrentTime(),
+          // @ts-ignore
+          isPlaying: this.getPlayerState() == YT.PlayerState.PLAYING,
+        }
       }
     }
 

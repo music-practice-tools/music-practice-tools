@@ -401,3 +401,6 @@ a[href].direct-link:focus:visited,
   width: 100%;
   height: 100%;
 }
+.video-title {
+  font-weight: bold;
+}

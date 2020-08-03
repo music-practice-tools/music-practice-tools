@@ -1,14 +1,17 @@
 import { addReadyFunc } from './youtube.js'
 
-function videoSeekList_data(root) {
+function videoSeekList_data(root, noLoop) {
   const seekButtons = [...root.querySelectorAll('button.seek-video')]
-
   return {
+    vid: root.dataset.vid,
     looping: false,
     showVideo: false,
-    loopSeconds: parseInt(seekButtons[0].dataset.seconds),
+    loopSeconds: seekButtons.length
+      ? parseInt(seekButtons[0].dataset.seconds)
+      : undefined,
     isPlaying: false,
     player: undefined,
+    noLoop,
 
     init() {
       const ytFrame = root.querySelector('iframe[src*="www.youtube.com"]')
@@ -27,6 +30,10 @@ function videoSeekList_data(root) {
     },
 
     highlightTime(player) {
+      if (!seekButtons.length) {
+        return
+      }
+
       seekButtons.every((button, i, ar) => {
         // TODO can we make this more efficient
         const seconds = parseInt(button.dataset.seconds)

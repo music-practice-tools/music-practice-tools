@@ -24,7 +24,7 @@ eleventyNavigation:
 - {% activity %} **Ear training** - C, F, G: Do Fa So La Do
 - {% activity %} **Improvisation** - play 3 patterns, a few lines each
 - {% activity %} **Reading** - p14-18 pitch, rhythm, together {% randomNumber text="Etude", min=1, max=8, pid="dp5"  %}
-- {% activity %} **Tune** - [Autumn Leaves](/tunes/autumn-leaves) - iReal play whole/half notes, transcribe 1st 16 bars of head, write 1st 5th half notes
+- {% activity %} **Tune** - [Autumn Leaves](/tunes/autumn-leaves) see activities
 - {% activity %} **Tune** - [Lady](/tunes/lady) - transcribe and learn last few parts
 - {% activity %} **Tune** - [The Thrill is Gone](/tunes/the-thrill-is-gone) - with metronome on 2 & 4, {% metronome bpm=35, pid="dp6" %}
 

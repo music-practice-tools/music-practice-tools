@@ -16,6 +16,9 @@ date: 2020-07-20
 - {% activity %} Play with iReal - minims
 - {% activity %} Rewrite with 1st and 5th in each bar
 - {% activity %} Transpose 1st 16 bars, learn and play along
+- {% activity %} Play my bassline @ 50 bpm in iReal
+- {% activity %} Extend my bassline by adding beats 3/4
+- {% activity %} Make a walking bassline
 
 {% endactivityList %}
 

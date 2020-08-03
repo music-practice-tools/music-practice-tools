@@ -21,8 +21,10 @@ date: 2020-07-20
 
 ## Dots
 
+### In G
+
 <details>
-<summary>Score in G</summary>
+<summary>Expand...</summary>
 <!-- prettier-ignore -->
 {%- abc title=title, artist=artist, key=key,unitnotelength=1, tempo=tempo, rhythm=rhythm,  midiprogram=midiprogram -%}
 P: A
@@ -41,8 +43,10 @@ P: C
 
 ---
 
+### In Bb with root and 5ths
+
 <!-- prettier-ignore -->
-{%- abc title=title, artist=artist, key="Bb", unitnotelength="1/2", tempo=tempo, rhythm=rhythm,  midiprogram=midiprogram  -%}
+{%- abc title=title, artist=artist, key="Bb", unitnotelength="1/2", tempo=tempo, rhythm=rhythm,  midiprogram=midiprogram -%}
 P: A
 |: "C-7"cg | "F7"fc' | "B♭△7"Bf | "E♭△7"eb |
 | "Aø"Ae | "D-7"dA | "G-7"gd | "G-7"Gd :|
@@ -52,6 +56,17 @@ P: B
 P: C
 || "Aø"Ae | "D-7"dA | "G-7"G "G♭7"_G | "F7"F "F♭7"_F |
 | "Aø"Ae | "D-7"dA | "G-7"gd | "G-7"Gd |]
+
+{%- endabc -%}
+
+---
+
+### Transcription - 1st 16 bars
+
+<!-- prettier-ignore -->
+{%- abc title=title, artist=artist, key="Bb", unitnotelength="1/4", tempo=tempo, rhythm=rhythm,  midiprogram=midiprogram -%}
+P: Head
+| "C-7"c2c2 | "F7"f2c'f | "B♭△7"b2f3/2d/2 | "E♭△7"e2be |]
 
 {%- endabc -%}
 

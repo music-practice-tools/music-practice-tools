@@ -69,7 +69,8 @@ P: C
 <!-- prettier-ignore -->
 {%- abc title=title, artist=artist, key="Bb", unitnotelength="1/4", tempo=tempo, rhythm=rhythm,  midiprogram=midiprogram, swing="medium" -%}
 P: Head
-| "C-7"c'2c'2 | "F7"f2c'f | "B♭△7"b2f3/2d/2 | "E♭△7"e2be |]
+|: "C-7"c'2c'2 | "F7"f2c'f | "B♭△7"b2f3/2d/2 | "E♭△7"e2be |
+| "Aø"A2A2 | "D-7"d2dg | "G-7"g2d2 | "G-7"g3/2d1/2Ed :|]
 
 {%- endabc -%}
 

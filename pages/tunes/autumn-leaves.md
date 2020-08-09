@@ -12,8 +12,8 @@ date: 2020-07-20
 
 {% activityList pid="autumnleaves" %}
 
-- {% activity %} Play with iReal - semibreves
-- {% activity %} Play with iReal - minims
+- [x] Play with iReal - semibreves
+- [x] Play with iReal - minims
 - {% activity %} Rewrite with 1st and 5th in each bar
 - {% activity %} Transpose 1st 16 bars, learn and play along
 - {% activity %} Play my bassline @ 50 bpm in iReal
@@ -67,12 +67,12 @@ P: C
 ### Transcription - 1st 16 bars
 
 <!-- prettier-ignore -->
-{%- abc title=title, artist=artist, key="Bb", unitnotelength="1/4", tempo=tempo, rhythm=rhythm,  midiprogram=midiprogram, swing="medium" -%}
+{%- abc title=title, artist=artist, key="Bb", unitnotelength="1/4", tempo=tempo, rhythm=rhythm,  midiprogram=midiprogram, swing="hard" -%}
 P: Head
 | "C-7"c'2c'2 | "F7"f2c'f | "B♭△7"b2f3/2d/2 | "E♭△7"e2be |
 | "Aø"A2A2 | "D-7"d2dg | "G-7"g2d2 | "G-7"g3/2d1/2Gd |
 | "C-7"c2c2 | "F7"f3/2e/2fa | "B♭△7"B2Bd | "E♭△7"e2be |
-| "Aø"A2A2 | "D-7"ddA | "G-7"G2d2 | "G-7"G2G1/4g1/4g/2e |]
+| "Aø"A2A2 | "D-7"ddA | "G-7"G2d2 | "G-7"G3/2G1/2g1/2g1/2e |]
 
 {%- endabc -%}
 

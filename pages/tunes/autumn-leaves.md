@@ -49,10 +49,10 @@ P: C
 ### In Bb with root and 5ths
 
 <!-- prettier-ignore -->
-{%- abc title=title, artist=artist, key="Bb", unitnotelength="1/2", tempo=tempo, rhythm=rhythm,  midiprogram=midiprogram -%}
+{%- abc title=title, artist=artist, key="Bb", unitnotelength="1/4", tempo=tempo, rhythm=rhythm,  midiprogram=midiprogram -%}
 P: A
-|: "C-7"cg | "F7"fc' | "B♭△7"Bf | "E♭△7"eb |
-| "Aø"Ae | "D-7"dA | "G-7"gd | "G-7"Gd :|
+|: "C-7"c2eg | "F7"f2cA | "B♭△7"B2fd | "E♭△7"e2gB |
+| "Aø"A2ce | "D-7"d2fA | "G-7"G2dB | "G-7"G2dg :|
 P: B
 || "Aø"Ae | "D-7"dA | "G-7"gd | "G-7"Gd |
 | "C-7"cg | "F7"fc' | "B♭△7"Bf | "E♭△7"eb ||

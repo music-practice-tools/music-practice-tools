@@ -16,7 +16,7 @@ date: 2020-07-20
 - [x] Play with iReal - minims
 - {% activity %} Rewrite with 1st and 5th in each bar
 - {% activity %} Learn and play along 1st 16 bars
-- {% activity %} Check transcription - Bar 8 3rd note not b♭, last bar
+- {% activity %} Check transcription - last bar. I think note 1 could be low G and 2nd D is higher G
 - {% activity %} Play and say all the 7th Chords
 - {% activity %} Extend my bassline by adding beats 3/4 - 7ths
 - {% activity %} Play my bassline @ 50 bpm in iReal
@@ -72,9 +72,9 @@ P: C
 {%- abc title=title, artist=artist, key="Bb", unitnotelength="1/4", tempo=tempo, rhythm=rhythm,  midiprogram=midiprogram, swing="hard" -%}
 P: Head
 | "C-7"c'2c'2 | "F7"f2c'f | "B♭△7"b2f3/2d/2 | "E♭△7"e2be |
-| "Aø7"A2A2 | "D-7"d2d^F | "G-7"G2d2 | "G-7"g3/2d1/2Gd |
+| "Aø7"A2A2 | "D-7"d2d^F | "G-7"G2d2 | "G-7"g3/2d1/2Bd |
 | "C-7"c2c2 | "F7"F3/2E/2Fa | "B♭△7"B2Bd | "E♭△7"e2be |
-| "Aø7"A2A2 | "D-7"dd^F | "G-7"G2d2 | "G-7"G3/2G1/2 g1/2g1/2e |]
+| "Aø7"A2A2 | "D-7"dd^F | "G-7"G2d2 | "G-7"G3/2d1/2 g1/2g1/2e |]
 
 {%- endabc -%}
 

@@ -15,9 +15,11 @@ date: 2020-07-20
 - [x] Play with iReal - semibreves
 - [x] Play with iReal - minims
 - {% activity %} Rewrite with 1st and 5th in each bar
-- {% activity %} Transpose 1st 16 bars, learn and play along
+- {% activity %} Learn and play along 1st 16 bars
+- {% activity %} Check transcription - Bar 8 3rd note not b♭, last bar
+- {% activity %} Play and say all the 7th Chords
+- {% activity %} Extend my bassline by adding beats 3/4 - 7ths
 - {% activity %} Play my bassline @ 50 bpm in iReal
-- {% activity %} Extend my bassline by adding beats 3/4
 - {% activity %} Make a walking bassline
 
 {% endactivityList %}
@@ -32,13 +34,13 @@ date: 2020-07-20
 {%- abc title=title, artist=artist, key=key,unitnotelength=1, tempo=tempo, rhythm=rhythm,  midiprogram=midiprogram -%}
 P: A
 |: "A-7"A | "D7"d | "G△7"G | "C△7"c |
-| "F♯ø"F | "B-7"B | "E-7"E | "E-7"E :|
+| "F♯ø7"F | "B-7"B | "E-7"E | "E-7"E :|
 P: B
-|| "F♯ø"F | "B-7"B | "E-7"E | "E-7"E |
+|| "F♯ø7"F | "B-7"B | "E-7"E | "E-7"E |
 | "A-7"A | "D7"d | "G△7"G | "C△7"c ||
 P: C
-|| "F♯ø"F | "B-7"B | "E-7"E/2 "E♭7"_E/2 | "D7"D/2 "D♭7"_D/2 |
-| "F♯ø"F | "B-7"B | "E-7"E | "E-7"E |]
+|| "F♯ø7"F | "B-7"B | "E-7"E/2 "E♭7"_E/2 | "D7"D/2 "D♭7"_D/2 |
+| "F♯ø7"F | "B-7"B | "E-7"E | "E-7"E |]
 
 {%- endabc -%}
 
@@ -52,13 +54,13 @@ P: C
 {%- abc title=title, artist=artist, key="Bb", unitnotelength="1/4", tempo=tempo, rhythm=rhythm,  midiprogram=midiprogram -%}
 P: A
 |: "C-7"c2eg | "F7"f2cA | "B♭△7"B2fd | "E♭△7"e2gB |
-| "Aø"A2ce | "D-7"d2fA | "G-7"G2dB | "G-7"G2dg :|
+| "Aø7"A2ce | "D-7"d2fA | "G-7"G2dB | "G-7"G2dg :|
 P: B
-|| "Aø"Ae | "D-7"dA | "G-7"gd | "G-7"Gd |
+|| "Aø7"Ae | "D-7"dA | "G-7"gd | "G-7"Gd |
 | "C-7"cg | "F7"fc' | "B♭△7"Bf | "E♭△7"eb ||
 P: C
-|| "Aø"Ae | "D-7"dA | "G-7"G "G♭7"_G | "F7"F "F♭7"_F |
-| "Aø"Ae | "D-7"dA | "G-7"gd | "G-7"Gd |]
+|| "Aø7"Ae | "D-7"dA | "G-7"G "G♭7"_G | "F7"F "F♭7"_F |
+| "Aø7"Ae | "D-7"dA | "G-7"gd | "G-7"Gd |]
 
 {%- endabc -%}
 
@@ -70,9 +72,9 @@ P: C
 {%- abc title=title, artist=artist, key="Bb", unitnotelength="1/4", tempo=tempo, rhythm=rhythm,  midiprogram=midiprogram, swing="hard" -%}
 P: Head
 | "C-7"c'2c'2 | "F7"f2c'f | "B♭△7"b2f3/2d/2 | "E♭△7"e2be |
-| "Aø"A2A2 | "D-7"d2dg | "G-7"g2d2 | "G-7"g3/2d1/2Gd |
-| "C-7"c2c2 | "F7"f3/2e/2fa | "B♭△7"B2Bd | "E♭△7"e2be |
-| "Aø"A2A2 | "D-7"ddA | "G-7"G2d2 | "G-7"G3/2G1/2g1/2g1/2e |]
+| "Aø7"A2A2 | "D-7"d2d^F | "G-7"G2d2 | "G-7"g3/2d1/2Gd |
+| "C-7"c2c2 | "F7"F3/2E/2Fa | "B♭△7"B2Bd | "E♭△7"e2be |
+| "Aø7"A2A2 | "D-7"dd^F | "G-7"G2d2 | "G-7"G3/2G1/2 g1/2g1/2e |]
 
 {%- endabc -%}
 

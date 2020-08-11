@@ -20,6 +20,7 @@ date: 2020-07-20
 - {% activity %} Play and say all the 7th Chords
 - {% activity %} Extend my bassline by adding beats 3/4 - 7ths
 - {% activity %} Play my bassline @ 50 bpm in iReal
+- {% activity %} play beats 1 & 3 with root and 5th keeping string timing (ignore piano)
 - {% activity %} Make a walking bassline
 
 {% endactivityList %}

@@ -20,7 +20,7 @@ date: 2020-07-20
 - {% activity %} Play and say all the 7th Chords
 - {% activity %} Extend my bassline by adding beats 3/4 - 7ths
 - {% activity %} Play my bassline @ 50 bpm in iReal
-- {% activity %} play beats 1 & 3 with root and 5th keeping string timing (ignore piano)
+- {% activity %} Play along beats 1 & 3 with root and 5th keeping strict timing (ignore piano)
 - {% activity %} Make a walking bassline
 
 {% endactivityList %}
@@ -43,13 +43,13 @@ P: C
 || "F♯ø7"F | "B-7"B | "E-7"E/2 "E♭7"_E/2 | "D7"D/2 "D♭7"_D/2 |
 | "F♯ø7"F | "B-7"B | "E-7"E | "E-7"E |]
 
-{%- endabc -%}
+{% endabc %}
 
 </details>
 
 ---
 
-### In Bb with root and 5ths
+### Stevie's bassline
 
 <!-- prettier-ignore -->
 {%- abc title=title, artist=artist, key="Bb", unitnotelength="1/4", tempo=tempo, rhythm=rhythm,  midiprogram=midiprogram -%}
@@ -63,7 +63,7 @@ P: C
 || "Aø7"Ae | "D-7"dA | "G-7"G "G♭7"_G | "F7"F "F♭7"_F |
 | "Aø7"Ae | "D-7"dA | "G-7"gd | "G-7"Gd |]
 
-{%- endabc -%}
+{% endabc %}
 
 ---
 
@@ -77,11 +77,11 @@ P: Head
 | "C-7"c2c2 | "F7"F3/2E/2Fa | "B♭△7"B2Bd | "E♭△7"e2be |
 | "Aø7"A2A2 | "D-7"dd^F | "G-7"G2d2 | "G-7"G3/2d1/2 g1/2g1/2e |]
 
-{%- endabc -%}
+{% endabc %}
 
 ## Structure
 
-{% videoSeekList vid="u37RF5xKNq8", title="Canoball Adderley"%}
+{% videoSeekList vid="u37RF5xKNq8", title="Canoball Adderley" %}
 
 - {% seekVideo time="00:01" %} Intro
 - {% seekVideo time="00:52" %} Head A x2

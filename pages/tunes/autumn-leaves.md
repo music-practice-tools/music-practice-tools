@@ -57,11 +57,11 @@ P: A
 |: "C-7"c2eg | "F7"f2cA | "B♭△7"B2fd | "E♭△7"e2gB |
 | "Aø7"A2ce | "D-7"d2fA | "G-7"G2dB | "G-7"G2dg :|
 P: B
-|| "Aø7"Ae | "D-7"dA | "G-7"gd | "G-7"Gd |
-| "C-7"cg | "F7"fc' | "B♭△7"Bf | "E♭△7"eb ||
+|| "Aø7"A2ge | "D-7"d2c^F | "G-7"G2BF | "G-7"G2FB |
+| "C-7"c2bg | "F7"f2eC' | "B♭△7"B2Ad | "E♭△7"e2dB ||
 P: C
-|| "Aø7"Ae | "D-7"dA | "G-7"G "G♭7"_G | "F7"F "F♭7"_F |
-| "Aø7"Ae | "D-7"dA | "G-7"gd | "G-7"Gd |]
+|| "Aø7"A2ge | "D-7"d2fA | "G-7"G2^F2 | "F7"F2E2 |
+| "Aø7"A2eg | "D-7"d2c^f | "G-7"g2dB | "G-7"G2dB |]
 
 {% endabc %}
 

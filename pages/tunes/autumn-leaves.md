@@ -14,14 +14,14 @@ date: 2020-07-20
 
 - [x] Play with iReal - semibreves
 - [x] Play with iReal - minims
-- {% activity %} Rewrite with 1st and 5th in each bar
+- [x] Rewrite with 1st and 5th in each bar
 - {% activity %} Learn and play along 1st 16 bars
-- {% activity %} Check transcription - last bar. I think note 1 could be low G and 2nd D is higher G
+- [x] Check transcription - last bar. I think note 1 could be low G and 2nd D is higher G
 - {% activity %} Play and say all the 7th Chords
-- {% activity %} Extend my bassline by adding beats 3/4 - 7ths
+- [x] Extend my bassline by adding beats 3/4 - 7ths
 - {% activity %} Play my bassline @ 50 bpm in iReal
-- {% activity %} Play along beats 1 & 3 with root and 5th keeping strict timing (ignore piano)
-- {% activity %} Make a walking bassline
+- [x] Play along beats 1 & 3 with root and 5th keeping strict timing (ignore piano)
+- {% activity %} Make a walking bassline by adding beat 2
 
 {% endactivityList %}
 

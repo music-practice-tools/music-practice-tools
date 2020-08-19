@@ -60,7 +60,7 @@ P: B
 || "Aø7"A2ge | "D-7"d2c^F | "G-7"G2BF | "G-7"G2FB |
 | "C-7"c2bg | "F7"f2eC' | "B♭△7"B2Ad | "E♭△7"e2dB ||
 P: C
-|| "Aø7"A2ge | "D-7"d2fA | "G-7"G2^F2 | "F7"F2E2 |
+|| "Aø7"A2ge | "D-7"d2fA | "G-7"G2^F2 | "F7"F2=E2 |
 | "Aø7"A2eg | "D-7"d2c^f | "G-7"g2dB | "G-7"G2dB |]
 
 {% endabc %}

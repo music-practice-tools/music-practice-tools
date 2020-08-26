@@ -100,11 +100,6 @@ function onYouTubeIframeAPIReady() {
     extendPlayer(YT.Player.prototype);
 
     ytFrames.forEach((frame, i) => {
-      frame.src = frame.src.replace(
-        "www.youtube.com",
-        "www.youtube-nocookie.com"
-      );
-      console.log(frame.src);
       // Reload with API enabled
       frame.src += frame.src.includes("?") ? "" : "?feature=oembed";
       frame.src += `&enablejsapi=1&domain=${window.location.host}`;

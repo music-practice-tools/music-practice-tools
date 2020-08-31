@@ -1,25 +1,25 @@
 /* global YT */
 
 function getYTFrames() {
-  const frames = [...document.getElementsByTagName('iframe')]
+  const frames = [...document.getElementsByTagName("iframe")];
   const ytFrames = frames.filter(
     (p) =>
-      p.src.startsWith('https://www.youtube.com') ||
-      p.src.startsWith('http://www.youtube.com'),
-  )
-  return ytFrames
+      p.src.startsWith("https://www.youtube.com") ||
+      p.src.startsWith("http://www.youtube.com")
+  );
+  return ytFrames;
 }
 
 function YTInject({ showOnPlay = false } = {}) {
   if (!getYTFrames().length) {
-    return
+    return;
   }
 
-  const head = document.querySelector('head')
-  const body = document.querySelector('body')
+  const head = document.querySelector("head");
+  const body = document.querySelector("body");
 
   function injectStyles(where) {
-    const style = document.createElement('style')
+    const style = document.createElement("style");
     style.innerHTML = `
 div#mpt-videotime {
     position: fixed;
@@ -45,64 +45,64 @@ div#mpt-videotime button {
     background-color: gold;
     width: 4.5em;
 }
-  `
-    where.insertAdjacentElement('afterbegin', style)
+  `;
+    where.insertAdjacentElement("afterbegin", style);
   }
 
   function injectDOM(where, showOnPlay = false) {
-    const timeDiv = document.createElement('div')
-    timeDiv.id = 'mpt-videotime'
+    const timeDiv = document.createElement("div");
+    timeDiv.id = "mpt-videotime";
     if (showOnPlay) {
-      timeDiv.style.display = 'none'
+      timeDiv.style.display = "none";
     }
-    const timeEl = document.createElement('div')
-    timeEl.textContent = '00:00'
+    const timeEl = document.createElement("div");
+    timeEl.textContent = "00:00";
 
-    const playEl = document.createElement('button')
-    playEl.setAttribute('disabled', '')
-    playEl.textContent = '-'
+    const playEl = document.createElement("button");
+    playEl.setAttribute("disabled", "");
+    playEl.textContent = "-";
 
-    timeDiv.append(timeEl, playEl)
-    where.insertAdjacentElement('afterbegin', timeDiv)
+    timeDiv.append(timeEl, playEl);
+    where.insertAdjacentElement("afterbegin", timeDiv);
   }
 
   function injectYTAPI(where) {
     // YouTube iFrame API
-    const script = document.createElement('script')
-    script.src = 'https://www.youtube.com/iframe_api'
-    script.type = 'text/javascript'
-    where.insertAdjacentElement('afterbegin', script)
+    const script = document.createElement("script");
+    script.src = "https://www.youtube.com/iframe_api";
+    script.type = "text/javascript";
+    where.insertAdjacentElement("afterbegin", script);
     // when ready this calls onYouTubeIframeAPIReady
   }
 
-  injectStyles(head)
-  injectDOM(body, showOnPlay)
-  injectYTAPI(head)
+  injectStyles(head);
+  injectDOM(body, showOnPlay);
+  injectYTAPI(head);
 }
 
 // Needs to be a global function in order for YT iFrame API to call it
 // eslint-disable-next-line no-unused-vars
 function onYouTubeIframeAPIReady() {
   // TODO fix unsociable grabbing
-  window.onunload = cleanup
+  window.onunload = cleanup;
 
-  let interval
+  let interval;
 
   function cleanup() {
     if (interval) {
-      clearInterval(interval)
-      interval = undefined
+      clearInterval(interval);
+      interval = undefined;
     }
   }
 
   function enhanceYTFrames(ytFrames) {
-    let currentPlayer = undefined
-    extendPlayer(YT.Player.prototype)
+    let currentPlayer = undefined;
+    extendPlayer(YT.Player.prototype);
 
     ytFrames.forEach((frame, i) => {
       // Reload with API enabled
-      frame.src += frame.src.includes('?') ? '' : '?feature=oembed'
-      frame.src += `&enablejsapi=1&domain=${window.location.host}`
+      frame.src += frame.src.includes("?") ? "" : "?feature=oembed";
+      frame.src += `&enablejsapi=1&domain=${window.location.host}`;
       // @ts-ignore
 
       frame.ytPlayer = new YT.Player(frame, {
@@ -110,81 +110,81 @@ function onYouTubeIframeAPIReady() {
           onStateChange: onPlayerStateChange,
           onReady: () => {
             // needs to be closure for frame
-            callReadyFunc(frame, frame.ytPlayer)
+            callReadyFunc(frame, frame.ytPlayer);
           },
         },
-      })
-    })
+      });
+    });
 
     function formatTime(seconds) {
-      const mins = Math.floor(seconds / 60).toString()
-      const secs = Math.floor(seconds % 60).toString()
-      return `${mins.padStart(2, '0')}:${secs.padStart(2, '0')}`
+      const mins = Math.floor(seconds / 60).toString();
+      const secs = Math.floor(seconds % 60).toString();
+      return `${mins.padStart(2, "0")}:${secs.padStart(2, "0")}`;
     }
 
     function render(player) {
-      if (!player) return
+      if (!player) return;
 
-      const div = document.querySelector('#mpt-videotime')
+      const div = document.querySelector("#mpt-videotime");
 
-      const { time, isPlaying } = player.getPlayerTimeState()
+      const { time, isPlaying } = player.getPlayerTimeState();
 
-      const timeEl = div.querySelector('div')
-      timeEl.removeAttribute('disabled')
-      timeEl.textContent = formatTime(time)
+      const timeEl = div.querySelector("div");
+      timeEl.removeAttribute("disabled");
+      timeEl.textContent = formatTime(time);
 
-      const playEl = div.querySelector('button')
-      playEl.removeAttribute('disabled')
-      playEl.textContent = isPlaying ? 'Pause' : 'Play'
+      const playEl = div.querySelector("button");
+      playEl.removeAttribute("disabled");
+      playEl.textContent = isPlaying ? "Pause" : "Play";
 
       // eslint-disable-next-line no-inner-declarations
-      const fnClick = isPlaying ? player.pauseVideo : player.playVideo
+      const fnClick = isPlaying ? player.pauseVideo : player.playVideo;
       playEl.onclick = () => {
-        fnClick.bind(player)()
-      }
+        fnClick.bind(player)();
+      };
 
-      const stateFunc = player._yt_stateFunc
+      const stateFunc = player._yt_stateFunc;
       if (stateFunc) {
-        stateFunc(time, isPlaying)
+        stateFunc(time, isPlaying);
       }
     }
 
     function startPoll(player) {
       if (!interval) {
         interval = setInterval(() => {
-          render(player)
-        }, 450)
+          render(player);
+        }, 450);
       }
     }
 
     function stopPoll() {
-      cleanup()
+      cleanup();
     }
 
     function onPlayerStateChange(event) {
-      const { data: playerStatus, target: player } = event
+      const { data: playerStatus, target: player } = event;
 
       // @ts-ignore
       if (playerStatus == YT.PlayerState.PLAYING) {
         if (currentPlayer && currentPlayer !== player) {
-          currentPlayer.pauseVideo()
+          currentPlayer.pauseVideo();
         }
-        currentPlayer = player
+        currentPlayer = player;
 
-        const divTimer = document.querySelector('#mpt-videotime')
+        const divTimer = document.querySelector("#mpt-videotime");
         // @ts-ignore
-        divTimer.style.display = 'block'
+        divTimer.style.display = "block";
 
-        stopPoll()
-        startPoll(player)
-        render(player)
+        stopPoll();
+        startPoll(player);
+        render(player);
       } else if (
         // @ts-ignore
         [YT.PlayerState.ENDED, YT.PlayerState.PAUSED].includes(playerStatus)
       ) {
         if (currentPlayer === player) {
-          stopPoll()
-          render(player)
+          stopPoll();
+          render(player);
         }
       }
     }
@@ -192,53 +192,53 @@ function onYouTubeIframeAPIReady() {
     function extendPlayer(proto) {
       // TODO MDN says this kills optimisations
       proto.yt_seekToAndPlay = function (seconds) {
-        this.seekTo(seconds, true)
-        this.playVideo()
-      }
+        this.seekTo(seconds, true);
+        this.playVideo();
+      };
       proto.yt_toggle = function () {
-        const { isPlaying } = this.getPlayerTimeState()
+        const { isPlaying } = this.getPlayerTimeState();
         if (isPlaying) {
-          this.pauseVideo()
+          this.pauseVideo();
         } else {
-          this.playVideo()
+          this.playVideo();
         }
-      }
+      };
       proto.yt_setStateFunc = function (func) {
-        this._yt_stateFunc = func
-      }
+        this._yt_stateFunc = func;
+      };
       proto.getPlayerTimeState = function () {
         return {
           time: this.getCurrentTime(),
           // @ts-ignore
           isPlaying: this.getPlayerState() == YT.PlayerState.PLAYING,
-        }
-      }
+        };
+      };
     }
 
-    render()
+    render();
   }
 
-  enhanceYTFrames(getYTFrames())
+  enhanceYTFrames(getYTFrames());
 }
 
-const readyFuncs = []
+const readyFuncs = [];
 function addReadyFunc(ytFrame, func) {
-  readyFuncs.push({ ytFrame, func })
+  readyFuncs.push({ ytFrame, func });
 }
 function callReadyFunc(frame, player) {
-  const match = readyFuncs.filter(({ ytFrame }) => ytFrame === frame)[0]
+  const match = readyFuncs.filter(({ ytFrame }) => ytFrame === frame)[0];
   if (match) {
-    match.func(player)
+    match.func(player);
   }
 }
 
 function initYoutube() {
-  YTInject({ showOnPlay: true })
+  YTInject({ showOnPlay: true });
 }
 
 // @ts-ignore
 window.onYouTubeIframeAPIReady = function () {
-  onYouTubeIframeAPIReady()
-}
+  onYouTubeIframeAPIReady();
+};
 
-export { addReadyFunc, initYoutube }
+export { addReadyFunc, initYoutube };

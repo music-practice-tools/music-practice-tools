@@ -21,7 +21,8 @@ date: 2020-07-20
 - [x] Extend my bassline by adding beats 3/4 - 7ths
 - {% activity %} Play my bassline @ 50 bpm in iReal
 - [x] Play along beats 1 & 3 with root and 5th keeping strict timing (ignore piano)
-- {% activity %} Make a walking bassline by adding beat 2
+- [x] Make a walking bassline by adding beat 2
+- [ ] Play 3 x root + 1 from scale per bar
 
 {% endactivityList %}
 
@@ -54,14 +55,14 @@ P: C
 <!-- prettier-ignore -->
 {%- abc title=title, artist=artist, key="Bb", unitnotelength="1/4", tempo=tempo, rhythm=rhythm,  midiprogram=midiprogram -%}
 P: A
-|: "C-7"c2eg | "F7"f2cA | "B♭△7"B2fd | "E♭△7"e2gB |
-| "Aø7"A2ce | "D-7"d2fA | "G-7"G2dB | "G-7"G2dg :|
+|: "C-7"cdeg | "F7"fdcA | "B♭△7"Bdfd | "E♭△7"efgB |
+| "Aø7"Acce | "D-7"defA | "G-7"GfdB | "G-7"GGdg :|
 P: B
-|| "Aø7"A2ge | "D-7"d2c^F | "G-7"G2BF | "G-7"G2FB |
-| "C-7"c2bg | "F7"f2eC' | "B♭△7"B2Ad | "E♭△7"e2dB ||
+|| "Aø7"Acge | "D-7"dec^F | "G-7"GABF | "G-7"GAFB |
+| "C-7"cfbg | "F7"fgeC' | "B♭△7"BBAd | "E♭△7"eddB ||
 P: C
-|| "Aø7"A2ge | "D-7"d2fA | "G-7"G2^F2 | "F7"F2=E2 |
-| "Aø7"A2eg | "D-7"d2c^f | "G-7"g2dB | "G-7"G2dB |]
+|| "Aø7"Acge | "D-7"defA | "G-7"G2^F2 | "F7"F2=E2 |
+| "Aø7"Aceg | "D-7"ddc^f | "G-7"gedB | "G-7"GBdB |]
 
 {% endabc %}
 

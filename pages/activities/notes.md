@@ -11,3 +11,7 @@ order: 20
 ♯
 △
 ø
+
+## resources
+
+[Microtiming Deviations and Swing Feel in Jazz](https://www.nature.com/articles/s41598-019-55981-3)

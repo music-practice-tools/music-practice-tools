@@ -4,6 +4,12 @@ tags: practice
 order: 10
 ---
 
+## specific techniques
+
+- [Funky Town](/tunes/funky-town/) - good for upbeats
+
+## general
+
 - Hooverphonic - mad about you
 - zero 7 ?
 - Air ?

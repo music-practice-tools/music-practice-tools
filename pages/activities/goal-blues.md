@@ -1,6 +1,6 @@
 ---
 title: Goal - Slow Blues by Christmas
-date: 2020-009-22
+date: 2020-09-22
 order: 5
 tags: practice
 ---

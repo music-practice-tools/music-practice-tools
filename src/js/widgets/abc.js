@@ -1,4 +1,5 @@
-import ABCJS from 'abcjs'
+//import ABCJS from '/js/vendor/abcjs_basic_6.0.0-beta.12-min.js'
+const ABCJS = Function('return this')().ABCJS // uses global script
 
 // https://github.com/paulrosen/abcjs/blob/master/examples/full-synth.html
 const abcCursorControl = {

@@ -1,4 +1,6 @@
-import Tone from 'tone'
+// @ts-nocheck
+//import Tone from '/js/vendor/tone/source/index.js'
+const Tone = Function('return this')().Tone // using global script
 import { readStorage, writeStorage } from './storage.js'
 
 let player
@@ -52,8 +54,8 @@ export function metronome_data(bpm, min, max, step, pid) {
 
     renderAudio() {
       if (!player) {
-        player = new Tone.Player('/sounds/woodblock.wav').toMaster()
-        Tone.Buffer.on('load', function () {
+        player = new Tone.Player('/sounds/woodblock.wav').toDestination()
+        Tone.loaded().then(function () {
           Tone.Transport.scheduleRepeat(function (time) {
             player.start(time)
           }, '4n')

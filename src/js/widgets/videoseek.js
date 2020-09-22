@@ -1,4 +1,4 @@
-import { addReadyFunc } from './youtube.js'
+import { addReadyFunc, initYoutube } from './youtube.js'
 
 function videoSeekList_data(root, noLoop) {
   const seekButtons = [...root.querySelectorAll('button.seek-video')]
@@ -101,8 +101,6 @@ function wrapVideo() {
     wrapper.appendChild(element)
   }
 }
-
-import { initYoutube } from './youtube'
 
 function initVideo() {
   wrapVideo()

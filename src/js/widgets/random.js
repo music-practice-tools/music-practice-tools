@@ -1,4 +1,6 @@
-import { Tonal } from '@tonaljs/tonal'
+// @ts-nocheck
+// import { Tonal } from '/js/vendor/Tonal.min.js'
+const Tonal = Function('return this')().Tonal // uses global script
 
 import { readStorage, writeStorage } from './storage.js'
 

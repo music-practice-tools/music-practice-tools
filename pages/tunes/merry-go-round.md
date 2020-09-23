@@ -21,8 +21,10 @@ date: 2020-09-12
 
 <!-- prettier-ignore -->
 {%- abc title=title, artist=artist, key=key, meter=meter, tempo=tempo, rhythm=rhythm,  midiprogram=midiprogram -%}
-| "G"g2d g2d g2d gdg | "F"f2c f2c f2c a_bc' | "C"c2c f2f _g2_g _b2_b | "G"ggg ggg ggg A_B=B |
-| "C"c2c e2e g2g _baA | "F"F2F A2A c2c _edc | "C"c2c e2e g2g _bag |  "C"c2c e2e g2g _bag |]
+| "G" g2d g2d g2d gdg | "F" f2c f2c f2c a_b=b | "C" c2c f2f _g2_g _b2_b | "G" ggg ggg ggg A_B=B |
+| "C" c2c e2e g2g _baA | "F" F2F A2A c2c _edc | "C" c2c e2e g2g _ba_a |  "C" c2c e2e g2g _ba_a |
+| "F" f3 fdf _g3 _gd_g| "F" f2f _e2_e _e2_e _d2_d | "C" | "C" |
+| "G" | "F" | "C" | "C" |]
 
 {% endabc %}
 

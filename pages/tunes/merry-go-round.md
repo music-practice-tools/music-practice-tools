@@ -32,12 +32,12 @@ date: 2020-09-12
 
 {% videoSeekList vid="rXHT3C7rZkI", title="Merry Go Round" %}
 
-- {% seekVideo time="00:09" %} lead in
+- {% seekVideo time="00:09" %} count in / lead in
 - {% seekVideo time="00:13" %} Turn around
 - {% seekVideo time="00:30" %} 12 bar bars 1 - 4 
 - {% seekVideo time="00:48" %} 12 bar bars 5 - 8 
 - {% seekVideo time="01:06" %} 12 bar bars 9 - 12 
 - {% seekVideo time="01:25" %} 2nd 12 bars  
-- {% seekVideo time="02:40" %} 3rd 12 bars  
-- {% seekVideo time="03:65" %} end  
+- {% seekVideo time="02:20" %} 3rd 12 bars  
+- {% seekVideo time="03:17" %} 4th 12 bars  
   {% endvideoSeekList %}

@@ -19,17 +19,15 @@ eleventyNavigation:
 {% activityList timerid='main', pid="daily" %}
 
 - {% activity time=2 %} **Finger warm up**
-- {% activity %} **Rythmn** -
-- {% activity %} **Fretboard** - All strings, order = CoF {% metronome bpm=60, pid="dp2" %} {% randomNote text="Start", pid="dp3" %}
-- {% activity %} **Structures** - learn major Blues form
-- {% activity %} **Timing** - 12/8 play 1 3 7
-- {% activity %} **Scales** -
-- {% activity %} **Chords** - Play & name: X7 (C, G)
-- {% activity %} **Ear training** - C, F, G: Do Fa So La Do
+- {% activity %} **Tune** - [Merry Go Round](/tunes/merry-go-round) - transcribe, chord tones etc
+- {% activity %} **Structures** - learn Blues form (major) - play along,  iReal
+- {% activity %} **Rythmn** - 12/8 slow blues
+- {% activity %} **Fretboard** - Play & name: C7 F7 G7 {% metronome bpm=60, pid="dp2" %} 
+- {% activity %} **Scales** - C F G Major
+- {% activity %} **Chords** - see fretboard
+- {% activity %} **Ear training** - C, F, G: Do Mi So Te Do
 - {% activity %} **Improvisation** - play 3 patterns, a few lines each
 - {% activity %} **Reading** - p19 - 21 {% randomNumber text="Etude", min=1, max=5, pid="dp5"  %}
-- {% activity %} **Tune** - [Merry Go Round](/tunes/merry-go-round) - transcribe rest
-  metronome bpm=35, pid="dp6" %}
 
 {% endactivityList %}
 

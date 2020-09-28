@@ -7,6 +7,7 @@ exports.passthroughCopy = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ 'src/favicons/': '/' })
   eleventyConfig.addPassthroughCopy({ 'src/robots.txt': '/robots.txt' })
   eleventyConfig.addPassthroughCopy({ 'src/js': 'js' })
+  eleventyConfig.addPassthroughCopy({ files: 'files' })
 
   // Install node_modules to served folder
   eleventyConfig.addPassthroughCopy({

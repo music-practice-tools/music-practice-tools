@@ -21,10 +21,10 @@ date: 2020-09-12
 
 <!-- prettier-ignore -->
 {%- abc title=title, artist=artist, key=key, meter=meter, tempo=tempo, rhythm=rhythm,  midiprogram=midiprogram -%}
-| "G" g2d g2d g2d gdg | "F" f2c f2c f2c a_b=b | "C" c2c f2f _g2_g _b2_b | "G" ggg ggg ggg A_B=B |
-| "C" c2c e2e g2g _baA | "F" F2F A2A c2c _edc | "C" c2c e2e g2g _ba_a |  "C" c2c e2e g2g _ba_a |
-| "F" f3 fdf _g3 _gd_g| "F" f2f _e2_e e2e _d2_d | "C" | "C" |
-| "G" | "F" | "C" | "C" |]
+| "G" g2d g2d g2d gdg | "F" f2c f2c f2c a_bc' | "C" c2c e2e f2f _g2g | "G" ggg ggg ggg A_B=B |
+| "C" c2c e2e g2g _bag | "F" F2F A2A c2c _ed_d | "C" c2c e2e g2g _bag |  "C" c2c e2e g2g _ba_a |
+| "F" f3 fdf _g3 gdg| "F" f2f _e2e d2d _d2d | "C" c2c e2e g2g _bag | "C" c2c e2e g2g ef_g  |
+| "G" g2g B2B d2d fe_e | "F" f2f _e2e d2d _d2d| "C" c2c _B2B A2A _A2A | "G" ggg ggg ggg _ed_d |]
 
 {% endabc %}
 
@@ -32,5 +32,12 @@ date: 2020-09-12
 
 {% videoSeekList vid="rXHT3C7rZkI", title="Merry Go Round" %}
 
-- {% seekVideo time="00:09" %} Start
+- {% seekVideo time="00:09" %} count in / lead in
+- {% seekVideo time="00:13" %} Turn around
+- {% seekVideo time="00:30" %} 12 bar bars 1 - 4
+- {% seekVideo time="00:48" %} 12 bar bars 5 - 8
+- {% seekVideo time="01:06" %} 12 bar bars 9 - 12
+- {% seekVideo time="01:25" %} 2nd 12 bars
+- {% seekVideo time="02:20" %} 3rd 12 bars
+- {% seekVideo time="03:17" %} 4th 12 bars
   {% endvideoSeekList %}

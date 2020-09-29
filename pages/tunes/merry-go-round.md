@@ -9,14 +9,6 @@ midiprogram: 33
 date: 2020-09-12
 ---
 
-## Activities
-
-{% activityList pid="merrygoround" %}
-
-- [ ] transcribe
-
-{% endactivityList %}
-
 ## Dots
 
 <!-- prettier-ignore -->

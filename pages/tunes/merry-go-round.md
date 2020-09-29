@@ -24,7 +24,7 @@ date: 2020-09-12
 | "G" g2d g2d g2d gdg | "F" f2c f2c f2c a_bc' | "C" c2c e2e f2f _g2g | "G" ggg ggg ggg A_B=B |
 | "C" c2c e2e g2g _bag | "F" F2F A2A c2c _ed_d | "C" c2c e2e g2g _bag |  "C" c2c e2e g2g _ba_a |
 | "F" f3 fdf _g3 gdg| "F" f2f _e2e d2d _d2d | "C" c2c e2e g2g _bag | "C" c2c e2e g2g ef_g  |
-| "G" g2g B2B d2d fe_e | "F" f2f _e2e d2d _d2d| "C" c2c _B2B A2A _A2A | "G" ggg ggg ggg _ed_d |]
+| "G" g2g B2B d2d fe_e | "F" f2f _e2e d2d _d2d| "C" c2c _B2B A2A _A2A | "G" Ggg ggg ggg _ed_d |]
 
 {% endabc %}
 

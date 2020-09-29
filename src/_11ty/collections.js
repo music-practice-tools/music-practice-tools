@@ -11,6 +11,8 @@ function addTags(collection) {
           case 'nav':
           case 'activity':
           case 'activities':
+          case 'post':
+          case 'posts':
           case 'tune':
           case 'tunes':
             return false
@@ -35,6 +37,15 @@ exports.addCollections = function (eleventyConfig) {
 
   eleventyConfig.addCollection('orderedActivities', function (collectionApi) {
     return collectionApi.getFilteredByTag('activities').sort(function (a, b) {
+      return (
+        (a.data.order || Number.MAX_SAFE_INTEGER) -
+        (b.data.order || Number.MAX_SAFE_INTEGER)
+      )
+    })
+  })
+
+  eleventyConfig.addCollection('orderedPosts', function (collectionApi) {
+    return collectionApi.getFilteredByTag('posts').sort(function (a, b) {
       return (
         (a.data.order || Number.MAX_SAFE_INTEGER) -
         (b.data.order || Number.MAX_SAFE_INTEGER)

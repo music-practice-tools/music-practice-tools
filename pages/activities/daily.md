@@ -3,10 +3,6 @@ title: Daily Practice
 order: 1
 tags: practice
 date: 2020-09-22
-permalink: /
-eleventyNavigation:
-  key: Daily
-  order: 1
 ---
 
 {% timer time=5, pid="main", timerid="main", controls=false %}
@@ -20,9 +16,9 @@ eleventyNavigation:
 
 - {% activity time=2 %} **Finger warm up**
 - {% activity %} **Tune** - [Merry Go Round](/tunes/merry-go-round) - transcribe, chord tones etc
-- {% activity %} **Structures** - learn Blues form (major) - play along,  iReal
+- {% activity %} **Structures** - learn Blues form (major) - play along, iReal
 - {% activity %} **Rythmn** - 12/8 slow blues
-- {% activity %} **Fretboard** - Play & name: C7 F7 G7 {% metronome bpm=60, pid="dp2" %} 
+- {% activity %} **Fretboard** - Play & name: C7 F7 G7 {% metronome bpm=60, pid="dp2" %}
 - {% activity %} **Scales** - C F G Major
 - {% activity %} **Chords** - see fretboard
 - {% activity %} **Ear training** - C, F, G: Do Mi So Te Do

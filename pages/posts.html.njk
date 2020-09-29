@@ -1,0 +1,14 @@
+---
+layout: home.html.njk
+permalink: /
+eleventyNavigation:
+  key: Posts
+  order: 1
+---
+
+<h1>"By Christmas play a slow blues with others"<a href="/activities/goal-blues">...</a></h1>
+
+<!-- markdownlint-disable MD013 -->
+
+{% set itemlist = collections.posts | reverse %}
+{% include "itemlist.html.njk" %}

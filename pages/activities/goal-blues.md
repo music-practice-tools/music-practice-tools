@@ -13,3 +13,6 @@ By Christmas play a slow blues with other musicians
 - really know fretboard in home position
 - play and jam with iReal Pro
   - eg going down slow - clapton
+- psychological aspects
+  - overcoming performance anxiety
+  - develop more musical confidence

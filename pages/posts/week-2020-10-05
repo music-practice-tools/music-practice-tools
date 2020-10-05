@@ -1,0 +1,43 @@
+---
+title: Week 2020-10-05
+date: 2020-10-05
+---
+
+{% timer time=5, pid="main", timerid="main", controls=false %}
+{% videoRecorder time=30 %}
+
+- **tune** - [Merry Go Round](/tunes/merry-go-round)
+- **form** - 12/8 Slow [Blues](/activities/twelve-bar-blues/) in C
+- **chords** - C7 F7 G7
+- **riff 1** - bar 5
+- **riff 2** - bar 10
+
+{% activityList timerid='main' %}
+
+- {% activity %} **Warmup* fret 1-4, all strings, fingering 124 1234
+- {% activity %} **focus** a' -> g' loop, pivot, then triplet _b'a'g'
+- {% activity %} **riff 1 & 2** - all keys, 3 fingerings {% metronome bpm=50 %} {% randomNote text="Start" %}
+- {% activity %} **riff 1 & 2** - iReal
+- {% activity %} **scales** say and play C F G Major - 2 fingerings
+- {% activity %} **chords** say and play C7 F7 G7
+- {% activity %} **reading** etude 6 p 21 - 2 fingerings write on score
+
+{% endactivityList %}
+
+## Examples
+
+Rif 2 Led Zeppelin -Babe I gonna leave you 
+{% videoSeekList vid="zX_wwlIZ6ko" %}
+
+    {% seekVideo time="00:00" %} start
+    {% seekVideo time="01:54" %} riff 
+    
+{% endvideoSeekList %}## Notes
+
+### Strategies
+
+- play and find problem
+- visualising fretting & recite fingerings (esp changes
+- slow rioght down
+- no mistakes, x10
+

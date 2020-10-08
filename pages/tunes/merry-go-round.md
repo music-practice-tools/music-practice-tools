@@ -13,6 +13,7 @@ date: 2020-09-12
 
 <!-- prettier-ignore -->
 {%- abc title=title, artist=artist, key=key, meter=meter, tempo=tempo, rhythm=rhythm,  midiprogram=midiprogram -%}
+%%measurenb 0
 | "G" g2d g2d g2d gdg | "F" f2c f2c f2f a_bc' | "C" c2c e2e f2f _g2g | "G" ggg ggg ggg A_B=B |
 |: "C" c2c e2e g2g _bag | "F" F2F A2A c2c _ed_d | "C" c2c e2e g2g _bag |  "C" c2c e2e g2g _bag |
 | "F" f3 fcf ^f3 fBf| "F" f2f _e2e d2d _d2d | "C" c2c e2e g2g _bag | "C" c2c e2e g2g ef_g  |

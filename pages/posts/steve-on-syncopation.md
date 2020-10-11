@@ -31,11 +31,12 @@ Up to now I've been under the impression that Western music usually has a time s
 This call showed me it can be **both** at the same time with syncopation.
 For example the keyboard stabs of Billy Jean:
 
-{% video vid="Ji1LmBhN9iM", title="Michael Jackson - Billy Jean" %}.
+{% video vid="Ji1LmBhN9iM", title="Michael Jackson - Billy Jean" %}
 
-We also discussed the relationship of this to the latin [Clave](<https://en.wikipedia.org/wiki/Clave_(rhythm)>) and African [polyrhythms](https://en.wikipedia.org/wiki/Polyrhythm). Plus a diversion into the wonderful Indian [Konnakol](https://en.wikipedia.org/wiki/Konnakol).
+We also discussed the relationship of this to the latin [Clave](<https://en.wikipedia.org/wiki/Clave_(rhythm)>) and African [polyrhythms](https://en.wikipedia.org/wiki/Polyrhythm).
+Plus a diversion into the wonderful Indian [Konnakol](https://en.wikipedia.org/wiki/Konnakol).
 
-I found counting this way helped wih this classic:
+I found counting this way helped with this classic:
 
 {% video vid="tGSUjuSBt1A", title="Mission Impossible theme (original)" %}
 
@@ -43,6 +44,7 @@ This is often [scored like this](https://www.musicnotes.com/sheetmusic/mtd.asp?p
 
 ```
 | 1 2 3 1 2 3 1 2 1 2 |
+        ^
 ```
 
 Fascinating and worthy of much exploration.

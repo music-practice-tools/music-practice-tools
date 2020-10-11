@@ -33,6 +33,16 @@ For example the keyboard stabs of Billy Jean:
 
 {% video vid="Ji1LmBhN9iM", title="Michael Jackson - Billy Jean" %}.
 
-We also discussed the relationship to the latin [Clave](<https://en.wikipedia.org/wiki/Clave_(rhythm)>) and African [polyrhythms](https://en.wikipedia.org/wiki/Polyrhythm).
+We also discussed the relationship of this to the latin [Clave](<https://en.wikipedia.org/wiki/Clave_(rhythm)>) and African [polyrhythms](https://en.wikipedia.org/wiki/Polyrhythm). Plus a diversion into the wonderful Indian [Konnakol](https://en.wikipedia.org/wiki/Konnakol).
+
+I found counting this way helped wih this classic:
+
+{% video vid="tGSUjuSBt1A", title="Mission Impossible theme (original)" %}
+
+This is often [scored like this](https://www.musicnotes.com/sheetmusic/mtd.asp?ppn=MN0056668) but I found it useful to count thus:
+
+```
+| 1 2 3 1 2 3 1 2 1 2 |
+```
 
 Fascinating and worthy of much exploration.

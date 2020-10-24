@@ -38,3 +38,5 @@ date: 2020-09-12
 ## iReal Pro
 
 <a href="irealb://Merry%20Go%20Round%3DMac%20Fleetwood%3D%3DSlow%20Blues%3DC%3D0%3D1r34LbKcu7QyX7C7XyQ%7C7F%7CQyX%2C7C%7B%7CQyX7%2CG%7CQyX%2C7C%7CQyX7F%2CXyQ%7CG21T%7C%2C7G%7CQZF7Xy%7CQyX7F%7CQyX7GZLl%20cKQyX7CZL%20lcKQC7%2CXyL%20lcK%20%20%3C4x%3E%20%7D%7CC7XyQZ%20%3DPop-Shuffle%3D75%3D1">Merry Go Round</a>
+
+<a href="irealbook://A Walkin Thing=Carter Benny=Medium Swing=D-=n={*AT44D- D-/C |Bh7, Bb7(A7b9) |D-/A G-7 |D-/F sEh,A7,|Y|lD- D-/C |Bh7, Bb7(A7b9) |D-/A G-7 |N1D-/F sEh,A7} Y|N2sD-,G-,lD- ][*BC-7 F7 |Bb^7 |C-7 F7 |Bb^7 n ||C-7 F7 |Bb^7 |B-7 E7 |A7,p,p,p,][*AD- D-/C |Bh7, Bb7(A7b9) |D-/A G-7 |D-/F sEh,A7,||lD- D-/C |Bh7, Bb7(A7b9) |D-/A G-7 |D-/F sEh,A7Z">A Walkin Thing</a>

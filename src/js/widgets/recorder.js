@@ -39,21 +39,23 @@ function recorder_data(recordingTime) {
         preview.loop = false
         preview.muted = true
         preview.autoplay = true
+        /*
+        preview.oncanplaythrough = () => console.info(`canplaythrough`)
+        preview.onabort = () => console.info(`abort`)
+        preview.onemptied = () => console.info(`emptied`)
+        preview.onended = () => console.info(`ended:`)
+        preview.onloadeddata = () => console.info(`loadeddata`)
+        preview.onloadstart = () => console.info(`loadstart`)
+        preview.onprogress = () => console.info(`progress`)
+        preview.onstalled = () => console.info(`stalled`)
+        preview.onsuspend = () => console.info(`suspend`)
+        preview.onwaiting = () => console.info(`waiting`)
+        */
         const p = new Promise((resolve, reject) => {
           preview.oncanplay = resolve
           preview.onerror = () => {
             reject(preview.error.message)
           }
-          preview.oncanplaythrough = () => console.info(`canplaythrough`)
-          preview.onabort = () => console.info(`abort`)
-          preview.onemptied = () => console.info(`emptied`)
-          preview.onended = () => console.info(`ended:`)
-          preview.onloadeddata = () => console.info(`loadeddata`)
-          preview.onloadstart = () => console.info(`loadstart`)
-          preview.onprogress = () => console.info(`progress`)
-          preview.onstalled = () => console.info(`stalled`)
-          preview.onsuspend = () => console.info(`suspend`)
-          preview.onwaiting = () => console.info(`waiting`)
         })
         preview.srcObject = stream
         return p

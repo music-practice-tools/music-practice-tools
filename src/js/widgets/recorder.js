@@ -35,12 +35,29 @@ function recorder_data(recordingTime) {
         video: true,
         audio: true,
       })
+      .catch((err) => console.warn('Recorder error', err))
       .then((stream) => {
+        console.dir(stream.getVideoTracks()[0])
         preview.loop = false
         preview.muted = true
         preview.autoplay = true
         preview.srcObject = stream
-        return new Promise((resolve) => (preview.oncanplay = resolve))
+        return new Promise((resolve, reject) => {
+          preview.oncanplay = resolve
+          preview.onerror = () => reject(preview.error.message)
+          preview.oncanplaythrough = () => console.info(`canplaythrough`)
+          preview.onabort = () => console.info(`abort`)
+          preview.onemptied = () => console.info(`emptied`)
+          preview.onended = () => console.info(`ended:`)
+          preview.onloadeddata = () => console.info(`loadeddata`)
+          preview.onloadstart = () => console.info(`loadstart`)
+          preview.onprogress = () => console.info(`progress`)
+          preview.onstalled = () => console.info(`stalled`)
+          preview.onsuspend = () => (
+            console.info(`suspend`), console.dir(stream.getVideoTracks()[0])
+          )
+          preview.onwaiting = () => console.info(`waiting`)
+        })
       })
       .then(() => {
         setButtonState('recording', preview.srcObject)
@@ -54,7 +71,6 @@ function recorder_data(recordingTime) {
         preview.src = URL.createObjectURL(recordedBlob)
         setButtonState('looping')
       })
-
       .catch((err) => console.warn('Recorder error', err))
   }
 

@@ -7,6 +7,8 @@ exports.addWidgets = function (eleventyConfig) {
     return /* html */ `
 <div data-widget="videoRecorder" x-data="CLIENT.recorder_data(${time})" x-init="init()" class="video widget">
   <button type="button" id="recorderbutton" class="button"></button>
+  <button type="button" id="recordersavebutton" class="hidden button">Save</button>
+  <a class="hidden" download="mpt-video.webm"></a>
   <video id="preview"></video>
 </div>
    `

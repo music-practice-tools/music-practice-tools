@@ -85,10 +85,13 @@ function recorder_data(recordingTime) {
       false,
     )
 
+    const saveButton = document.getElementById('recordersavebutton')
+
     const statefunc = (state, stream) => {
       const recorder = record
       if (state == 'stopped') {
         preview.classList.add('hidden')
+        saveButton.classList.add('hidden')
         button.textContent = 'Record'
         buttonClicked = () => {
           recorder()
@@ -120,6 +123,17 @@ function recorder_data(recordingTime) {
   preview.addEventListener('pause', () => {
     setButtonState('paused')
   })
+
+  const saveButton = document.getElementById('recordersavebutton')
+  const saveAnchor = document.getElementById('recordersaveanchor')
+  saveButton.addEventListener(
+    'click',
+    () => {
+      saveAnchor.setAttribute('href', preview.src)
+      saveAnchor.click()
+    },
+    false,
+  )
 
   return {
     init() {

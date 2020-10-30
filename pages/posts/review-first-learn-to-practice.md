@@ -1,5 +1,5 @@
 ---
-title: Book Review - First, Learn to Practice
+title: Book Review - First, Learn to Practice - Tom Heany
 date: 2020-10-17
 ---
 

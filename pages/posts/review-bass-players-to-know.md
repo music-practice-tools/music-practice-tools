@@ -3,9 +3,11 @@ title: Book Review - Bass Players to Know - Ryan Madora
 date: 2020-10-29
 ---
 
-TLDR; Exellent introduction to a wide range of bass players you may not have heard of (but probably should have). For each it a brieve bio is provided and Ryan then describes their style and lists three example recordings. Available on [Amazon](https://www.amazon.co.uk/Bass-Players-Know-Learning-Greats/dp/1689573651) or autographed direct from the [book's website](https://bassplayerstoknow.com/).
+TLDR; Excellent introduction to a wide range of bass players you may not have heard of (but probably should have).
+For each it a brief bio is provided and Ryan then describes their style and lists three example recordings.
+Available on [Amazon](https://www.amazon.co.uk/Bass-Players-Know-Learning-Greats/dp/1689573651) or autographed direct from the [book's website](https://bassplayerstoknow.com/).
 
-_The following was submitted as an Amazon.co.uk Review but has not yet appeared_
+_The following was submitted as an Amazon.co.uk review but has not yet appeared_
 
 To be honest, this is a perfect book for me on two levels. Ever since my teenage years, I've been deeply interested in musicians and would read sleeve notes to find the artists involved and thus discover other works and collaborations to share with my mates. More recently, as an adult learner of the Bass I'm interested in how bassists do what they do in the hope to introduce cool new techniques into my playing.
 

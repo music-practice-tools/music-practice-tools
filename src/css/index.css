@@ -49,6 +49,13 @@ video {
   transform: rotateY(180deg);
   display: block;
 }
+audio {
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+  border: 1px solid black;
+  border-radius: 0.25em;
+  display: block;
+}
 .recorderbuttons {
   display: flex;
   justify-content: center;

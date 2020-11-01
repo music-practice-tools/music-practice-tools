@@ -1,5 +1,7 @@
-function recorder_data(recordingTime) {
-  const preview = document.getElementById('preview')
+function recorder_data(hasVideo, recordingTime) {
+  const preview = document.getElementById(
+    hasVideo ? 'preview-video' : 'preview-audio',
+  )
   if (!preview) {
     return
   }
@@ -9,6 +11,7 @@ function recorder_data(recordingTime) {
   }
 
   function recordStream(stream, time) {
+    // @ts-ignore
     let recorder = new MediaRecorder(stream)
     let data = []
 
@@ -32,7 +35,7 @@ function recorder_data(recordingTime) {
   function record() {
     navigator.mediaDevices
       .getUserMedia({
-        video: true,
+        video: hasVideo,
         audio: true,
       })
       .then((stream) => {
@@ -65,7 +68,9 @@ function recorder_data(recordingTime) {
         return recordStream(preview.srcObject, recordingTime)
       })
       .then((recordedChunks) => {
-        const recordedBlob = new Blob(recordedChunks, { type: 'video/webm' })
+        const recordedBlob = new Blob(recordedChunks, {
+          type: hasVideo ? 'video/webm' : 'audio/ogg',
+        })
         preview.loop = true
         preview.muted = false
         preview.srcObject = null
@@ -104,6 +109,7 @@ function recorder_data(recordingTime) {
         }
       } else if (state == 'looping') {
         preview.classList.remove('hidden')
+        saveButton.classList.remove('hidden')
         button.textContent = 'End'
         buttonClicked = () => {
           preview.pause()
@@ -125,11 +131,15 @@ function recorder_data(recordingTime) {
   })
 
   const saveButton = document.getElementById('recordersavebutton')
-  const saveAnchor = document.getElementById('recordersaveanchor')
   saveButton.addEventListener(
     'click',
     () => {
+      const saveAnchor = document.getElementById('recordersaveanchor')
       saveAnchor.setAttribute('href', preview.src)
+      saveAnchor.setAttribute(
+        'download',
+        hasVideo ? 'mpt-video.webm' : 'mpt-audio.ogg',
+      )
       saveAnchor.click()
     },
     false,

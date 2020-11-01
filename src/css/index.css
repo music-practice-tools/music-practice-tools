@@ -49,7 +49,11 @@ video {
   transform: rotateY(180deg);
   display: block;
 }
-video.hidden {
+.recorderbuttons {
+  display: flex;
+  justify-content: center;
+}
+.hidden {
   display: none;
 }
 /* activity list */

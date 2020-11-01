@@ -6,7 +6,7 @@ date: 2020-09-22
 ---
 
 {% timer time=5, pid="main", timerid="main", controls=false %}
-{% videoRecorder time=30 %}
+{% recorder time=30 %}
 
 Select from the following list.
 

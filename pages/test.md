@@ -7,7 +7,7 @@ permalink: '/{{ page.fileSlug }}/'
 
 {% timer pid="test", timerid="test" %}
 
-{% videoRecorder %}
+{% recorder %}
 
 {% activityList timerid="test" %}
 

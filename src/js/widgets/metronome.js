@@ -23,7 +23,7 @@ export function metronome_data(bpm, min, max, step, pid) {
     stepper: stepper(min, max, step),
     starting: false,
 
-    onClick($el, $event, $dispatch) {
+    async onClick($el, $event, $dispatch) {
       // not from unCheckOthers
       $event.preventDefault() // we control check box state
       if (this.checked && $event.target.tagName == 'BUTTON') {
@@ -36,6 +36,9 @@ export function metronome_data(bpm, min, max, step, pid) {
           this.starting = true
           $dispatch('metronome-start')
         }
+      }
+      if (Tone.getContext().state == 'suspended') {
+        await Tone.start()
       }
       this.renderAudio()
     },

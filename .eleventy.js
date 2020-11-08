@@ -8,6 +8,12 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addLayoutAlias('activity', 'activity.html.njk')
 
+  // config browserSync - defaults setting here:
+  // https://github.com/11ty/eleventy/blob/master/src/EleventyServe.js#L70
+  eleventyConfig.setBrowserSyncConfig({
+    //
+  })
+
   require('./src/_11ty/filters').addFilters(eleventyConfig)
   require('./src/_11ty/shortcodes').addShortcodes(eleventyConfig)
   require('./src/_11ty/collections').addCollections(eleventyConfig)

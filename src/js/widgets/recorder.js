@@ -69,7 +69,7 @@ function recorder_data(hasVideo, recordingTime) {
       })
       .then((recordedChunks) => {
         const recordedBlob = new Blob(recordedChunks, {
-          type: hasVideo ? 'video/webm' : 'audio/ogg',
+          type: hasVideo ? 'video/webm' : 'audio/flac',
         })
         preview.loop = true
         preview.muted = false
@@ -138,7 +138,7 @@ function recorder_data(hasVideo, recordingTime) {
       saveAnchor.setAttribute('href', preview.src)
       saveAnchor.setAttribute(
         'download',
-        hasVideo ? 'mpt-video.webm' : 'mpt-audio.ogg',
+        hasVideo ? 'mpt-video.webm' : 'mpt-audio.flac',
       )
       saveAnchor.click()
     },

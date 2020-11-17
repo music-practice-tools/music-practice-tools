@@ -75,7 +75,8 @@ audio {
   margin-right: 0.3rem;
   margin-left: 0.3rem;
 }
-.metronome {
+.metronome,
+.counter {
   width: 8rem;
   height: 1.5rem;
   border: solid 1px black;
@@ -88,11 +89,16 @@ audio {
   padding-left: 0.2rem;
   padding-right: 0.2rem;
 }
-.metronome span {
+.counter {
+  width: 6rem;
+}
+.metronome span,
+.counter span {
   color: var(--darkred);
   font-weight: bold;
 }
 .metronome button,
+.counter button,
 .timer button,
 .video button {
   background-color: var(--widget-bg);
@@ -105,6 +111,7 @@ audio {
 .random-number,
 .seek-video,
 .metronome,
+.counter,
 .timer,
 .timer button,
 .video * {
@@ -116,16 +123,6 @@ audio {
 .metronome label,
 .video button {
   font-size: calc(var(--font-size) - 3px);
-}
-input[type='number'] {
-  background-color: var(--widget-bg);
-  height: 1.4rem;
-  width: 3rem;
-  border: solid 1px black;
-  border-radius: 0.25rem;
-  font-size: calc(var(--font-size) - 3px);
-  font-weight: bold;
-  color: var(--darkred);
 }
 /* timer */
 .timer,

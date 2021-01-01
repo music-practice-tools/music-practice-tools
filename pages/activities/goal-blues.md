@@ -5,6 +5,8 @@ order: 5
 tags: practice
 ---
 
+ACHIEVED: 20-12-30 at [my first Jam](/posts/jam-2020-12-30/)
+
 By Christmas play a slow blues with other musicians
 
 - internalise 12 bar blues form - major and minor

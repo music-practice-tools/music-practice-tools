@@ -28,7 +28,7 @@ Built using the following technology 'jamstack' as described [in this blog post]
 
 Find out more or host your own on [GitHub](https://github.com/music-practice-tools/music-practice-tools).
 
-Here's an example tune page source:
+Here's an example page source for [this tune](http://localhost:8080/tunes/brown-eyed-girl/):
 
 {% raw %}
 

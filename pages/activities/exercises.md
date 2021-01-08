@@ -10,3 +10,6 @@ tags: practice
 - One String Bass Challenge
 
 @[youtube](3k-HiiB9u3Y)
+
+- mute iReal and then find place
+- follow chats with original recording

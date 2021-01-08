@@ -5,10 +5,11 @@ order: 4
 tags: topic
 ---
 
-## Objectives
+## Learning aims
 
-- Learn several easy well know riffs
-- Expand repertoire, speed up transcription and learning
+- Learn several easy well known riffs
+- Expand repertoire
+- speed up transcription and assimilation
 
 ## Top riffs
 

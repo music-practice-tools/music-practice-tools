@@ -9,11 +9,17 @@ tags: topic
 
 - Learn several easy well known riffs
 - Expand repertoire
-- speed up transcription and assimilation
+- Speed up transcription and assimilation
 
 ## Top riffs
 
-1. Iron Man
+### Iron Man
+
+{%- abc key="Bm", meter="4/4", tempo="1/4=60" -%}
+|:B2d2 deez|g/2^f/2g/2^f/2 gddeez|:|
+{%- endabc -%}
+&nbsp;
+
 1. You Really Got Me
 1. In The Midnight Hour
 1. Stand By Me
@@ -35,6 +41,8 @@ tags: topic
 1. Footprints
 1. Three little birds
 1. Thank you for letting me be mice elf
+1. With or Without You
+1. Where the Streets Have No Name
 
 Inspired by Mark Smith's top 20 riffs lesson
 

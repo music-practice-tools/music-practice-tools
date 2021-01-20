@@ -13,7 +13,7 @@ date: 2020-06-10
 <!-- prettier-ignore -->
 {%- abc title=title, artist=artist, key=key, tempo=tempo, rhythm=rhythm -%}
 EF|:"G"G2z3GB2|"C"c2zce2f2|"G"g2z3c^c2|"D"d2zEz=Fz^F:|
-{%- endabc -%}
+{% endabc %}
 
 ## Structure
 

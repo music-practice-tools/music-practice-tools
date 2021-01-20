@@ -14,7 +14,7 @@ date: 2020-06-29
 <!-- prettier-ignore -->
 {%- abc title=title, artist=artist, key=key, tempo=tempo, rhythm=rhythm, midiprogram=midiprogram -%}
 |: EGc :|
-{%- endabc -%}
+{% endabc %}
 
 ## Structure
 

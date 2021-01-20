@@ -21,7 +21,7 @@ P: Bridge
 |:=b4(_ba)z2|Ez/2E/2dE ee/2f/2gb:|
 P: Middle 8
 |:Bf_gb b3(ae):|
-{%- endabc -%}
+{% endabc %}
 
 ## Structure
 

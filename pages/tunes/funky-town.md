@@ -16,7 +16,7 @@ Good for locking in upbeats.
 <!-- prettier-ignore -->
 {%- abc title=title, artist=artist, key=key, tempo=tempo, rhythm=rhythm, midiprogram=midiprogram -%}
 |: _d_d' :|
-{%- endabc -%}
+{% endabc %}
 
 ## Structure
 

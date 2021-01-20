@@ -17,9 +17,9 @@ tags: topic
 
 {%- abc key="Bm", meter="4/4", tempo="1/4=60" -%}
 |:B2d2 deez|g/2^f/2g/2^f/2 gddeez|:|
-{%- endabc -%}
-&nbsp;
+{% endabc %}
 
+1. Peter Gunn Theme
 1. You Really Got Me
 1. In The Midnight Hour
 1. Stand By Me
@@ -27,7 +27,6 @@ tags: topic
 1. Seven nation Army
 1. Gimme Some Loving
 1. Thriller
-1. Peter Gunn Theme
 1. Smells Like Teen Spirit
 1. Walking On The Moon
 1. Lady Marmalade

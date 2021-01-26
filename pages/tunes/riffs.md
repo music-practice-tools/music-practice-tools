@@ -19,7 +19,12 @@ tags: topic
 |:B2d2 deez|g/2^f/2g/2^f/2 gddeez|:|
 {% endabc %}
 
-1. Peter Gunn Theme
+### Peter Gun Theme
+
+{%- abc key="F", meter="4/4", tempo="1/4=60" -%}
+|: F :|
+{% endabc %}
+
 1. You Really Got Me
 1. In The Midnight Hour
 1. Stand By Me

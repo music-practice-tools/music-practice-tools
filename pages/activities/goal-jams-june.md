@@ -1,7 +1,8 @@
 ---
 title: Goal - Jamming by June
 date: 2021-01-08
-tags: practice
+order: 5
+tags: goal
 ---
 
 By June have organised a few Jams, plus commitment for more

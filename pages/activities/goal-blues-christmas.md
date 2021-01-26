@@ -2,7 +2,7 @@
 title: Goal - Slow Blues by Christmas
 date: 2020-09-22
 order: 5
-tags: practice
+tags: goal
 ---
 
 ACHIEVED: 20-12-30 at [my first Jam](/posts/jam-2020-12-30/)

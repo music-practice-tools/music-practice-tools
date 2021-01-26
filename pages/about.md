@@ -12,6 +12,8 @@ Steve's interactive music practice journal. An experiment to help with practicin
 
 Note: the browser local storage is used to persist widget state between pages, eg the timer's current time. Use this button to {% resetSettings text="Reset All Settings"%}.
 
+Hosted on [![Netlify Status](https://api.netlify.com/api/v1/badges/c2677289-ece4-4fd0-97a0-aa0c1ca166e2/deploy-status)](https://app.netlify.com/sites/music-practice-tools/deploys).
+
 Built using the following technology 'jamstack' as described [in this blog post](https://opendirective.net/2020/07/01/music-practice-tools/):
 
 - 11ty with nunjucks and markdown
@@ -22,9 +24,7 @@ Built using the following technology 'jamstack' as described [in this blog post]
 - Youtube
 - the wonderful web platform
 - nodejs, eslint and prettier
-- hosting by Netlify
 - editing with VS Code
-- Windows
 
 Find out more or host your own on [GitHub](https://github.com/music-practice-tools/music-practice-tools).
 

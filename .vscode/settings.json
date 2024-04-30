@@ -2,7 +2,9 @@
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "eslint.enable": true,
-  "editor.codeActionsOnSave": { "source.fixAll.eslint": false },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "never"
+  },
   "eslint.alwaysShowStatus": true,
   "lit-html.format.enabled": false,
   "[markdown]": {
